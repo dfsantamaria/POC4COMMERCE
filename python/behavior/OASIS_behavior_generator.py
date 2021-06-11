@@ -50,19 +50,17 @@ class Behavior:
     def createAgent(self, agentName):
         self.baseAgent = self.baseNamespace + agentName
         self.baseOntology.add((URIRef(self.baseAgent), RDF.type, self.getOASISEntityByName("Agent")))
+        #print(self.baseNamespace, self.oasisNamespace, self.oasisABoxNamespace)
         return self.baseAgent
 
+    # Add to ontology with the selected namespace an owl:imports axiom for each passed IRI.
+    #INPUT the ontology and the ontology IRI that will include the owl:imports axiom, a list of IRI to be included in the ontology
+    def addImportAxioms(self, ontology, ontologyNS, namespaceToImport):
+        for s in namespaceToImport:
+            ontology.add((URIRef(ontologyNS), OWL.imports, URIRef(s)))
+
+    #import OASIS and OASIS-Abox in the current ontology
+    def addImportOASIS(self):
+        self.addImportAxioms(self.baseOntology, self.baseNamespace, [self.oasisNamespace, self.oasisABoxNamespace])
 
 
-
-
-
-#test
-namespace =  Namespace("http://www.ontochain.org/myOntology#")
-ontology=Graph()
-ontology.bind("myOntology", namespace)
-# Create the graph
-b = Behavior(ontology, namespace)
-#Crate agent
-b.createAgent("MyAgent")
-print(ontology.serialize(format="turtle").decode("utf-8"))
