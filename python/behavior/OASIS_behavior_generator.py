@@ -86,7 +86,7 @@ class Behavior:
 
     #import OASIS and OASIS-Abox in the current ontology
     def addImportOASIS(self, ontology, namespace):
-        self.addImportAxioms(ontology, namespace, [ self.getNoAnchorNamespace(self.oasisNamespace), self.getNoAnchorNamespace(self.oasisABoxNamespace)])
+        self.addImportAxioms(ontology, namespace, [self.oasisURL, self.oasisABoxURL])
         ontology.bind("oasis", self.oasisNamespace)
         ontology.bind("oabox", self.oasisABoxNamespace)
 
