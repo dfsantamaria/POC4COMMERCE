@@ -2,8 +2,8 @@ from rdflib import *
 
 class Behavior:
     def __init__(self, ontologyGraph, ontologyNamespace, ontologyTemplateGraph, ontologyTemplateNamespace, ): # INPUT: the user ontology, the user ontology namespace
-        self.oasisURL = "https://www.dmi.unict.it/santamaria/projects/oasis/sources/rdf/oasis-rdf.owl"  # OASIS ontology URL
-        self.oasisABoxURL = "https://www.dmi.unict.it/santamaria/projects/oasis/sources/rdf/oasis-abox-rdf.owl"  # OASIS-ABox ontology URL
+        self.oasisURL = "https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis.owl"  # OASIS ontology URL
+        self.oasisABoxURL = "https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis-abox.owl"  # OASIS-ABox ontology URL
 
         #
         #oasis ontology data
@@ -114,7 +114,7 @@ class Behavior:
       #  baseTemplateAgent = self.baseTemplateNamespace + agentName
 
     #create a behavior template given an agent template IRI
-    def createBehaviorTemplate(self, behaviorName, goalName, taskName, operators, operatorsArguments, inputs, outputs):
+    def createBehaviorTemplate(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs, outputs):
         #create  and add the behavior
         behavior = self.baseTemplateNamespace+behaviorName
         self.addClassAssertion(self.baseTemplateOntology, behavior, self.getOASISEntityByName("Behavior"))
@@ -148,6 +148,16 @@ class Behavior:
            self.addObjPropAssertion(self.baseTemplateOntology, task, self.getOASISEntityByName("hasTaskOperatorArgument"), taskOperatorArgument)
            self.addObjPropAssertion(self.baseTemplateOntology, taskOperatorArgument, self.getOASISEntityByName("refersExactlyTo"), self.getOASISABoxEntityByName(operatorsArguments[1]))  # the action
 
+       #create, add, and connect the task object
+        if objects:
+           for object in objects:
+               objectName = self.baseTemplateNamespace + object[0]
+               self.addClassAssertion(self.baseTemplateOntology, objectName, self.getOASISEntityByName("TaskObjectTemplate"))
+               self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName("hasTaskObjectTemplate"))
+               self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName(object[1]))  # the task-object property
+               self.addObjPropAssertion(self.baseTemplateOntology, task, self.getOASISEntityByName("hasTaskObjectTemplate"), objectName)
+               self.addObjPropAssertion(self.baseTemplateOntology, objectName, self.getOASISEntityByName(object[1]), object[2])  # the object
+                
         # create, add, and connect the task input parameters
         if inputs:
             for input in inputs:

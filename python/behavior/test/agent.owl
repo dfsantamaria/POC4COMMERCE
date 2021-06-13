@@ -7,7 +7,7 @@
     <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ontochain.org/myOntology#">
-    <owl:imports rdf:resource="https://www.dmi.unict.it/santamaria/projects/oasis/sources/rdf/oasis-abox-rdf.owl"/>
-    <owl:imports rdf:resource="https://www.dmi.unict.it/santamaria/projects/oasis/sources/rdf/oasis-rdf.owl"/>
+    <owl:imports rdf:resource="https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis-abox.owl"/>
+    <owl:imports rdf:resource="https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis.owl"/>
   </rdf:Description>
 </rdf:RDF>

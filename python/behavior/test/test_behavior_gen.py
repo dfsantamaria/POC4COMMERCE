@@ -26,11 +26,15 @@ b.addImportOASIS(ontologyTemp, namespaceTemp)
 #create agent template
 agentTemplateName=b.createAgentTemplate("MyAgentBehaviorTemplate")
 #create behavior template
+object1 = "http://www.ontochain.org/myOntologyTemplate#object-entity-1"
 input1 = "http://www.ontochain.org/myOntologyTemplate#input-entity-1"
 output1 = "http://www.ontochain.org/myOntologyTemplate#output-entity-1"
 b.createBehaviorTemplate("MyBehavior", "MyGoal", "MyTask",
                          ["MyTaskOperator", "turn"],
                          ["MyOperatorArgument", "off"],
+                         [
+                             ["MyTaskObject","refersAsNewTo", object1 ]
+                         ],
                          [
                              ["MyInput1", "refersAsNewTo", input1]
                          ],
