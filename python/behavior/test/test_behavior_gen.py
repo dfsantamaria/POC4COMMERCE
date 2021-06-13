@@ -26,27 +26,48 @@ b.addImportOASIS(ontologyTemp, namespaceTemp)
 #create agent template
 agentTemplateName=b.createAgentTemplate("MyAgentBehaviorTemplate")
 #create behavior template
-object1 = "http://www.ontochain.org/myOntologyTemplate#object-entity-1"
-input1 = "http://www.ontochain.org/myOntologyTemplate#input-entity-1"
-output1 = "http://www.ontochain.org/myOntologyTemplate#output-entity-1"
-b.createBehaviorTemplate("MyBehavior", "MyGoal", "MyTask",
-                         ["MyTaskOperator", "turn"],
-                         ["MyOperatorArgument", "off"],
+object1 = "http://www.ontochain.org/myOntologyTemplate#template-object-entity-1"
+input1 = "http://www.ontochain.org/myOntologyTemplate#template-input-entity-1"
+output1 = "http://www.ontochain.org/myOntologyTemplate#template-output-entity-1"
+b.createAgentBehaviorTemplate("MyTemplateBehavior", "MyTemplateGoal", "MyTemplateTask",
+                         ["MyTemplateTaskOperator", "turn"],
+                         ["MyTemplateOperatorArgument", "off"],
                          [
-                             ["MyTaskObject","refersAsNewTo", object1 ]
+                             ["MyTemplateTaskObject","refersAsNewTo", object1 ]
                          ],
                          [
-                             ["MyInput1", "refersAsNewTo", input1]
+                             ["MyTemplateInput1", "refersAsNewTo", input1]
                          ],
                          [
-                             ["MyOutput1", "refersAsNewTo", output1]
+                             ["MyTemplateOutput1", "refersAsNewTo", output1]
                          ])
 #connect agent to agent behavior
-b.connectAgentToBehaviorTemplate("MyAgentBehaviorTemplate", "MyBehavior")
+b.connectAgentTemplateToBehavior("MyAgentBehaviorTemplate", "MyTemplateBehavior")
 
 
 #Crate agent
 b.createAgent("MyAgent")
+#create agent behavior
+agentobject1 = "http://www.ontochain.org/myOntology#agent-object-entity-1"
+agentinput1 = "http://www.ontochain.org/myOntology#agent-input-entity-1"
+agentoutput1 = "http://www.ontochain.org/myOntology#agent-output-entity-1"
+b.createAgentBehavior("MyAgentBehavior", "MyAgentGoal", "MyAgentTask",
+                         ["MyAgentTaskOperator", "turn"],
+                         ["MyAgentOperatorArgument", "off"],
+                         [
+                             ["MyAgentTaskObject","refersAsNewTo", agentobject1 ]
+                         ],
+                         [
+                             ["MyAgentInput1", "refersAsNewTo", agentinput1]
+                         ],
+                         [
+                             ["MyAgentOutput1", "refersAsNewTo", agentoutput1]
+                         ])
+#connect agent to agent behavior
+b.connectAgentToBehavior("MyAgent", "MyAgentBehavior")
+
+
+
 print(ontology.serialize(format="turtle").decode("utf-8"))
 print("######################################################")
 print(ontologyTemp.serialize(format="turtle").decode("utf-8"))

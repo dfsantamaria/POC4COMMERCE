@@ -97,6 +97,7 @@ class Behavior:
         self.addClassAssertion(self.baseOntology, self.baseAgent, self.getOASISEntityByName("Agent"))
         return self.baseAgent
 
+
     #create an OASIS agent template given its name
     def createAgentTemplate(self, agentName):
         baseTemplateAgent = self.baseTemplateNamespace + agentName
@@ -105,50 +106,58 @@ class Behavior:
         return baseTemplateAgent
 
 
-    #connect a agent template with a behavior template
-    def connectAgentToBehaviorTemplate(self, agentName, behaviorName):
-        self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName("hasBehavior"))
-        self.addObjPropAssertion(self.baseTemplateOntology, self.baseTemplateNamespace+agentName,
-                                 self.getOASISEntityByName("hasBehavior"), self.baseTemplateNamespace+behaviorName)
-      #  self.baseTemplateNamespace + behaviorName
-      #  baseTemplateAgent = self.baseTemplateNamespace + agentName
+    #connect a agent template  with a behavior
+    def connectAgentTemplateToBehavior(self, agentName, behaviorName):
+        self.__connectAgentToGeneralBehavior__(self.baseTemplateOntology, self.baseTemplateNamespace, agentName, behaviorName)
 
-    #create a behavior template given an agent template IRI
-    def createBehaviorTemplate(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs, outputs):
-        #create  and add the behavior
-        behavior = self.baseTemplateNamespace+behaviorName
-        self.addClassAssertion(self.baseTemplateOntology, behavior, self.getOASISEntityByName("Behavior"))
+    # connect a agent  with a behavior
+    def connectAgentToBehavior(self, agentName, behaviorName):
+        self.__connectAgentToGeneralBehavior__( self.baseOntology, self.baseNamespace, agentName, behaviorName)
 
-        #create, add, and connect the goal
-        goal = self.baseTemplateNamespace+goalName
-        self.addClassAssertion(self.baseTemplateOntology, goal, self.getOASISEntityByName("GoalDescription"))
-        self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName("consistsOfGoalDescription"))
-        self.addObjPropAssertion(self.baseTemplateOntology, behavior, self.getOASISEntityByName("consistsOfGoalDescription"), goal)
+    def __connectAgentToGeneralBehavior__(self, ontology, namespace, agentName, behaviorName):
+        self.addOWLObjectProperty(ontology, self.getOASISEntityByName("hasBehavior"))
+        self.addObjPropAssertion(ontology, namespace + agentName,  self.getOASISEntityByName("hasBehavior"), namespace + behaviorName)
+
+    def __createBehaviorPath__(self, ontology, namespace, behaviorName, goalName, taskName, operators, operatorsArguments):
+        behavior = namespace + behaviorName
+        self.addClassAssertion(ontology, behavior, self.getOASISEntityByName("Behavior"))
+
+        # create, add, and connect the goal
+        goal = namespace + goalName
+        self.addClassAssertion(ontology, goal, self.getOASISEntityByName("GoalDescription"))
+        self.addOWLObjectProperty(ontology, self.getOASISEntityByName("consistsOfGoalDescription"))
+        self.addObjPropAssertion(ontology, behavior, self.getOASISEntityByName("consistsOfGoalDescription"), goal)
 
         # create, add, and connect the task
-        task = self.baseTemplateNamespace + taskName
-        self.addClassAssertion(self.baseTemplateOntology,task, self.getOASISEntityByName("TaskDescription"))
-        self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName("consistsOfTaskDescription"))
-        self.addObjPropAssertion(self.baseTemplateOntology, goal, self.getOASISEntityByName("consistsOfTaskDescription"), task)
+        task = namespace + taskName
+        self.addClassAssertion(ontology, task, self.getOASISEntityByName("TaskDescription"))
+        self.addOWLObjectProperty(ontology, self.getOASISEntityByName("consistsOfTaskDescription"))
+        self.addObjPropAssertion(ontology, goal, self.getOASISEntityByName("consistsOfTaskDescription"), task)
 
-        #create, add, and connect the task operator
-        taskOperator = self.baseTemplateNamespace + operators[0]
-        self.addClassAssertion(self.baseTemplateOntology, taskOperator, self.getOASISEntityByName("TaskOperator"))
-        self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName("hasTaskOperator"))
-        self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName("refersExactlyTo")) #the action property
-        self.addObjPropAssertion(self.baseTemplateOntology, task, self.getOASISEntityByName("hasTaskOperator"), taskOperator)
-        self.addObjPropAssertion(self.baseTemplateOntology, taskOperator, self.getOASISEntityByName("refersExactlyTo"), self.getOASISABoxEntityByName(operators[1])) #the action
+        # create, add, and connect the task operator
+        taskOperator = namespace + operators[0]
+        self.addClassAssertion(ontology, taskOperator, self.getOASISEntityByName("TaskOperator"))
+        self.addOWLObjectProperty(ontology, self.getOASISEntityByName("hasTaskOperator"))
+        self.addOWLObjectProperty(ontology, self.getOASISEntityByName("refersExactlyTo"))  # the action property
+        self.addObjPropAssertion(ontology, task, self.getOASISEntityByName("hasTaskOperator"), taskOperator)
+        self.addObjPropAssertion(ontology, taskOperator, self.getOASISEntityByName("refersExactlyTo"), self.getOASISABoxEntityByName(operators[1]))  # the action
 
         # create, add, and connect the task operator argument
         if operatorsArguments:
-           taskOperatorArgument = self.baseTemplateNamespace + operatorsArguments[0]
-           self.addClassAssertion(self.baseTemplateOntology, taskOperatorArgument, self.getOASISEntityByName("TaskOperatorArgument"))
-           self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName("hasTaskOperatorArgument"))
-           self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName("refersExactlyTo"))  # the action property
-           self.addObjPropAssertion(self.baseTemplateOntology, task, self.getOASISEntityByName("hasTaskOperatorArgument"), taskOperatorArgument)
-           self.addObjPropAssertion(self.baseTemplateOntology, taskOperatorArgument, self.getOASISEntityByName("refersExactlyTo"), self.getOASISABoxEntityByName(operatorsArguments[1]))  # the action
+            taskOperatorArgument = namespace + operatorsArguments[0]
+            self.addClassAssertion(ontology, taskOperatorArgument, self.getOASISEntityByName("TaskOperatorArgument"))
+            self.addOWLObjectProperty(ontology, self.getOASISEntityByName("hasTaskOperatorArgument"))
+            self.addOWLObjectProperty(ontology, self.getOASISEntityByName("refersExactlyTo"))  # the action property
+            self.addObjPropAssertion(ontology, task, self.getOASISEntityByName("hasTaskOperatorArgument"), taskOperatorArgument)
+            self.addObjPropAssertion(ontology, taskOperatorArgument, self.getOASISEntityByName("refersExactlyTo"), self.getOASISABoxEntityByName(operatorsArguments[1]))  # the action
 
-       #create, add, and connect the task object
+        return behavior, goal, task, taskOperator
+
+    #create a behavior template given an agent template IRI
+    def createAgentBehaviorTemplate(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs, outputs):
+        #create  and add the behavior
+        behavior, goal, task, taskOperator = self.__createBehaviorPath__(self.baseTemplateOntology, self.baseTemplateNamespace, behaviorName, goalName, taskName, operators, operatorsArguments)
+        #create, add, and connect the task object
         if objects:
            for object in objects:
                objectName = self.baseTemplateNamespace + object[0]
@@ -157,7 +166,7 @@ class Behavior:
                self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName(object[1]))  # the task-object property
                self.addObjPropAssertion(self.baseTemplateOntology, task, self.getOASISEntityByName("hasTaskObjectTemplate"), objectName)
                self.addObjPropAssertion(self.baseTemplateOntology, objectName, self.getOASISEntityByName(object[1]), object[2])  # the object
-                
+
         # create, add, and connect the task input parameters
         if inputs:
             for input in inputs:
@@ -177,3 +186,36 @@ class Behavior:
                self.addOWLObjectProperty(self.baseTemplateOntology, self.getOASISEntityByName(output[1]))  # the input property
                self.addObjPropAssertion(self.baseTemplateOntology, task, self.getOASISEntityByName("hasTaskOutputParameterTemplate"), outputName)
                self.addObjPropAssertion(self.baseTemplateOntology, outputName, self.getOASISEntityByName(output[1]), output[2])  # the action
+
+    def createAgentBehavior(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs,  outputs):
+        # create  and add the behavior
+        behavior, goal, task, taskOperator = self.__createBehaviorPath__(self.baseOntology,  self.baseNamespace, behaviorName, goalName, taskName, operators, operatorsArguments)
+        # create, add, and connect the task object
+        if objects:
+            for object in objects:
+                objectName = self.baseNamespace + object[0]
+                self.addClassAssertion(self.baseOntology, objectName, self.getOASISEntityByName("TaskObject"))
+                self.addOWLObjectProperty(self.baseOntology, self.getOASISEntityByName("hasTaskObject"))
+                self.addOWLObjectProperty(self.baseOntology, self.getOASISEntityByName(object[1]))  # the task-object property
+                self.addObjPropAssertion(self.baseOntology, task, self.getOASISEntityByName("hasTaskObject"), objectName)
+                self.addObjPropAssertion(self.baseOntology, objectName, self.getOASISEntityByName(object[1]), object[2])  # the object
+
+        # create, add, and connect the task input parameters
+        if inputs:
+           for input in inputs:
+               inputName = self.baseNamespace + input[0]
+               self.addClassAssertion(self.baseOntology, inputName,  self.getOASISEntityByName("TaskFormalInputParameter"))
+               self.addOWLObjectProperty(self.baseOntology,   self.getOASISEntityByName("hasTaskFormalInputParameter"))
+               self.addOWLObjectProperty(self.baseOntology,self.getOASISEntityByName(input[1]))  # the input property
+               self.addObjPropAssertion(self.baseOntology, task, self.getOASISEntityByName("hasTaskFormalInputParameter"), inputName)
+               self.addObjPropAssertion(self.baseOntology, inputName, self.getOASISEntityByName(input[1]), input[2])  # the action
+
+        # create, add, and connect the task input parameters
+        if outputs:
+           for output in outputs:
+               outputName = self.baseNamespace + output[0]
+               self.addClassAssertion(self.baseOntology, outputName, self.getOASISEntityByName("TaskFormalOutputParameter"))
+               self.addOWLObjectProperty(self.baseOntology, self.getOASISEntityByName("hasTaskFormalOutputParameter"))
+               self.addOWLObjectProperty(self.baseOntology, self.getOASISEntityByName(output[1]))  # the input property
+               self.addObjPropAssertion(self.baseOntology, task, self.getOASISEntityByName("hasTaskFormalOutputParameter"), outputName)
+               self.addObjPropAssertion(self.baseOntology, outputName, self.getOASISEntityByName(output[1]), output[2])  # the action
