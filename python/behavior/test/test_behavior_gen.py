@@ -55,7 +55,7 @@ b.createAgentBehavior("MyAgentBehavior", "MyAgentGoal", "MyAgentTask",
                          ["MyAgentTaskOperator", "turn"],
                          ["MyAgentOperatorArgument", "off"],
                          [
-                             ["MyAgentTaskObject","refersAsNewTo", agentobject1 ]
+                             ["MyAgentTaskObject", "refersAsNewTo", agentobject1]
                          ],
                          [
                              ["MyAgentInput1", "refersAsNewTo", agentinput1]
@@ -63,10 +63,17 @@ b.createAgentBehavior("MyAgentBehavior", "MyAgentGoal", "MyAgentTask",
                          [
                              ["MyAgentOutput1", "refersAsNewTo", agentoutput1]
                          ],
-                         [ "MyTemplateTask",
-                          ["MyAgentTaskObject", "MyTemplateTaskObject"],
-                          ["MyAgentInput1", "MyTemplateInput1"],
-                          ["MyAgentOutput1", "MyTemplateOutput1"]
+                         [
+                          "MyTemplateTask",
+                          [
+                              ["MyAgentTaskObject", "MyTemplateTaskObject"]
+                          ],
+                          [
+                              ["MyAgentInput1", "MyTemplateInput1"]
+                          ],
+                          [
+                              ["MyAgentOutput1", "MyTemplateOutput1"]
+                          ]
                          ])
 #connect agent to agent behavior
 b.connectAgentToBehavior("MyAgent", "MyAgentBehavior")

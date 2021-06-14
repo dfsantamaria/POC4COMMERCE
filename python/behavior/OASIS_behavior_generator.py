@@ -151,12 +151,12 @@ class Behavior:
             self.addObjPropAssertion(ontology, task, self.getOASISEntityByName("hasTaskOperatorArgument"), taskOperatorArgument)
             self.addObjPropAssertion(ontology, taskOperatorArgument, self.getOASISEntityByName("refersExactlyTo"), self.getOASISABoxEntityByName(operatorsArguments[1]))  # the action
 
-        return behavior, goal, task, taskOperator
+        return behavior, goal, task, taskOperator, taskOperatorArgument
 
     #create a behavior template given an agent template IRI
     def createAgentBehaviorTemplate(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs, outputs):
         #create  and add the behavior
-        behavior, goal, task, taskOperator = self.__createBehaviorPath__(self.baseTemplateOntology, self.baseTemplateNamespace, behaviorName, goalName, taskName, operators, operatorsArguments)
+        behavior, goal, task, taskOperator, taskOperatorArgument = self.__createBehaviorPath__(self.baseTemplateOntology, self.baseTemplateNamespace, behaviorName, goalName, taskName, operators, operatorsArguments)
         #create, add, and connect the task object
         if objects:
            for object in objects:
@@ -189,7 +189,7 @@ class Behavior:
 
     def createAgentBehavior(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs,  outputs, mapping):
         # create  and add the behavior
-        behavior, goal, task, taskOperator = self.__createBehaviorPath__(self.baseOntology,  self.baseNamespace, behaviorName, goalName, taskName, operators, operatorsArguments)
+        behavior, goal, task, taskOperator, taskOperatorArgument  = self.__createBehaviorPath__(self.baseOntology,  self.baseNamespace, behaviorName, goalName, taskName, operators, operatorsArguments)
         # create, add, and connect the task object
         if objects:
             for object in objects:
@@ -222,14 +222,21 @@ class Behavior:
 
         #linking agent behavior with the corresponding behavior template
         if mapping:
-            #mapping the task object
-            task_op= mapping[0]
+            #mapping the task
+            task_op= URIRef(self.baseTemplateNamespace+mapping[0])
             self.addOWLObjectProperty(self.baseOntology, self.getOASISEntityByName("overloads"))
-            self.addObjPropAssertion(self.baseOntology, task, self.getOASISEntityByName("overloads"), self.baseTemplateNamespace+task_op)  # the action
+            self.addObjPropAssertion(self.baseOntology, task, self.getOASISEntityByName("overloads"), task_op)  # the action
+
             # mapping the task operator (automatically)
-
+            for object in self.baseTemplateOntology.objects(task_op, self.getOASISEntityByName("hasTaskOperator")):
+                self.addObjPropAssertion(self.baseOntology, taskOperator, self.getOASISEntityByName("overloads"), object)
+                break
             # mapping the task operator argument (automatically) #
+            for object in self.baseTemplateOntology.objects(task_op, self.getOASISEntityByName("hasTaskOperatorArgument")):
+                self.addObjPropAssertion(self.baseOntology, taskOperatorArgument, self.getOASISEntityByName("overloads"), object)
+                break
+            # mapping the task object, input, and output
+            for elem in mapping[1:]:
+               for map in elem:
+                  self.addObjPropAssertion(self.baseOntology, URIRef(self.baseNamespace+map[0]), self.getOASISEntityByName("overloads"), URIRef(self.baseTemplateNamespace+map[1]))
 
-            #mapping the task input parameters
-
-            #mapping the task output parameters
