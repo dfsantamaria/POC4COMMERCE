@@ -33,7 +33,7 @@ class Behavior:
             self.baseTemplateNamespace = self.getNamespace(self.baseTemplateOntology)
         else:
             self.baseTemplateNamespace = ontologyTemplateNamespace
-
+        self.addImportAxioms(self.baseOntology, self.baseNamespace, [self.baseTemplateNamespace])
         return
 
     #create an ontology object from a given URL
@@ -187,7 +187,7 @@ class Behavior:
                self.addObjPropAssertion(self.baseTemplateOntology, task, self.getOASISEntityByName("hasTaskOutputParameterTemplate"), outputName)
                self.addObjPropAssertion(self.baseTemplateOntology, outputName, self.getOASISEntityByName(output[1]), output[2])  # the action
 
-    def createAgentBehavior(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs,  outputs):
+    def createAgentBehavior(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs,  outputs, mapping):
         # create  and add the behavior
         behavior, goal, task, taskOperator = self.__createBehaviorPath__(self.baseOntology,  self.baseNamespace, behaviorName, goalName, taskName, operators, operatorsArguments)
         # create, add, and connect the task object
@@ -219,3 +219,17 @@ class Behavior:
                self.addOWLObjectProperty(self.baseOntology, self.getOASISEntityByName(output[1]))  # the input property
                self.addObjPropAssertion(self.baseOntology, task, self.getOASISEntityByName("hasTaskFormalOutputParameter"), outputName)
                self.addObjPropAssertion(self.baseOntology, outputName, self.getOASISEntityByName(output[1]), output[2])  # the action
+
+        #linking agent behavior with the corresponding behavior template
+        if mapping:
+            #mapping the task object
+            task_op= mapping[0]
+            self.addOWLObjectProperty(self.baseOntology, self.getOASISEntityByName("overloads"))
+            self.addObjPropAssertion(self.baseOntology, task, self.getOASISEntityByName("overloads"), self.baseTemplateNamespace+task_op)  # the action
+            # mapping the task operator (automatically)
+
+            # mapping the task operator argument (automatically) #
+
+            #mapping the task input parameters
+
+            #mapping the task output parameters
