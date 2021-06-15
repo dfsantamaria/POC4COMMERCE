@@ -4,8 +4,8 @@ This Python API library provides basic mechanisms for interacting with OASIS beh
 
 
 
-Generating new behaviors </br>
-   To generate new OASIS behaviors you should
+## Generating new behaviors </br>
+In order to generate new OASIS behaviors you should
 
 A) Create a Behavior object by typing: </br>
       
@@ -17,15 +17,14 @@ A) Create a Behavior object by typing: </br>
    - "ontologyTemplate" is the namespace of the ontology containing the behavior template.
    - "namespaceTemplate" is namespace of "ontologyTemplate". You can use "None" if "xml:base" is already defined in the ontology.
    
-B) (Optional) Create a new behavior template </br>
-   Type 
-   
+B) (Optional) Create a new behavior template by tiping </br>
+      
       b.createAgentTemplate(agentTemplateName)
       
    where  </br>   
    - "ontologyTemplateName" is the name of the agent template name. </br>
    
-   Create a new agent template behavior by typing: </br>
+   Then, create a new agent template behavior by typing: </br>
 
 
       b.createAgentBehaviorTemplate(MyTemplateBehavior, MyTemplateGoal, MyTemplateTask,
@@ -41,8 +40,7 @@ B) (Optional) Create a new behavior template </br>
                                         ["MyTemplateOutput1", taskOutputProperty, output1]
                                      ])
 
-    
-    
+        
    where
    - "MyTemplateBehavior" is the entity name of the behavior template. 
    - "MyTemplateGoal" is the entity name of the goal template.
