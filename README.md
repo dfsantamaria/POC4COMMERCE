@@ -147,7 +147,13 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
         - "MyAgentOutput1", "MyTemplateOutput1"
         where:</br>
         -  "MyAgentOutput1", "MyTemplateOutput1" represent the entity name of the agent output and the agent output template, respectively.
-                        
+  - Connect the created behavior to its agent by typing:
+     
+        b.connectAgentToBehavior("MyAgent", "MyAgentBehavior")
+    
+    where </br>
+    - "MyAgent" and "MyAgentBehavior" are the agent and the agent behavior respectively.
+    
        
        
 
