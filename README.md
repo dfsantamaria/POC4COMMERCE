@@ -4,7 +4,7 @@ This Python API library provides basic mechanisms for interacting with OASIS beh
 
 
 
-## Generating new behaviors </br>
+## Generating new agent and new agent behaviors </br>
 In order to generate new OASIS behaviors you should
 
 A) Create a Behavior object by typing: </br>
