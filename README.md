@@ -17,7 +17,7 @@ A) Create a Behavior object by typing: </br>
    - "ontologyTemplate" is the namespace of the ontology containing the behavior template.
    - "namespaceTemplate" is namespace of "ontologyTemplate". You can use "None" if "xml:base" is already defined in the ontology.
    
-B) (Optional) Create a new behavior template by tiping </br>
+B) (Optional) Create a new behavior template by typing </br>
       
       b.createAgentTemplate(agentTemplateName)
       
