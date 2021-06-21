@@ -2,7 +2,9 @@
 
 This Python API library provides basic mechanisms for interacting with OASIS behavior ontologies adopted by the POC4COMMERCE project in the ONTOCHAIN ecosystem.
 
-
+## Requirements </br>
+   - Python interpreter version 3.7 or greater.
+   - RDFLib version 5.0.0.
 
 ## Generating new agent and new agent behaviors </br>
 In order to generate new OASIS behaviors you should
