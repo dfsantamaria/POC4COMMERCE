@@ -12,6 +12,97 @@
         <owl:imports rdf:resource="http://www.dmi.unict.it/oasis-abox.owl"/>
         <owl:imports rdf:resource="http://www.dmi.unict.it/oasis.owl"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#DeliveryChannel -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#DeliveryChannel">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#DigitalIdentity -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#DigitalIdentity">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#LegalEntity -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#LegalEntity">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#PaymentChannel -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PaymentChannel">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#QualityEvaluation -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#QualityEvaluation">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#ReleaseChannel -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#ReleaseChannel">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChain -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChain">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainFeature -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainFeature">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainThing -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainThing">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+    </owl:Class>
 </rdf:RDF>
 
 
