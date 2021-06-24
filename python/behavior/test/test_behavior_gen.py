@@ -14,7 +14,7 @@ ontologyTemp.bind("base", namespaceTemp)
 ontologyTemp.bind("owl","http://www.w3.org/2002/07/owl#")
 
 # Create the graph
-b = BehaviorManager(ontology, namespace, ontologyTemp, namespaceTemp)
+b = BehaviorManager(ontology, namespace, None, ontologyTemp, namespaceTemp, None)
 
 
 

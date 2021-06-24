@@ -1,40 +1,59 @@
 from rdflib import *
 
 class BehaviorManager:
-    def __init__(self, ontologyGraph, ontologyNamespace, ontologyTemplateGraph, ontologyTemplateNamespace, ): # INPUT: the user ontology, the user ontology namespace
-        self.oasisURL = "https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis.owl"  # OASIS ontology URL
-        self.oasisABoxURL = "https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis-abox.owl"  # OASIS-ABox ontology URL
-
+    def __init__(self, ontologyGraph, ontologyNamespace, ontologyURL, ontologyTemplateGraph, ontologyTemplateNamespace, templateURL ): # INPUT: the user ontology, the user ontology namespace
+        #map name:[URL, namespace, number]
+        self.ontoMap = {}
+        self.ontologies = [None, None, None, None]
         #
         #oasis ontology data
         #
-        self.oasisOnt = self.loadOntology(self.oasisURL)  # OASIS ontology object
-        self.oasisABoxOnt = self.loadOntology(self.oasisABoxURL)  # OASIS-ABox ontology object
+        self.addOntoMap("oasis", "https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis.owl", None, 0)  # OASIS ontology object
+        self.ontologies[self.ontoMap["oasis"]["onto"]]=self.loadOntology(self.ontoMap["oasis"]["url"])
+        self.addOntoMap("abox", "https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis-abox.owl",None, 1)  # OASIS-ABox ontology object
+        self.ontologies[self.ontoMap["abox"]["onto"]] = self.loadOntology(self.ontoMap["abox"]["url"])
+
         self.owlobj = URIRef("http://www.w3.org/2002/07/owl#ObjectProperty")
         self.owldat = URIRef("http://www.w3.org/2002/07/owl#DatatypeProperty")
-        self.oasisNamespace=self.getNamespace(self.oasisOnt)  # OASIS ontology namespace
-        self.oasisABoxNamespace=self.getNamespace(self.oasisABoxOnt)  # OASIS-ABox ontology namespace
+        self.addOntoMap("oasis", None, self.getNamespace(self.ontologies[self.ontoMap["oasis"]["onto"]]), None)# OASIS ontology namespace
+        self.addOntoMap("abox", None, self.getNamespace(self.ontologies[self.ontoMap["abox"]["onto"]]), None)  # OASIS-ABox ontology namespace
 
         #
         #user ontology data
         #
-        self.baseOntology = ontologyGraph  # User ontology
+        self.addOntoMap("base", ontologyURL, None, 2)
+        self.ontologies[self.ontoMap["base"]["onto"]] = ontologyGraph  # User ontology
         if ontologyNamespace == None: #Computing user ontology namespace
-           self.baseNamespace = self.getNamespace(self.baseOntology)
+           self.addOntoMap("base", None, self.getNamespace(self.ontologies[self.ontoMap("base","onto")]), None)
         else:
-           self.baseNamespace = ontologyNamespace
+           self.addOntoMap("base", None, ontologyNamespace, None)
         self.baseAgent = None  # User agent name
 
         #
         #user agent template ontology data
         #
-        self.baseTemplateOntology = ontologyTemplateGraph  # User template ontology
+        self.addOntoMap("template", templateURL, None, 3)
+        self.ontologies[self.ontoMap["template"]["onto"]] = ontologyTemplateGraph # User template ontology
         if ontologyTemplateNamespace == None:  # Computing user template ontology namespace
-            self.baseTemplateNamespace = self.getNamespace(self.baseTemplateOntology)
+            self.addOntoMap("template", None, self.getNamespace(self.ontologies[self.ontoMap("template", "onto")]),  None)
         else:
-            self.baseTemplateNamespace = ontologyTemplateNamespace
-        self.addImportAxioms(self.baseOntology, self.baseNamespace, [self.baseTemplateNamespace])
+            self.addOntoMap("template", None, ontologyTemplateNamespace, None)
+        self.addImportAxioms(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], [self.ontoMap["template"]["namespace"]])
         return
+
+    def getValue(self):
+        return self.value
+
+    #add an entry to the ontology map
+    def addOntoMap(self, name, url, namespace, onto):
+        if name not in self.ontoMap:
+           self.ontoMap[name]={"url": None,"namespace": None,"onto": None}
+        if url is not None:
+           self.ontoMap[name]["url"]=url
+        if namespace is not None:
+           self.ontoMap[name]["namespace"]=namespace
+        if onto is not None:
+           self.ontoMap[name]["onto"]= onto
 
     #create an ontology object from a given URL
     def loadOntology(self, ontoURL):
@@ -54,11 +73,11 @@ class BehaviorManager:
 
     # Get the IRI of OASIS entities given their entity name
     def getOASISEntityByName(self, name):
-        return self.oasisNamespace + name
+        return self.ontoMap["oasis"]["namespace"] + name
 
     # Get the IRI of OASIS-Abox entities given their entity name
     def getOASISABoxEntityByName(self, name):
-        return self.oasisABoxNamespace + name
+        return self.ontoMap["abox"]["namespace"] + name
 
     def addObjPropAssertion(self, ontology, subject, property, object):
         ontology.add((URIRef(subject), URIRef(property), URIRef(object)))
@@ -86,33 +105,33 @@ class BehaviorManager:
 
     #import OASIS and OASIS-Abox in the current ontology
     def addImportOASIS(self, ontology, namespace):
-        self.addImportAxioms(ontology, namespace, [self.oasisURL, self.oasisABoxURL])
-        ontology.bind("oasis", self.oasisNamespace)
-        ontology.bind("oabox", self.oasisABoxNamespace)
+        self.addImportAxioms(ontology, namespace, [self.ontoMap["oasis"]["url"], self.ontoMap["abox"]["url"]])
+        ontology.bind("oasis", self.ontoMap["oasis"]["namespace"])
+        ontology.bind("oabox", self.ontoMap["abox"]["namespace"])
 
         # Create an user agent given the agent entity name
 
     def createAgent(self, agentName):
-        self.baseAgent = self.baseNamespace + agentName
-        self.addClassAssertion(self.baseOntology, self.baseAgent, self.getOASISEntityByName("Agent"))
+        self.baseAgent = self.ontoMap["base"]["namespace"] + agentName
+        self.addClassAssertion(self.ontologies[self.ontoMap["base"]["onto"]], self.baseAgent, self.getOASISEntityByName("Agent"))
         return self.baseAgent
 
 
     #create an OASIS agent template given its name
     def createAgentTemplate(self, agentName):
-        baseTemplateAgent = self.baseTemplateNamespace + agentName
-        self.addClassAssertion(self.baseTemplateOntology, baseTemplateAgent, self.getOASISEntityByName("AgentBehaviorTemplate"))
+        baseTemplateAgent = self.ontoMap["template"]["namespace"] + agentName
+        self.addClassAssertion(self.ontologies[self.ontoMap["template"]["onto"]], baseTemplateAgent, self.getOASISEntityByName("AgentBehaviorTemplate"))
         # print(self.baseNamespace, self.oasisNamespace, self.oasisABoxNamespace)
         return baseTemplateAgent
 
 
     #connect a agent template  with a behavior
     def connectAgentTemplateToBehavior(self, agentName, behaviorName):
-        self.__connectAgentToGeneralBehavior__(self.baseTemplateOntology, self.baseTemplateNamespace, agentName, behaviorName)
+        self.__connectAgentToGeneralBehavior__(self.ontologies[self.ontoMap["template"]["onto"]], self.ontoMap["template"]["namespace"], agentName, behaviorName)
 
     # connect a agent  with a behavior
     def connectAgentToBehavior(self, agentName, behaviorName):
-        self.__connectAgentToGeneralBehavior__( self.baseOntology, self.baseNamespace, agentName, behaviorName)
+        self.__connectAgentToGeneralBehavior__(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], agentName, behaviorName)
 
     def __connectAgentToGeneralBehavior__(self, ontology, namespace, agentName, behaviorName):
         self.addOWLObjectProperty(ontology, self.getOASISEntityByName("hasBehavior"))
@@ -179,28 +198,28 @@ class BehaviorManager:
 
     # add task object to the selected task given the object name,  the task obj entity property, and the task object entity
     def addTaskObjectToTask(self, task, objectName, taskobpropentity, taskobentity):
-        return self.__addTaskElementToTask__(self.baseOntology, self.baseNamespace, task, objectName,  "TaskObject", "hasTaskObject", taskobpropentity, taskobentity)
+        return self.__addTaskElementToTask__(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], task, objectName,  "TaskObject", "hasTaskObject", taskobpropentity, taskobentity)
 
     # add task object template to the selected task given the object name,  the task obj entity property, and the task object entity
     def addTaskObjectTemplateToTask(self, task, objectName,  taskobpropentity, taskobentity):
-       return  self.__addTaskElementToTask__(self.baseTemplateOntology, self.baseTemplateNamespace, task, objectName, "TaskObjectTemplate", "hasTaskObjectTemplate", taskobpropentity, taskobentity)
+       return  self.__addTaskElementToTask__(self.ontologies[self.ontoMap["template"]["onto"]], self.ontoMap["template"]["namespace"], task, objectName, "TaskObjectTemplate", "hasTaskObjectTemplate", taskobpropentity, taskobentity)
 
     # add task input to the selected task given the input name, the input entity property,  and the input entity
     def addTaskInputToTask(self, task, input, inputPropEntity, inputEntity):
-        return self.__addTaskElementToTask__(self.baseOntology, self.baseNamespace, task, input, "TaskFormalInputParameter", "hasTaskFormalInputParameter", inputPropEntity, inputEntity)
+        return self.__addTaskElementToTask__(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], task, input, "TaskFormalInputParameter", "hasTaskFormalInputParameter", inputPropEntity, inputEntity)
 
     # add task input to the selected task given the input name, the input entity property,  and the input entity
     def addTaskInputTemplateToTask(self, task, input, inputPropEntity, inputEntity):
-        return self.__addTaskElementToTask__(self.baseTemplateOntology, self.baseTemplateNamespace, task, input, "TaskInputParameterTemplate", "hasTaskInputParameterTemplate", inputPropEntity, inputEntity)
+        return self.__addTaskElementToTask__(self.ontologies[self.ontoMap["template"]["onto"]], self.ontoMap["template"]["namespace"], task, input, "TaskInputParameterTemplate", "hasTaskInputParameterTemplate", inputPropEntity, inputEntity)
 
     # add task output to the selected task given the output name, the output entity property,  and the output entity
     def addTaskOutputToTask(self, task, output, outputPropEntity, outputEntity):
-        return self.__addTaskElementToTask__(self.baseOntology, self.baseNamespace, task, output,  "TaskFormalOutputParameter", "hasTaskFormalOutputParameter", outputPropEntity,
+        return self.__addTaskElementToTask__(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], task, output,  "TaskFormalOutputParameter", "hasTaskFormalOutputParameter", outputPropEntity,
                                              outputEntity)
 
     # add task input to the selected task given the input name, the input entity property,  and the input entity
     def addTaskOutputTemplateToTask(self, task, output, outputPropEntity, outputEntity):
-        return self.__addTaskElementToTask__(self.baseTemplateOntology, self.baseTemplateNamespace, task, output,  "TaskOutputParameterTemplate", "hasTaskOutputParameterTemplate",
+        return self.__addTaskElementToTask__(self.ontologies[self.ontoMap["template"]["onto"]], self.ontoMap["template"]["namespace"], task, output,  "TaskOutputParameterTemplate", "hasTaskOutputParameterTemplate",
                                              outputPropEntity, outputEntity)
 
     # add task element to the selected task given the  name, the  class, the elementt property, the element entity property,  and the element entity
@@ -217,7 +236,7 @@ class BehaviorManager:
     #create a behavior template given an agent template IRI
     def createAgentBehaviorTemplate(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs, outputs):
         #create  and add the behavior
-        behavior, goal, task, taskOperator, taskOperatorArgument = self.__createBehaviorPath__(self.baseTemplateOntology, self.baseTemplateNamespace, behaviorName, goalName, taskName, operators, operatorsArguments)
+        behavior, goal, task, taskOperator, taskOperatorArgument = self.__createBehaviorPath__(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["template"]["namespace"], behaviorName, goalName, taskName, operators, operatorsArguments)
         #create, add, and connect the task object
         if objects:
            for object in objects:
@@ -236,7 +255,7 @@ class BehaviorManager:
 
     def createAgentBehavior(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs,  outputs, mapping):
         # create  and add the behavior
-        behavior, goal, task, taskOperator, taskOperatorArgument  = self.__createBehaviorPath__(self.baseOntology,  self.baseNamespace, behaviorName, goalName, taskName, operators, operatorsArguments)
+        behavior, goal, task, taskOperator, taskOperatorArgument  = self.__createBehaviorPath__(self.ontologies[self.ontoMap["base"]["onto"]],  self.ontoMap["base"]["namespace"], behaviorName, goalName, taskName, operators, operatorsArguments)
         # create, add, and connect the task object
         if objects:
             for object in objects:
@@ -257,20 +276,20 @@ class BehaviorManager:
         #linking agent behavior with the corresponding behavior template
         if mapping:
             #mapping the task
-            task_op= URIRef(self.baseTemplateNamespace+mapping[0])
-            self.addOWLObjectProperty(self.baseOntology, self.getOASISEntityByName("overloads"))
-            self.addObjPropAssertion(self.baseOntology, task, self.getOASISEntityByName("overloads"), task_op)  # the action
+            task_op= URIRef(self.ontoMap["template"]["namespace"]+mapping[0])
+            self.addOWLObjectProperty(self.ontologies[self.ontoMap["base"]["onto"]], self.getOASISEntityByName("overloads"))
+            self.addObjPropAssertion(self.ontologies[self.ontoMap["base"]["onto"]], task, self.getOASISEntityByName("overloads"), task_op)  # the action
 
             # mapping the task operator (automatically)
-            for object in self.baseTemplateOntology.objects(task_op, self.getOASISEntityByName("hasTaskOperator")):
-                self.addObjPropAssertion(self.baseOntology, taskOperator, self.getOASISEntityByName("overloads"), object)
+            for object in self.ontologies[self.ontoMap["template"]["onto"]].objects(task_op, self.getOASISEntityByName("hasTaskOperator")):
+                self.addObjPropAssertion(self.ontologies[self.ontoMap["base"]["onto"]], taskOperator, self.getOASISEntityByName("overloads"), object)
                 break
             # mapping the task operator argument (automatically) #
-            for object in self.baseTemplateOntology.objects(task_op, self.getOASISEntityByName("hasTaskOperatorArgument")):
-                self.addObjPropAssertion(self.baseOntology, taskOperatorArgument, self.getOASISEntityByName("overloads"), object)
+            for object in self.ontologies[self.ontoMap["template"]["onto"]].objects(task_op, self.getOASISEntityByName("hasTaskOperatorArgument")):
+                self.addObjPropAssertion(self.ontologies[self.ontoMap["base"]["onto"]], taskOperatorArgument, self.getOASISEntityByName("overloads"), object)
                 break
             # mapping the task object, input, and output
             for elem in mapping[1:]:
                for map in elem:
-                  self.addObjPropAssertion(self.baseOntology, URIRef(self.baseNamespace+map[0]), self.getOASISEntityByName("overloads"), URIRef(self.baseTemplateNamespace+map[1]))
+                  self.addObjPropAssertion(self.ontologies[self.ontoMap["base"]["onto"]], URIRef(self.ontoMap["base"]["namespace"]+map[0]), self.getOASISEntityByName("overloads"), URIRef(self.ontoMap["template"]["namespace"]+map[1]))
 
