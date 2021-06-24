@@ -11,13 +11,15 @@ In order to generate new OASIS behaviors you should
 
 A) Create a Behavior object by typing: </br>
       
-      b = BehaviorManager(ontology, namespace, ontologyTemplate, namespaceTemplate)
+      b = BehaviorManager(ontology, namespace, ontologyURL, ontologyTemplate, namespaceTemplate, templateURL)
       
    where  </br>
    - "ontology" is the ontology containing the agent behavior.
    - "namespace" is namespace of "ontology". You can use "None" if "xml:base" is already defined in the ontology.
+   - "ontologyURL" is the URL of the ontology.
    - "ontologyTemplate" is the namespace of the ontology containing the behavior template.
    - "namespaceTemplate" is namespace of "ontologyTemplate". You can use "None" if "xml:base" is already defined in the ontology.
+   - "templateURL" is the URL of the ontology containing the behavior template.
    
 B) (Optional) Create a new behavior template by typing </br>
       
