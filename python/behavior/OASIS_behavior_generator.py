@@ -1,6 +1,6 @@
 from rdflib import *
 
-class Behavior:
+class BehaviorManager:
     def __init__(self, ontologyGraph, ontologyNamespace, ontologyTemplateGraph, ontologyTemplateNamespace, ): # INPUT: the user ontology, the user ontology namespace
         self.oasisURL = "https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis.owl"  # OASIS ontology URL
         self.oasisABoxURL = "https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis-abox.owl"  # OASIS-ABox ontology URL
