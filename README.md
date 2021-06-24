@@ -11,7 +11,7 @@ In order to generate new OASIS behaviors you should
 
 A) Create a Behavior object by typing: </br>
       
-      b = Behavior(ontology, namespace, ontologyTemplate, namespaceTemplate)
+      b = BehaviorManager(ontology, namespace, ontologyTemplate, namespaceTemplate)
       
    where  </br>
    - "ontology" is the ontology containing the agent behavior.
