@@ -9,9 +9,9 @@ This Python API library provides basic mechanisms for interacting with OASIS beh
 ## Generating new agent and new agent behaviors </br>
 In order to generate new OASIS behaviors you should
 
-A) Create a Behavior object by typing: </br>
+A) Create a FacilityManager object by typing: </br>
       
-      b = BehaviorManager(ontology, namespace, ontologyURL, ontologyTemplate, namespaceTemplate, templateURL)
+      b = FacilityManager(ontology, namespace, ontologyURL, ontologyTemplate, namespaceTemplate, templateURL)
       
    where  </br>
    - "ontology" is the ontology containing the agent behavior.
