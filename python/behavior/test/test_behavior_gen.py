@@ -1,4 +1,4 @@
-from OASIS_behavior_generator import *
+from FacilityManager import *
 
 #test
 #create a fresh ontology for the agent
@@ -14,7 +14,7 @@ ontologyTemp.bind("base", namespaceTemp)
 ontologyTemp.bind("owl","http://www.w3.org/2002/07/owl#")
 
 # Create the graph
-b = BehaviorManager(ontology, namespace, None, ontologyTemp, namespaceTemp, None)
+b = FacilityManager(ontology, namespace, None, ontologyTemp, namespaceTemp, None)
 
 
 

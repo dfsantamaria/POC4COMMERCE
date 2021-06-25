@@ -23,7 +23,7 @@ class BehaviorManager:
         #
         self.addOntoMap("base", ontologyURL, None, 2)
         self.ontologies[self.ontoMap["base"]["onto"]] = ontologyGraph  # User ontology
-        if ontologyNamespace == None: #Computing user ontology namespace
+        if ontologyNamespace is None: #Computing user ontology namespace
            self.addOntoMap("base", None, self.getNamespace(self.ontologies[self.ontoMap("base","onto")]), None)
         else:
            self.addOntoMap("base", None, ontologyNamespace, None)
@@ -34,11 +34,12 @@ class BehaviorManager:
         #
         self.addOntoMap("template", templateURL, None, 3)
         self.ontologies[self.ontoMap["template"]["onto"]] = ontologyTemplateGraph # User template ontology
-        if ontologyTemplateNamespace == None:  # Computing user template ontology namespace
+        if ontologyTemplateNamespace is None:  # Computing user template ontology namespace
             self.addOntoMap("template", None, self.getNamespace(self.ontologies[self.ontoMap("template", "onto")]),  None)
         else:
             self.addOntoMap("template", None, ontologyTemplateNamespace, None)
-        self.addImportAxioms(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], [self.ontoMap["template"]["namespace"]])
+        if self.ontoMap["base"]["namespace"] != self.ontoMap["template"]["namespace"]:
+           self.addImportAxioms(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], [self.ontoMap["template"]["namespace"]])
         return
 
     def getValue(self):
@@ -47,7 +48,11 @@ class BehaviorManager:
     #add an entry to the ontology map
     def addOntoMap(self, name, url, namespace, onto):
         if name not in self.ontoMap:
-           self.ontoMap[name]={"url": None,"namespace": None,"onto": None}
+           if onto is None:
+              position = len(self.ontoMap)
+           else:
+              position = onto
+           self.ontoMap[name]={"url": None,"namespace": None,"onto": position}
         if url is not None:
            self.ontoMap[name]["url"]=url
         if namespace is not None:
@@ -193,7 +198,8 @@ class BehaviorManager:
         # create, add, and connect the task operator argument
         if operatorsArguments:
             taskOperatorArgument = self.addTaskOperatorArgumentToTask(ontology, namespace, task, operatorsArguments[0], operatorsArguments[1])
-
+        else:
+            taskOperatorArgument = None
         return behavior, goal, task, taskOperator, taskOperatorArgument
 
     # add task object to the selected task given the object name,  the task obj entity property, and the task object entity
@@ -202,7 +208,7 @@ class BehaviorManager:
 
     # add task object template to the selected task given the object name,  the task obj entity property, and the task object entity
     def addTaskObjectTemplateToTask(self, task, objectName,  taskobpropentity, taskobentity):
-       return  self.__addTaskElementToTask__(self.ontologies[self.ontoMap["template"]["onto"]], self.ontoMap["template"]["namespace"], task, objectName, "TaskObjectTemplate", "hasTaskObjectTemplate", taskobpropentity, taskobentity)
+        return  self.__addTaskElementToTask__(self.ontologies[self.ontoMap["template"]["onto"]], self.ontoMap["template"]["namespace"], task, objectName, "TaskObjectTemplate", "hasTaskObjectTemplate", taskobpropentity, taskobentity)
 
     # add task input to the selected task given the input name, the input entity property,  and the input entity
     def addTaskInputToTask(self, task, input, inputPropEntity, inputEntity):
@@ -236,7 +242,7 @@ class BehaviorManager:
     #create a behavior template given an agent template IRI
     def createAgentBehaviorTemplate(self, behaviorName, goalName, taskName, operators, operatorsArguments, objects, inputs, outputs):
         #create  and add the behavior
-        behavior, goal, task, taskOperator, taskOperatorArgument = self.__createBehaviorPath__(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["template"]["namespace"], behaviorName, goalName, taskName, operators, operatorsArguments)
+        behavior, goal, task, taskOperator, taskOperatorArgument = self.__createBehaviorPath__(self.ontologies[self.ontoMap["template"]["onto"]], self.ontoMap["template"]["namespace"], behaviorName, goalName, taskName, operators, operatorsArguments)
         #create, add, and connect the task object
         if objects:
            for object in objects:
@@ -246,7 +252,6 @@ class BehaviorManager:
         if inputs:
             for input in inputs:
                 inputName = self.addTaskInputTemplateToTask(task, input[0], input[1], input[2])
-
 
         # create, add, and connect the task input parameters
         if outputs:
@@ -293,3 +298,8 @@ class BehaviorManager:
                for map in elem:
                   self.addObjPropAssertion(self.ontologies[self.ontoMap["base"]["onto"]], URIRef(self.ontoMap["base"]["namespace"]+map[0]), self.getOASISEntityByName("overloads"), URIRef(self.ontoMap["template"]["namespace"]+map[1]))
 
+    def getTemplateOntology(self):
+         return self.ontologies[self.ontoMap["template"]["onto"]]
+
+    def getAgentOntology(self):
+         return self.ontologies[self.ontoMap["base"]["onto"]]
