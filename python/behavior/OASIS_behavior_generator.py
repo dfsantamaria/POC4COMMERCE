@@ -168,6 +168,7 @@ class BehaviorManager:
         self.addObjPropAssertion(ontology, task, self.getOASISEntityByName("hasTaskOperator"), taskOperator)
         self.addObjPropAssertion(ontology, taskOperator, self.getOASISEntityByName("refersExactlyTo"),
                                  self.getOASISABoxEntityByName(operatorEntity))  # the action
+        self.addClassAssertion(ontology, self.getOASISABoxEntityByName(operatorEntity), self.getOASISEntityByName("Action"))
         return taskOperator
 
     #add a task operator argument to selected task given the task IRI, the operator argument name and the operator argument entity name
@@ -180,6 +181,7 @@ class BehaviorManager:
                                  taskOperatorArgument)
         self.addObjPropAssertion(ontology, taskOperatorArgument, self.getOASISEntityByName("refersExactlyTo"),
                                  self.getOASISABoxEntityByName(taskOpEntityName))  # the action
+        self.addClassAssertion(ontology, self.getOASISABoxEntityByName(taskOpEntityName), self.getOASISEntityByName("DescriptionObject"))
         return taskOperatorArgument
 
     def __createBehaviorPath__(self, ontology, namespace, behaviorName, goalName, taskName, operators, operatorsArguments):
