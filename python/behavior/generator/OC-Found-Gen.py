@@ -1,6 +1,6 @@
 from OASIS_behavior_generator import *
 
-file = open("OC-Found.owl", "r")
+file = open("ontologies/OC-Found.owl", "r")
 ontology = Graph()
 ontology.parse(file)
 
@@ -10,7 +10,9 @@ ontology.bind("base", namespace)
 ontology.bind("owl","http://www.w3.org/2002/07/owl#")
 
 
-b = BehaviorManager(ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/OC-Found.owl", ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/OC-Found.owl")
+b = BehaviorManager(ontology, namespace, "ontologies/OC-Found.owl",
+                    ontology, namespace, "ontologies/OC-Found.owl",
+                    None,None,None)
 
 valuerObject=namespace+"evaluationObject"
 valuerInput=namespace+"objectAsset"
@@ -34,5 +36,5 @@ b.createAgentBehaviorTemplate("ValuerTemplateBehavior", "ValuerTemplateGoal", "V
 agentTemplateName=b.createAgentTemplate("ValuerAgentBehaviorTemplate")
 b.connectAgentTemplateToBehavior("ValuerAgentBehaviorTemplate","ValuerTemplateBehavior")
 
-file = open("OC-Found.owl", "w")
+file = open("ontologies/OC-Found.owl", "w")
 file.write(ontology.serialize(format='xml').decode())

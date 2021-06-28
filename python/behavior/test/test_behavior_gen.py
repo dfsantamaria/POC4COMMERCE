@@ -99,11 +99,11 @@ print("######################################################")
 print(ontologyTemp.serialize(format="turtle").decode("utf-8"))
 
 #saving
-file = open("agent.owl", "w")
+file = open("ontologies/agent.owl", "w")
 file.write(ontology.serialize(format='xml').decode())
 
-file = open("agentTemplate.owl", "w")
+file = open("ontologies/agentTemplate.owl", "w")
 file.write(ontologyTemp.serialize(format='xml').decode())
 
-file = open("agentAction.owl", "w")
+file = open("ontologies/agentAction.owl", "w")
 file.write(ontologyAct.serialize(format='xml').decode())
