@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperatorArgument">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyTemplate#MyTemplateInput1">
+    <oasis:refersAsNewTo rdf:resource="http://www.ontochain.org/myOntologyTemplate#template-input-entity-1"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskInputParameterTemplate"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersExactlyTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskObjectTemplate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskInputParameterTemplate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#turn">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyTemplate#MyTemplateTaskObject">
+    <oasis:refersAsNewTo rdf:resource="http://www.ontochain.org/myOntologyTemplate#template-object-entity-1"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObjectTemplate"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyTemplate#MyTemplateTask">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
+    <oasis:hasTaskOperatorArgument rdf:resource="http://www.ontochain.org/myOntologyTemplate#MyTemplateOperatorArgument"/>
+    <oasis:hasTaskOutputParameterTemplate rdf:resource="http://www.ontochain.org/myOntologyTemplate#MyTemplateOutput1"/>
+    <oasis:hasTaskInputParameterTemplate rdf:resource="http://www.ontochain.org/myOntologyTemplate#MyTemplateInput1"/>
+    <oasis:hasTaskObjectTemplate rdf:resource="http://www.ontochain.org/myOntologyTemplate#MyTemplateTaskObject"/>
+    <oasis:hasTaskOperator rdf:resource="http://www.ontochain.org/myOntologyTemplate#MyTemplateTaskOperator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyTemplate#MyTemplateBehavior">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+    <oasis:consistsOfGoalDescription rdf:resource="http://www.ontochain.org/myOntologyTemplate#MyTemplateGoal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyTemplate#MyAgentBehaviorTemplate">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#AgentBehaviorTemplate"/>
+    <oasis:hasBehavior rdf:resource="http://www.ontochain.org/myOntologyTemplate#MyTemplateBehavior"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersAsNewTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyTemplate#MyTemplateTaskOperator">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#turn"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyTemplate#MyTemplateOutput1">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOutputParameterTemplate"/>
+    <oasis:refersAsNewTo rdf:resource="http://www.ontochain.org/myOntologyTemplate#template-output-entity-1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyTemplate#">
+    <owl:imports rdf:resource="https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis.owl"/>
+    <owl:imports rdf:resource="https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis-abox.owl"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyTemplate#MyTemplateGoal">
+    <oasis:consistsOfTaskDescription rdf:resource="http://www.ontochain.org/myOntologyTemplate#MyTemplateTask"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyTemplate#MyTemplateOperatorArgument">
+    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#off"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperatorArgument"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOutputParameterTemplate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#off">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasBehavior">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+</rdf:RDF>

@@ -13,8 +13,18 @@ ontologyTemp=Graph()
 ontologyTemp.bind("base", namespaceTemp)
 ontologyTemp.bind("owl","http://www.w3.org/2002/07/owl#")
 
+
+#create a fresh ontology for the agent actions
+namespaceAct =  Namespace("http://www.ontochain.org/myOntologyActions#")
+ontologyAct=Graph()
+ontologyAct.bind("action", namespaceAct)
+ontologyAct.bind("owl","http://www.w3.org/2002/07/owl#")
+
+
 # Create the graph
-b = FacilityManager(ontology, namespace, None, ontologyTemp, namespaceTemp, None)
+b = FacilityManager(ontology, namespace, None,
+                    ontologyTemp, namespaceTemp, None,
+                    None,None,None)
 
 
 
@@ -80,14 +90,20 @@ b.connectAgentToBehavior("MyAgent", "MyAgentBehavior")
 
 
 
+
+
+
+#serialization
 print(ontology.serialize(format="turtle").decode("utf-8"))
 print("######################################################")
 print(ontologyTemp.serialize(format="turtle").decode("utf-8"))
 
-
-#save
+#saving
 file = open("agent.owl", "w")
 file.write(ontology.serialize(format='xml').decode())
 
 file = open("agentTemplate.owl", "w")
 file.write(ontologyTemp.serialize(format='xml').decode())
+
+file = open("agentAction.owl", "w")
+file.write(ontologyAct.serialize(format='xml').decode())

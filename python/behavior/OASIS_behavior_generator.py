@@ -1,7 +1,9 @@
 from rdflib import *
 
 class BehaviorManager:
-    def __init__(self, ontologyGraph, ontologyNamespace, ontologyURL, ontologyTemplateGraph, ontologyTemplateNamespace, templateURL ): # INPUT: the user ontology, the user ontology namespace
+    def __init__(self, ontologyGraph, ontologyNamespace, ontologyURL,
+                       ontologyTemplateGraph, ontologyTemplateNamespace, templateURL,
+                       actionGraph, actionNamespace, actionURL): # INPUT: the user ontology, the user ontology namespace
         #map name:[URL, namespace, number]
         self.ontoMap = {}
         self.ontologies = [None, None, None, None]
@@ -35,12 +37,26 @@ class BehaviorManager:
         self.addOntoMap("template", templateURL, None, 3)
         self.ontologies[self.ontoMap["template"]["onto"]] = ontologyTemplateGraph # User template ontology
         if ontologyTemplateNamespace is None:  # Computing user template ontology namespace
-            self.addOntoMap("template", None, self.getNamespace(self.ontologies[self.ontoMap("template", "onto")]),  None)
+            self.addOntoMap("template", None, self.getNamespace(self.ontologies[self.ontoMap("template", "onto")]), None)
         else:
             self.addOntoMap("template", None, ontologyTemplateNamespace, None)
         if self.ontoMap["base"]["namespace"] != self.ontoMap["template"]["namespace"]:
            self.addImportAxioms(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], [self.ontoMap["template"]["namespace"]])
+
+        #
+        # user agent action ontology data
+        #
+        # actionGraph, actionNamespace, actionURL
+        if actionGraph is not None:
+            self.addOntoMap("action", actionURL, None, 4)
+            self.ontologies[self.ontoMap["action"]["onto"]] = actionGraph  # User template ontology
+            if actionNamespace is None:
+               self.addOntoMap("action", None, self.getNamespace(self.ontologies[self.ontoMap("action", "onto")]), None)
+            else:
+               self.addOntoMap("action", None, actionNamespace, None)
+
         return
+
 
     def getValue(self):
         return self.value
