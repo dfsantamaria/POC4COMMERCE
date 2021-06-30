@@ -20,45 +20,29 @@ class BehaviorManager:
         self.addOntoMap("oasis", None, self.getNamespace(self.ontologies[self.ontoMap["oasis"]["onto"]]), None)# OASIS ontology namespace
         self.addOntoMap("abox", None, self.getNamespace(self.ontologies[self.ontoMap["abox"]["onto"]]), None)  # OASIS-ABox ontology namespace
 
-        #
-        #user ontology data
-        #
-        self.addOntoMap("base", ontologyURL, None, 2)
-        self.ontologies[self.ontoMap["base"]["onto"]] = ontologyGraph  # User ontology
-        if ontologyNamespace is None: #Computing user ontology namespace
-           self.addOntoMap("base", None, self.getNamespace(self.ontologies[self.ontoMap("base","onto")]), None)
-        else:
-           self.addOntoMap("base", None, ontologyNamespace, None)
-        self.baseAgent = None  # User agent name
-
-        #
-        #user agent template ontology data
-        #
-        self.addOntoMap("template", templateURL, None, 3)
-        self.ontologies[self.ontoMap["template"]["onto"]] = ontologyTemplateGraph # User template ontology
-        if ontologyTemplateNamespace is None:  # Computing user template ontology namespace
-            self.addOntoMap("template", None, self.getNamespace(self.ontologies[self.ontoMap("template", "onto")]), None)
-        else:
-            self.addOntoMap("template", None, ontologyTemplateNamespace, None)
-        if self.ontoMap["base"]["namespace"] != self.ontoMap["template"]["namespace"]:
-           self.addImportAxioms(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], [self.ontoMap["template"]["namespace"]])
-
-        #
-        # user agent action ontology data
-        #
-        # actionGraph, actionNamespace, actionURL
+        if ontologyTemplateGraph is not None:
+            self.startOntology("template", templateURL, ontologyTemplateNamespace, ontologyTemplateGraph, 2, None)
+        self.startOntology("base", ontologyURL, ontologyNamespace, ontologyGraph, 3, "template")
         if actionGraph is not None:
-            self.addOntoMap("action", actionURL, None, 4)
-            self.ontologies[self.ontoMap["action"]["onto"]] = actionGraph  # User template ontology
-            if actionNamespace is None:
-               self.addOntoMap("action", None, self.getNamespace(self.ontologies[self.ontoMap("action", "onto")]), None)
-            else:
-               self.addOntoMap("action", None, actionNamespace, None)
-            if self.ontoMap["action"]["namespace"] != self.ontoMap["base"]["namespace"]:
-                self.addImportAxioms(self.ontologies[self.ontoMap["action"]["onto"]], self.ontoMap["action"]["namespace"],
-                                     [self.ontoMap["base"]["namespace"]])
+            self.startOntology("action", actionURL, actionNamespace, actionGraph, 4, "base")
+
         return
 
+
+    def startOntology(self, shortName, url, namespace, graph, pos, toimport):
+        self.addOntoMap(shortName, url, None, pos)
+        self.ontologies[self.ontoMap[shortName]["onto"]] = graph  # User template ontology
+        if len([item for item in self.ontologies[self.ontoMap[shortName]["onto"]].namespaces() if item[0] == 'owl'])==0:
+            self.ontologies[self.ontoMap[shortName]["onto"]].bind("owl","http://www.w3.org/2002/07/owl#")
+        if namespace is None:
+            self.addOntoMap(shortName, None, self.getNamespace(self.ontologies[self.ontoMap[shortName]["onto"]]), None)
+        else:
+            self.addOntoMap(shortName, None, namespace, None)
+        if toimport is not None and self.ontoMap[shortName]["namespace"] != self.ontoMap[toimport]["namespace"]:
+            self.addImportAxioms(self.ontologies[self.ontoMap[shortName]["onto"]], self.ontoMap[shortName]["namespace"],
+                                 [self.ontoMap[toimport]["namespace"]])
+
+        return
 
     def getValue(self):
         return self.value

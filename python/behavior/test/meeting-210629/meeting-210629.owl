@@ -5,257 +5,262 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 >
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalDescription">
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#drawnBy">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainThing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionInput1">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
+    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerInput1"/>
+    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#execution-input-entity-1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperatorArgument">
+    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#quality_evaluation"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperatorArgument"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateGoal">
     <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
     <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTask"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskActualOutputParameter">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#quality_valuation">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
-    <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionTask"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTask">
+    <oasis:hasTaskOutputParameterTemplate rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOutput1"/>
+    <oasis:hasTaskOperatorArgument rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperatorArgument"/>
+    <oasis:hasTaskObjectTemplate rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskObject"/>
+    <oasis:hasTaskInputParameterTemplate rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskInput1"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
+    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#ReleaseChannel">
-    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PaymentChannel">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTaskOperator">
-    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperator"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#compute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl">
-    <owl:imports rdf:resource="http://www.dmi.unict.it/oasis-abox.owl"/>
-    <owl:imports rdf:resource="http://www.dmi.unict.it/oasis.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#overloads">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionOutput1">
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerOutput1"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#execution-output-entity-1"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualOutputParameter"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskObjectTemplate">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionOperator">
     <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
     <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#compute"/>
     <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTaskOperator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#compute">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionGoal">
+    <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionTask"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionTask">
-    <oasis:hasTaskOperatorArgument rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionArgument"/>
-    <oasis:hasTaskActualOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionOutput1"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTask"/>
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionObject"/>
-    <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionInput1"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionOperator"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#DeliveryChannel">
+    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerOutput1">
-    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOutput1"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#myValuerEvaluationObject"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalOutputParameter"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChain">
+    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainThing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateBehavior">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
-    <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateGoal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperatorArgument">
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#quality_evaluation"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperatorArgument"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalExecution">
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskObjectTemplate">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#myValuerObjectAsset">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Asset"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#myValuerEvaluationObject">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#QualityValuation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerArgument">
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#quality_evaluation"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperatorArgument"/>
-    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperatorArgument"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#quality_valuation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerBehavior">
-    <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerGoal"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionInput1">
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#execution-input-entity-1"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerInput1"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionObject">
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTaskObject"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#execution-object-entity-1"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOutput1">
     <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#evaluationObject"/>
     <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOutputParameterTemplate"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#LegalEntity">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionOutput1">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualOutputParameter"/>
+    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#execution-object-entity-1"/>
+    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerOutput1"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainThing">
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTaskOperator">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperator"/>
+    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#compute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionObject">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#execution-object-entity-1"/>
+    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTaskObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#planExecution">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+    <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionGoal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#evaluationObject">
+    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#QualityValuation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainFeature">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionArgument">
+    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerArgument"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperatorArgument"/>
+    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#quality_valuation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#ReleaseChannel">
+    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionTask">
+    <oasis:hasTaskOperatorArgument rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionArgument"/>
+    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionOperator"/>
+    <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionInput1"/>
+    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTask"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
+    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionObject"/>
+    <oasis:hasTaskActualOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionOutput1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersExactlyTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersAsNewTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl">
+    <owl:imports rdf:resource="http://www.dmi.unict.it/oasis.owl"/>
+    <owl:imports rdf:resource="http://www.dmi.unict.it/oasis-abox.owl"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTaskObject">
-    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskObject"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
     <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#myValuerEvaluationObject"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskObject"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTask">
-    <oasis:hasTaskFormalOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerOutput1"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTaskObject"/>
-    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTask"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTaskOperator"/>
-    <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerInput1"/>
-    <oasis:hasTaskOperatorArgument rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerArgument"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerInput1">
+    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#myValuerObjectAsset"/>
+    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskInput1"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTask">
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperator"/>
-    <oasis:hasTaskInputParameterTemplate rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskInput1"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
-    <oasis:hasTaskOutputParameterTemplate rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOutput1"/>
-    <oasis:hasTaskObjectTemplate rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskObject"/>
-    <oasis:hasTaskOperatorArgument rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperatorArgument"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerArgument">
+    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#quality_valuation"/>
+    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperatorArgument"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperatorArgument"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskInput1">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskInputParameterTemplate"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#objectAsset"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskObject">
+    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#evaluationObject"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObjectTemplate"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerGoal">
+    <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTask"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#myValuerObjectAsset">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Asset"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerAgentBehaviorTemplate">
     <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#AgentBehaviorTemplate"/>
     <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateBehavior"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersAsNewTo">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#evaluationObject">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#QualityValuation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskInputParameterTemplate">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#LegalEntity">
+    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOperator">
     <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#compute"/>
     <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#executionArgument">
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerArgument"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#quality_valuation"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperatorArgument"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTask">
+    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTaskObject"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
+    <oasis:hasTaskFormalOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerOutput1"/>
+    <oasis:hasTaskOperatorArgument rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerArgument"/>
+    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTask"/>
+    <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerInput1"/>
+    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTaskOperator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskFormalOutputParameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperatorArgument">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOutputParameterTemplate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#execution-input-entity-1">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskInput1">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskInputParameterTemplate"/>
+    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#objectAsset"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuer">
     <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
     <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionTask"/>
     <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerBehavior"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#drawnBy">
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskFormalInputParameter">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskObject">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#compute">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#quality_valuation">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateBehavior">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+    <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateGoal"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskExecution">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerInput1">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#myValuerObjectAsset"/>
-    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskInput1"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskActualInputParameter">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#DigitalIdentity">
-    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOutputParameterTemplate">
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskActualOutputParameter">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskInputParameterTemplate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#quality_evaluation">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#overloads">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#QualityEvaluation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerOutput1">
+    <oasis:overloads rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskOutput1"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalOutputParameter"/>
+    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#myValuerEvaluationObject"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperator">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel">
-    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainThing"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#DeliveryChannel">
-    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskFormalOutputParameter">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskFormalInputParameter">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainFeature">
-    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasBehavior">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PaymentChannel">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#QualityEvaluation">
-    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#planExecution">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
-    <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#executionGoal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#ValuerTemplateTaskObject">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObjectTemplate"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#evaluationObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskDescription">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChain">
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainChannel">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainThing"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersExactlyTo">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerBehavior">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+    <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerGoal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#execution-object-entity-1">
+    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#QualityValuation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#DigitalIdentity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#myValuerEvaluationObject">
+    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#QualityValuation"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#objectAsset">
     <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Asset"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperatorArgument">
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalExecution">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
-    <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#MyQualityValuerTask"/>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#quality_evaluation">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
 </rdf:RDF>

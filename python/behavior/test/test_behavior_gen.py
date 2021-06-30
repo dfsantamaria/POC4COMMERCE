@@ -5,27 +5,22 @@ from FacilityManager import *
 namespace =  Namespace("http://www.ontochain.org/myOntology#")
 ontology=Graph()
 ontology.bind("base", namespace)
-ontology.bind("owl","http://www.w3.org/2002/07/owl#")
+
 
 #create a fresh ontology for the agent template
 namespaceTemp =  Namespace("http://www.ontochain.org/myOntologyTemplate#")
 ontologyTemp=Graph()
 ontologyTemp.bind("base", namespaceTemp)
-ontologyTemp.bind("owl","http://www.w3.org/2002/07/owl#")
-
 
 #create a fresh ontology for the agent actions
 namespaceAct = Namespace("http://www.ontochain.org/myOntologyActions#")
 ontologyAct=Graph()
-ontologyAct.bind("action", namespaceAct)
-ontologyAct.bind("owl", "http://www.w3.org/2002/07/owl#")
-
+ontologyAct.bind("base", namespaceAct)
 
 # Create the graph
 b = FacilityManager(ontology, namespace, None,
                     ontologyTemp, namespaceTemp, None,
                     ontologyAct, namespaceAct, None)
-
 
 
 #import OASIS into the current ontology

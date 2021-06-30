@@ -8,8 +8,6 @@ ontology.parse(file)
 namespace =  Namespace("http://www.ngi.ontochain/ontologies/meeting.owl#")
 
 ontology.bind("base", namespace)
-ontology.bind("owl","http://www.w3.org/2002/07/owl#")
-
 
 b = FacilityManager(ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/meeting-210629/meeting-210629.owl",
                     ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/meeting-210629/meeting-210629.owl",
@@ -81,7 +79,10 @@ b.connectAgentToBehavior("MyQualityValuer", "MyQualityValuerBehavior")
 #creating agent action
 executionobject1 = namespace+"execution-object-entity-1"
 executioninput1 = namespace+"execution-input-entity-1"
-executionoutput1 = namespace+"execution-output-entity-1"
+
+b.addClassAssertion(ontology, executionobject1, namespace+"QualityValuation")
+b.addClassAssertion(ontology,executioninput1, b.getOASISEntityByName("Asset"))
+
 b.createAgentAction("MyQualityValuer", "planExecution", "executionGoal", "executionTask",
                          ["executionOperator", "compute"],
                          ["executionArgument", "quality_valuation"],
@@ -92,7 +93,7 @@ b.createAgentAction("MyQualityValuer", "planExecution", "executionGoal", "execut
                              ["executionInput1", "refersExactlyTo", executioninput1]
                          ],
                          [
-                             ["executionOutput1", "refersExactlyTo", executionoutput1]
+                             ["executionOutput1", "refersExactlyTo", executionobject1]
                          ],
                          [
                           "MyQualityValuerTask",

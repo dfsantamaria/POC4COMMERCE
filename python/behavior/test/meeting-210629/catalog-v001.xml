@@ -2,6 +2,6 @@
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <uri id="User Entered Import Resolution" name="http://www.ontochain.org/myOntologyTemplate#" uri="agentTemplate.owl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1624870289733" name="http://www.ngi.ontochain/ontologies/oc-found.owl" uri="meeting-210629-bck.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1625065160517" name="http://www.ngi.ontochain/ontologies/oc-found.owl" uri="meeting-210629-bck.owl"/>
     </group>
 </catalog>
