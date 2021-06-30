@@ -15,22 +15,23 @@ ontologyTemp.bind("owl","http://www.w3.org/2002/07/owl#")
 
 
 #create a fresh ontology for the agent actions
-namespaceAct =  Namespace("http://www.ontochain.org/myOntologyActions#")
+namespaceAct = Namespace("http://www.ontochain.org/myOntologyActions#")
 ontologyAct=Graph()
 ontologyAct.bind("action", namespaceAct)
-ontologyAct.bind("owl","http://www.w3.org/2002/07/owl#")
+ontologyAct.bind("owl", "http://www.w3.org/2002/07/owl#")
 
 
 # Create the graph
 b = FacilityManager(ontology, namespace, None,
                     ontologyTemp, namespaceTemp, None,
-                    None,None,None)
+                    ontologyAct, namespaceAct, None)
 
 
 
 #import OASIS into the current ontology
 b.addImportOASIS(ontology, namespace)
 b.addImportOASIS(ontologyTemp, namespaceTemp)
+b.addImportOASIS(ontologyAct, namespaceAct)
 
 
 #create agent template
@@ -90,6 +91,34 @@ b.connectAgentToBehavior("MyAgent", "MyAgentBehavior")
 
 
 
+executionobject1 = "http://www.ontochain.org/myExecOntology#execution-object-entity-1"
+executioninput1 = "http://www.ontochain.org/myExecOntology#execution-input-entity-1"
+executionoutput1 = "http://www.ontochain.org/myExecOntology#execution-output-entity-1"
+#creating agent action
+b.createAgentAction("MyAgent", "planExecution", "executionGoal", "executionTask",
+                         ["executionOperator", "turn"],
+                         ["executionArgument", "off"],
+                         [
+                             ["executionObject", "refersExactlyTo", executionobject1]
+                         ],
+                         [
+                             ["executionInput1", "refersExactlyTo", executioninput1]
+                         ],
+                         [
+                             ["executionOutput1", "refersExactlyTo", executionoutput1]
+                         ],
+                         [
+                          "MyAgentTask",
+                          [
+                              ["executionObject", "MyAgentTaskObject"]
+                          ],
+                          [
+                              ["executionInput1", "MyAgentInput1"]
+                          ],
+                          [
+                              ["executionOutput1", "MyAgentOutput1"]
+                          ]
+                         ])
 
 
 
@@ -97,7 +126,8 @@ b.connectAgentToBehavior("MyAgent", "MyAgentBehavior")
 print(ontology.serialize(format="turtle").decode("utf-8"))
 print("######################################################")
 print(ontologyTemp.serialize(format="turtle").decode("utf-8"))
-
+print("######################################################")
+print(ontologyAct.serialize(format="turtle").decode("utf-8"))
 #saving
 file = open("ontologies/agent.owl", "w")
 file.write(ontology.serialize(format='xml').decode())

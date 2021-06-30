@@ -1,5 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
+   xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyActions#executionObject">
+    <oasis:refersExactlyTo rdf:resource="http://www.ontochain.org/myOntology#agent-object-entity-1"/>
+    <oasis:drawnBy rdf:resource="http://www.ontochain.org/myOntology#MyAgentTaskObject"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyActions#executionArgument">
+    <oasis:drawnBy rdf:resource="http://www.ontochain.org/myOntology#MyAgentOperatorArgument"/>
+    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#off"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperatorArgument"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyActions#executionOutput1">
+    <oasis:drawnBy rdf:resource="http://www.ontochain.org/myOntology#MyAgentOutput1"/>
+    <oasis:refersExactlyTo rdf:resource="http://www.ontochain.org/myOntology#execution-output-entity-1"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualOutputParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyActions#">
+    <owl:imports rdf:resource="https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis.owl"/>
+    <owl:imports rdf:resource="https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis-abox.owl"/>
+    <owl:imports rdf:resource="http://www.ontochain.org/myOntology#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskActualOutputParameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyActions#planExecution">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+    <oasis:consistsOfGoalExecution rdf:resource="http://www.ontochain.org/myOntologyActions#executionGoal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalExecution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskActualInputParameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyActions#executionOperator">
+    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#turn"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+    <oasis:drawnBy rdf:resource="http://www.ontochain.org/myOntology#MyAgentTaskOperator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersExactlyTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#off">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyActions#executionTask">
+    <oasis:hasTaskActualOutputParameter rdf:resource="http://www.ontochain.org/myOntologyActions#executionOutput1"/>
+    <oasis:hasTaskOperator rdf:resource="http://www.ontochain.org/myOntologyActions#executionOperator"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
+    <oasis:hasTaskObject rdf:resource="http://www.ontochain.org/myOntologyActions#executionObject"/>
+    <oasis:drawnBy rdf:resource="http://www.ontochain.org/myOntology#MyAgentTask"/>
+    <oasis:hasTaskOperatorArgument rdf:resource="http://www.ontochain.org/myOntologyActions#executionArgument"/>
+    <oasis:hasTaskActualInputParameter rdf:resource="http://www.ontochain.org/myOntologyActions#executionInput1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyActions#executionInput1">
+    <oasis:drawnBy rdf:resource="http://www.ontochain.org/myOntology#MyAgentInput1"/>
+    <oasis:refersExactlyTo rdf:resource="http://www.ontochain.org/myOntology#execution-input-entity-1"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#turn">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyActions#executionGoal">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
+    <oasis:consistsOfTaskExecution rdf:resource="http://www.ontochain.org/myOntologyActions#executionTask"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperatorArgument">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontochain.org/myOntologyActions#MyAgent">
+    <oasis:performs rdf:resource="http://www.ontochain.org/myOntologyActions#executionTask"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#drawnBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskExecution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
 </rdf:RDF>

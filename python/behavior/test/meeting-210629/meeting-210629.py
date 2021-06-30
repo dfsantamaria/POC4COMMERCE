@@ -1,18 +1,19 @@
-from OASIS_behavior_generator import *
+from FacilityManager import *
+
 
 file = open("meeting-210629.owl", "r")
 ontology = Graph()
 ontology.parse(file)
 
-namespace =  Namespace("http://www.ngi.ontochain/ontologies/oc-found.owl#")
+namespace =  Namespace("http://www.ngi.ontochain/ontologies/meeting.owl#")
 
 ontology.bind("base", namespace)
 ontology.bind("owl","http://www.w3.org/2002/07/owl#")
 
 
-b = BehaviorManager(ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/meeting-210629/meeting-210629.owl",
+b = FacilityManager(ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/meeting-210629/meeting-210629.owl",
                     ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/meeting-210629/meeting-210629.owl",
-                    None,None,None)
+                    ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/meeting-210629/meeting-210629.owl")
 
 valuerObject=namespace+"evaluationObject"
 valuerInput=namespace+"objectAsset"
@@ -43,17 +44,19 @@ b.connectAgentTemplateToBehavior("ValuerAgentBehaviorTemplate","ValuerTemplateBe
 b.createAgent("MyQualityValuer")
 myValuerObject=namespace+"myValuerEvaluationObject"
 myValuerInput=namespace+"myValuerObjectAsset"
+b.addClassAssertion(ontology, myValuerObject, namespace+"QualityValuation")
+b.addClassAssertion(ontology, myValuerInput, b.getOASISEntityByName("Asset"))
 
 b.addClassAssertion(ontology, myValuerObject, namespace+"QualityValuation")
 b.addClassAssertion(ontology, myValuerInput, b.getOASISEntityByName("Asset"))
 b.createAgentBehavior("MyQualityValuerBehavior", "MyQualityValuerGoal", "MyQualityValuerTask",
                          ["MyQualityValuerTaskOperator", "compute"],
-                         ["MyQualityValuerArgument", "quality_evaluation"],
+                         ["MyQualityValuerArgument", "quality_valuation"],
                          [
                              ["MyQualityValuerTaskObject", "refersAsNewTo", myValuerObject]
                          ],
                          [
-                             ["MyQualityValuernput1", "refersAsNewTo", myValuerInput]
+                             ["MyQualityValuerInput1", "refersAsNewTo", myValuerInput]
                          ],
                          [
                              ["MyQualityValuerOutput1", "refersAsNewTo", myValuerObject]
@@ -64,7 +67,7 @@ b.createAgentBehavior("MyQualityValuerBehavior", "MyQualityValuerGoal", "MyQuali
                               ["MyQualityValuerTaskObject", "ValuerTemplateTaskObject"]
                           ],
                           [
-                              ["MyQualityValuernput1", "ValuerTemplateTaskInput1"]
+                              ["MyQualityValuerInput1", "ValuerTemplateTaskInput1"]
                           ],
                           [
                               ["MyQualityValuerOutput1", "ValuerTemplateTaskOutput1"]
@@ -72,6 +75,39 @@ b.createAgentBehavior("MyQualityValuerBehavior", "MyQualityValuerGoal", "MyQuali
                          ])
 #connect agent to agent behavior
 b.connectAgentToBehavior("MyQualityValuer", "MyQualityValuerBehavior")
+
+
+#connect action to agent
+#creating agent action
+executionobject1 = namespace+"execution-object-entity-1"
+executioninput1 = namespace+"execution-input-entity-1"
+executionoutput1 = namespace+"execution-output-entity-1"
+b.createAgentAction("MyQualityValuer", "planExecution", "executionGoal", "executionTask",
+                         ["executionOperator", "compute"],
+                         ["executionArgument", "quality_valuation"],
+                         [
+                             ["executionObject", "refersExactlyTo", executionobject1]
+                         ],
+                         [
+                             ["executionInput1", "refersExactlyTo", executioninput1]
+                         ],
+                         [
+                             ["executionOutput1", "refersExactlyTo", executionoutput1]
+                         ],
+                         [
+                          "MyQualityValuerTask",
+                          [
+                              ["executionObject", "MyQualityValuerTaskObject"]
+                          ],
+                          [
+                              ["executionInput1", "MyQualityValuerInput1"]
+                          ],
+                          [
+                              ["executionOutput1", "MyQualityValuerOutput1"]
+                          ]
+                         ])
+
+
 
 
 
