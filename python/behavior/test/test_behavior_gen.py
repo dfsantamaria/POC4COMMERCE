@@ -17,16 +17,16 @@ namespaceAct = Namespace("http://www.ontochain.org/myOntologyActions#")
 ontologyAct=Graph()
 ontologyAct.bind("base", namespaceAct)
 
+#create a fresh ontology for the agent plan
+namespacePlan = Namespace("http://www.ontochain.org/myOntologyPlans#")
+ontologyPlan=Graph()
+ontologyPlan.bind("base", namespacePlan)
+
 # Create the graph
-b = FacilityManager(ontology, namespace, None,
+b = BehaviorManager(ontology, namespace, None,
                     ontologyTemp, namespaceTemp, None,
-                    ontologyAct, namespaceAct, None)
-
-
-#import OASIS into the current ontology
-b.addImportOASIS(ontology, namespace)
-b.addImportOASIS(ontologyTemp, namespaceTemp)
-b.addImportOASIS(ontologyAct, namespaceAct)
+                    ontologyAct, namespaceAct, None,
+                    ontologyPlan, namespacePlan, None)
 
 
 #create agent template
@@ -116,13 +116,35 @@ b.createAgentAction("MyAgent", "planExecution", "executionGoal", "executionTask"
                          ])
 
 
+#creating Plan
+planobject1 = "http://www.ontochain.org/myPlanOntology#plan-object-entity-1"
+planinput1 = "http://www.ontochain.org/myPlanOntology#plan-input-entity-1"
+planoutput1 = "http://www.ontochain.org/myPlanOntology#plan-output-entity-1"
+#creating agent action
+b.createAgentPlanDescription("MyAgent", "planDescription", "planGoal", "planTask",
+                         ["planOperator", "turn"],
+                         ["planArgument", "off"],
+                         [
+                             ["planObject", "refersAsNewTo", planobject1]
+                         ],
+                         [
+                             ["planInput1", "refersAsNewTo", planinput1]
+                         ],
+                         [
+                             ["planOutput1", "refersExactlyTo", planoutput1]
+                         ])
+
+
 
 #serialization
+print("######################Agent################################")
 print(ontology.serialize(format="turtle").decode("utf-8"))
-print("######################################################")
+print("######################Template################################")
 print(ontologyTemp.serialize(format="turtle").decode("utf-8"))
-print("######################################################")
+print("#####################Action#################################")
 print(ontologyAct.serialize(format="turtle").decode("utf-8"))
+print("#####################Plan#################################")
+print(ontologyPlan.serialize(format="turtle").decode("utf-8"))
 #saving
 file = open("ontologies/agent.owl", "w")
 file.write(ontology.serialize(format='xml').decode())
@@ -132,3 +154,6 @@ file.write(ontologyTemp.serialize(format='xml').decode())
 
 file = open("ontologies/agentAction.owl", "w")
 file.write(ontologyAct.serialize(format='xml').decode())
+
+file = open("ontologies/agentPlan.owl", "w")
+file.write(ontologyPlan.serialize(format='xml').decode())

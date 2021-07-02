@@ -8,7 +8,8 @@ ontology.bind("base", namespace)
 
 b = BehaviorManager(ontology, namespace, "ontologies/OC-Found.owl",
                     ontology, namespace, "ontologies/OC-Found.owl",
-                    None,None,None)
+                    None,None, None,
+                    None,None, None)
 
 valuerObject=namespace+"evaluationObject"
 valuerInput=namespace+"objectAsset"
@@ -18,7 +19,7 @@ b.addClassAssertion(ontology, valuerInput, b.getOASISEntityByName("Asset"))
 
 #Valuer Template Creation
 b.createAgentBehaviorTemplate("ValuerTemplateBehavior", "ValuerTemplateGoal", "ValuerTemplateTask",
-                         ["ValuerTemplateTaskOperator", "compute"],
+                         ["ValuerTemplateTaskOperator", "perform"],
                          ["ValuerTemplateTaskOperatorArgument", "quality_evaluation"],
                          [
                              ["ValuerTemplateTaskObject","refersAsNewTo", valuerObject]
