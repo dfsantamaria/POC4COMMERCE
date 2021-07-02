@@ -264,9 +264,6 @@ class BehaviorManager:
     def addTaskFormalInputToBehaviorTask(self, task, input, inputPropEntity, inputEntity):
         return self.__addTaskFormalInputToTask__(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], task, input, inputPropEntity, inputEntity)
 
-    def addTaskActualInputToPlanTask(self, task, input, inputPropEntity, inputEntity):
-        return self.addTaskActualInputToTask(self.ontologies[self.ontoMap["plan"]["onto"]], self.ontoMap["plan"]["namespace"], task, input, inputPropEntity, inputEntity)
-
     def addTaskFormalInputToPlanTask(self, task, input, inputPropEntity, inputEntity):
         return self.__addTaskFormalInputToTask__(self.ontologies[self.ontoMap["plan"]["onto"]], self.ontoMap["plan"]["namespace"], task, input, inputPropEntity, inputEntity)
 
@@ -284,8 +281,6 @@ class BehaviorManager:
     def addTaskInputTemplateToTask(self, task, input, inputPropEntity, inputEntity):
         return self.__addTaskElementToTask__(self.ontologies[self.ontoMap["template"]["onto"]], self.ontoMap["template"]["namespace"], task, input, "TaskInputParameterTemplate", "hasTaskInputParameterTemplate", inputPropEntity, inputEntity)
 
-    def addTaskActualOutputToPlanTask(self,  task, output, outputPropEntity, outputEntity):
-        return self.addTaskActualOutputToTask(self.ontologies[self.ontoMap["plan"]["onto"]], self.ontoMap["plan"]["namespace"], task, output, outputPropEntity, outputEntity)
 
     def addTaskFormalOutputToPlanTask(self, task, output, outputPropEntity, outputEntity):
         return self.__addTaskFormalOutputToTask__(self.ontologies[self.ontoMap["plan"]["onto"]],
@@ -294,6 +289,7 @@ class BehaviorManager:
 
     def addTaskFormalOutputToBehaviorTask(self,  task, output, outputPropEntity, outputEntity):
         return self.__addTaskFormalOutputToTask__(self.ontologies[self.ontoMap["base"]["onto"]], self.ontoMap["base"]["namespace"], task, output, outputPropEntity, outputEntity)
+
     # add task output to the selected task given the output name, the output entity property,  and the output entity
     def __addTaskFormalOutputToTask__(self, ontology, namespace, task, output, outputPropEntity, outputEntity):
         return self.__addTaskElementToTask__(ontology, namespace, task, output,  "TaskFormalOutputParameter", "hasTaskFormalOutputParameter", outputPropEntity,
