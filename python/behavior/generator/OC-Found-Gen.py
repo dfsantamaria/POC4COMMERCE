@@ -14,7 +14,7 @@ b = BehaviorManager(ontology, namespace, "ontologies/OC-Found.owl",
 valuerObject=namespace+"evaluationObject"
 valuerInput=namespace+"objectAsset"
 
-b.addClassAssertion(ontology, valuerObject, namespace+"QualityValuation")
+b.addClassAssertion(ontology, valuerObject, namespace+"QualityValuationActivity")
 b.addClassAssertion(ontology, valuerInput, b.getOASISEntityByName("Asset"))
 
 #Valuer Template Creation
