@@ -11,11 +11,15 @@ b = BehaviorManager(ontology, namespace, "ontologies/OC-Found.owl",
                     None,None, None,
                     None,None, None)
 
-valuerObject=namespace+"evaluationObject"
+valuerObject=namespace+"valuationActivityObject"
 valuerInput=namespace+"objectAsset"
+valuerOutput=namespace+"valuationResult"
 
 b.addClassAssertion(ontology, valuerObject, namespace+"QualityValuationActivity")
 b.addClassAssertion(ontology, valuerInput, b.getOASISEntityByName("Asset"))
+b.addClassAssertion(ontology, valuerOutput, b.getOASISEntityByName("QualityValuationResult"))
+b.addObjPropAssertion(ontology, valuerObject, namespace+"hasQualityValuationResult", valuerOutput)
+b.addObjPropAssertion(ontology, valuerObject, namespace+"qualityValuationPerformedOn", valuerInput)
 
 #Valuer Template Creation
 b.createAgentBehaviorTemplate("ValuerTemplateBehavior", "ValuerTemplateGoal", "ValuerTemplateTask",
@@ -28,7 +32,7 @@ b.createAgentBehaviorTemplate("ValuerTemplateBehavior", "ValuerTemplateGoal", "V
                              ["ValuerTemplateTaskInput1", "refersAsNewTo", valuerInput]
                          ],
                          [
-                             ["ValuerTemplateTaskOutput1", "refersAsNewTo", valuerObject]
+                             ["ValuerTemplateTaskOutput1", "refersAsNewTo", valuerOutput]
                          ])
 agentTemplateName=b.createAgentTemplate("ValuerAgentBehaviorTemplate")
 b.connectAgentTemplateToBehavior("ValuerAgentBehaviorTemplate","ValuerTemplateBehavior")

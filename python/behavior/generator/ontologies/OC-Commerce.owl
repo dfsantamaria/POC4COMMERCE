@@ -1,127 +1,94 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rdf:RDF
-   xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
-   xmlns:owl="http://www.w3.org/2002/07/owl#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
->
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#CommercialAgentBehaviorTemplate">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#AgentBehaviorTemplate"/>
-    <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateBehavior"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateTaskObject">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObjectTemplate"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#offeringObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Price">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersAsNewTo">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl">
-    <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl"/>
-    <owl:imports rdf:resource="http://www.dmi.unict.it/oasis.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <owl:imports rdf:resource="http://www.dmi.unict.it/oasis-abox.owl"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateTask">
-    <oasis:hasTaskInputParameterTemplate rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateTaskInput1"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
-    <oasis:hasTaskOperatorArgument rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingOperatorArgument"/>
-    <oasis:hasTaskOutputParameterTemplate rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTaskOutput1"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateTaskOperator"/>
-    <oasis:hasTaskObjectTemplate rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateTaskObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingOperatorArgument">
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#offering"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperatorArgument"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTaskOutput1">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOutputParameterTemplate"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#offeringObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateBehavior">
-    <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateGoal"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperatorArgument">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOutputParameterTemplate">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#OfferingExchange">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateTaskInput1">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskInputParameterTemplate"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#objectAsset"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskObjectTemplate">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Auction">
-    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#publish">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersExactlyTo">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskInputParameterTemplate">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#objectAsset">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Asset"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#offering">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PriceDetermination">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Activity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskDescription">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#StandardOffering">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalDescription">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
-    <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateTask"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#PublishOfferingTemplateTaskOperator">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#publish"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Bid">
-    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasBehavior">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#offeringObject">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#Offering"/>
-  </rdf:Description>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ngi.ontochain/ontologies/oc-found.owl#"
+     xml:base="http://www.ngi.ontochain/ontologies/oc-found.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl">
+        <owl:imports rdf:resource="http://www.dmi.unict.it/oasis-abox.owl"/>
+        <owl:imports rdf:resource="http://www.dmi.unict.it/oasis.owl"/>
+        <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#Auction -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Auction">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#Bid -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Bid">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#OfferingExchange -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#OfferingExchange">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#Price -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Price">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#PriceDetermination -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PriceDetermination">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#StandardOffering -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#StandardOffering">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
+    </owl:Class>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
