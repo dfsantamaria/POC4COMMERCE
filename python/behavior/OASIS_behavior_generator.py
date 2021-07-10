@@ -105,6 +105,10 @@ class BehaviorManager:
         self.addOWLObjectProperty(ontology, property)
         ontology.add((URIRef(subject), URIRef(property), URIRef(object)))
 
+    def addDataPropAssertion(self, ontology, subject, property, object, dtype):
+        self.addOWLDataProperty(ontology, property)
+        ontology.add((URIRef(subject), URIRef(property), Literal(object, datatype=dtype)))
+
     def addClassAssertion(self, ontology, instance, owlclass):
         ontology.add((URIRef(instance), RDF.type, URIRef(owlclass)))
 

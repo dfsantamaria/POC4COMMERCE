@@ -1,0 +1,74 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX oabox: <http://www.dmi.unict.it/oasis-abox.owl#> 
+PREFIX oasis: <http://www.dmi.unict.it/oasis.owl#> 
+PREFIX occom: <http://www.ngi.ontochain/ontologies/oc-commerce.owl#>
+PREFIX ocfound: <http://www.ngi.ontochain/ontologies/oc-found.owl#>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX : <http://www.ngi.ontochain/ontologies/meeting.owl#>
+
+#find participants
+
+SELECT DISTINCT ?agent ?identity ?operation ?operationOn
+	WHERE { 
+                   ?agent ocfound:hasDigitalIdentity ?identity.
+                   ?agent oasis:hasBehavior ?behavior.
+                   ?behavior oasis:consistsOfGoalDescription ?goal.
+                    ?goal oasis:consistsOfTaskDescription ?task.
+                    ?task oasis:hasTaskOperator ?operator.
+                    ?operator oasis:refersExactlyTo ?operation.
+                    ?task oasis:hasTaskObject ?object.
+                    ?object oasis:refersAsNewTo ?ob.
+                    ?ob a ?operationOn    
+                    FILTER( ?operationOn != owl:NamedIndividual)      
+           }
+            
+
+#find actions
+
+SELECT DISTINCT ?agent ?operation ?operationOn ?typeOf
+	WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo ?operation.
+                   ?taskExe oasis:refersExactlyTo ?operationOn.
+                   ?operationOn a ?typeOf.
+                   FILTER( ?typeOf != owl:NamedIndividual)              
+           }
+
+
+#find offerings
+
+ SELECT DISTINCT ?offering ?type ?value ?currency
+	WHERE { 
+                    ?taskExec a oasis:TaskExecution.
+                    ?taskExec oasis:hasTaskObject ?taskob.
+                    ?taskob oasis:refersExactlyTo ?offering.
+                    ?offering a occom:Offering.
+                    ?offering occom:isOfferingAbout ?product.
+                    ?product a ?type.
+                     FILTER( ?type != owl:NamedIndividual)  
+                    
+                    ?priceDetActivity occom:priceDeterminationPerformedOn ?offering.
+                    ?priceDetActivity occom:hasPriceValue ?price.
+                    ?price gr:hasCurrencyValue ?value.
+                    ?price gr:hasCurrency ?currency.   
+                                          
+                }
+
+
+#the supply chain activity related with the selected offering
+
+
+SELECT DISTINCT ?chainActivity ?type ?agent
+	WHERE { 
+                   :appleGoodOffering  ocfound:hasSupplyChainManagement ?chainManagement.
+                   ?chainManagement ocfound:hasSupplyChainActivity ?chainActivity. 
+                   ?chainActivity a ?type.      
+                   FILTER( ?type != owl:NamedIndividual)   
+                   ?chainActivity ocfound:supplyChainActivityImplementedBy ?behavior.
+                   ?agent oasis:hasBehavior ?behavior.
+                }
