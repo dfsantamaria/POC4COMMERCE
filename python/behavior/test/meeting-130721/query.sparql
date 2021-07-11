@@ -72,3 +72,52 @@ SELECT DISTINCT ?chainActivity ?type ?agent
                    ?chainActivity ocfound:supplyChainActivityImplementedBy ?behavior.
                    ?agent oasis:hasBehavior ?behavior.
                 }
+
+
+ #accepted offering
+SELECT ?agent  ?offering ?accepted
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:accept.
+                   ?taskExe oasis:refersExactlyTo ?offering.
+                   ?offering a ?accepted.
+                   FILTER( ?accepted = occom:AcceptedOffering)             
+           }               
+
+ #checking paypal payment for object
+ SELECT DISTINCT ?agent  ?value ?object ?source ?destination
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:transfer.                           
+                   ?agentExe oasis:hasTaskActualInputParameter ?pm1.  
+                   ?pm1 oasis:refersExactlyTo ?transfer.  
+                   ?transfer occom:hasCurrencyValue ?value.  
+                          
+                   ?agentExe oasis:hasTaskActualInputParameter ?pm2.
+                   ?pm2 a occom:PaymentSource.
+                   ?pm2 oasis:refersExactlyTo ?source.
+
+                   ?agentExe oasis:hasTaskActualInputParameter ?pm3.
+                   ?pm3 a occom:PaymentDestination.
+                   ?pm3 oasis:refersExactlyTo ?destination.
+
+                   ?agentExe oasis:hasTaskActualInputParameter ?pm4.  
+                   ?pm4 a occom:PayedObject.
+                   ?pm4 oasis:refersExactlyTo ?object.                    
+           }             
+
+#shipment
+SELECT ?agent  ?object ?receipt
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:ship.
+                   ?taskExe oasis:refersExactlyTo ?object.    
+                   ?agentExe oasis:hasTaskActualOutputParameter ?pm1.
+                   ?pm1 oasis:refersExactlyTo ?receipt.
+           }  
