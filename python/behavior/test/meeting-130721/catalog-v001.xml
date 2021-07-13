@@ -4,6 +4,6 @@
     <uri id="Imports Wizard Entry" name="http://www.ngi.ontochain/ontologies/oc-found.owl" uri="file:/C:/Users/danie/PycharmProjects/Ontochain/generator/ontologies/OC-Found.owl"/>
     <uri id="User Entered Import Resolution" name="http://www.ontochain.org/myOntologyTemplate#" uri="agentTemplate.owl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1625912401936" name="http://www.ngi.ontochain/ontologies/meeting.owl" uri="meeting-130721%20-%20bck.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1626158111278" name="http://www.ngi.ontochain/ontologies/meeting.owl" uri="meeting-130721%20-%20bck.owl"/>
     </group>
 </catalog>

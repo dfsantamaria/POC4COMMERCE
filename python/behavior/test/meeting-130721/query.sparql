@@ -41,13 +41,16 @@ SELECT DISTINCT ?agent ?operation ?operationOn ?typeOf
 
 
 #find offerings
-
- SELECT DISTINCT ?offering ?type ?value ?currency
+SELECT DISTINCT ?offering ?type ?value ?currency
 	WHERE { 
                     ?taskExec a oasis:TaskExecution.
                     ?taskExec oasis:hasTaskObject ?taskob.
                     ?taskob oasis:refersExactlyTo ?offering.
-                    ?offering a occom:Offering.
+                    ?offering a ?offer.
+                    FILTER(?offer = occom:Offering 
+                               && ?offer != occom:DeprecatedOffering
+                               && ?offer != occom:ClosedOffering
+                               && ?offer != occom:RetractedOffering)   
                     ?offering occom:isOfferingAbout ?product.
                     ?product a ?type.
                      FILTER( ?type != owl:NamedIndividual)  
