@@ -12,7 +12,7 @@ class FacilityManager(BehaviorManager):
         self.addOntoMap("ocfound", "https://www.dmi.unict.it/santamaria/projects/oasis/sources/ontochain/OC-Found.owl", None, None)
         self.ontologies.append(self.loadOntology(self.ontoMap["ocfound"]["url"]))
 
-        self.addOntoMap("occommerce", "https://www.dmi.unict.it/santamaria/projects/oasis/sources/ontochain/OC-Found.owl",
+        self.addOntoMap("occommerce", "https://www.dmi.unict.it/santamaria/projects/oasis/sources/ontochain/OC-Commerce.owl",
                         None, None)
         self.ontologies.append(self.loadOntology(self.ontoMap["occommerce"]["url"]))
 
