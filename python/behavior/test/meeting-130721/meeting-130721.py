@@ -7,7 +7,7 @@ ontology.parse(file)
 
 namespace =  Namespace("http://www.ngi.ontochain/ontologies/meeting.owl#")
 gr = Namespace("http://purl.org/goodrelations/v1#")
-blondie = Namespace("http://www.semanticblockchain.com/Blondie.owl")
+blondie = Namespace("http://www.semanticblockchain.com/Blondie.owl#")
 
 ontology.bind("base", namespace)
 
@@ -325,10 +325,10 @@ b.addClassAssertion(ontology, appleBlockNum, blondie+"EthereumBlock")
 b.addClassAssertion(ontology, appleBlockPay, blondie+"EthereumPayload")
 b.addClassAssertion(ontology, appleBlockNum, blondie+"MessageCallEthereumTransaction")
 b.addObjPropAssertion(ontology, appleBlockNum, blondie+"hasEthereumPayloadBlock", appleBlockPay)
-b.addObjPropAssertion(ontology, appleBlockPay, blondie+"hasEthereumTransactionPayload", appleBlockPay)
+b.addObjPropAssertion(ontology, appleBlockPay, blondie+"hasEthereumTransactionPayload", appleTransactNum)
 b.addDataPropAssertion(ontology,appleBlockNum, blondie+"heightBlock","12833283", XSD.string)
 b.addDataPropAssertion(ontology,appleTransactNum, blondie+"recipientEthereumTransaction","0x48bb39274511b113b14a9417bdd75ddbcbfc0a70e063be9899d9c5852cba4c56", XSD.string)
-b.addObjPropAssertion(ontology, appleTransactNum, b.getOCEthereumEntityByName("introduceintroducesEthereumSmartContractExecution"), namespace+"mintAppleBatchAction")
+b.addObjPropAssertion(ontology, appleTransactNum, b.getOCEthereumEntityByName("introducesEthereumSmartContractExecution"), namespace+"mintAppleBatchAction")
 
 
 appleBatchToken = namespace+"appleBatchToken"

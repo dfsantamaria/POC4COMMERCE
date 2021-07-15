@@ -8,6 +8,7 @@ PREFIX occom: <http://www.ngi.ontochain/ontologies/oc-commerce.owl#>
 PREFIX ocfound: <http://www.ngi.ontochain/ontologies/oc-found.owl#>
 PREFIX ocether: <http://www.ngi.ontochain/ontologies/oc-ethereum.owl#>
 PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX blon:<PREFIX blon:<http://www.semanticblockchain.com/Blondie.owl#>
 PREFIX : <http://www.ngi.ontochain/ontologies/meeting.owl#>
 
 #find participants
@@ -144,6 +145,26 @@ SELECT  ?ownerFeature ?agent ?token ?tokentype ?asset ?owner
                    ?asset ocether:isDescribedByEthereumToken ?operationOn.          
                    ?token ocether:hasEthereumTokenEndurantFeature ?feature.
                    ?feature a ?ownerFeature.
-                    FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)
-                    FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.}                        
+                   FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)
+                   FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.} 
+                   ?feature ocether:isInTheWalletOf ?owner.                        
            }
+
+ #find block and transaction hash of the mining of a specified token "?token"
+
+ SELECT   ?blockNumber ?hash ?token
+  WHERE { 
+                   ?block blon:heightBlock ?blockNumber.    
+                   ?block blon:hasEthereumPayloadBlock ?payload. 
+                   ?payload blon:hasEthereumTransactionPayload ?transaction.
+                   ?transaction blon:recipientEthereumTransaction ?hash.  
+                   ?transaction ocether:introducesEthereumSmartContractExecution ?action.
+             
+                   ?action oasis:consistsOfGoalExecution ?goal.
+                   ?goal oasis:consistsOfTaskExecution ?agentExe.
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:mint.
+                   ?taskExe oasis:refersExactlyTo ?token.     
+               }
