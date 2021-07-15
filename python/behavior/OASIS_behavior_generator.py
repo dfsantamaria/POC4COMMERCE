@@ -35,7 +35,12 @@ class BehaviorManager:
 
 
     def startOntology(self, shortName, url, namespace, graph, pos, toimport):
-        self.addOntoMap(shortName, url, None, pos)
+        if pos==None:
+           nwpos=len(self.ontoMap)
+           self.ontologies.append(None)
+        else:
+           nwpos=pos
+        self.addOntoMap(shortName, url, None, nwpos)
         self.ontologies[self.ontoMap[shortName]["onto"]] = graph  # User template ontology
         if len([item for item in self.ontologies[self.ontoMap[shortName]["onto"]].namespaces() if item[1] == 'http://www.w3.org/2002/07/owl#'])==0:
             self.ontologies[self.ontoMap[shortName]["onto"]].bind("owl","http://www.w3.org/2002/07/owl#")
@@ -45,7 +50,6 @@ class BehaviorManager:
         if len([item for item in self.ontologies[self.ontoMap[shortName]["onto"]].namespaces()
                 if item[1] == self.ontoMap["abox"]["namespace"]]) == 0:
                  self.ontologies[self.ontoMap[shortName]["onto"]].bind("oabox", self.ontoMap["abox"]["namespace"])
-
 
         if namespace is None:
             self.addOntoMap(shortName, None, self.getNamespace(self.ontologies[self.ontoMap[shortName]["onto"]]), None)

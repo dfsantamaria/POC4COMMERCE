@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="User Entered Import Resolution" name="http://www.ngi.ontochain/ontologies/oc-found.owl" uri="OC-Found.owl"/>
-    <uri id="User Entered Import Resolution" name="http://www.ontochain.org/myOntologyTemplate#" uri="agentTemplate.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.ngi.ontochain/ontologies/oc-commerce.owl" uri="OC-Commerce.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.ngi.ontochain/ontologies/oc-found.owl" uri="OC-Found.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dmi.unict.it/oasis-abox.owl" uri="https://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis-abox.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dmi.unict.it/oasis.owl" uri="http://www.dmi.unict.it/santamaria/projects/oasis/sources/oasis.owl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1625222947024" name="duplicate:http://www.ngi.ontochain/ontologies/oc-found.owl" uri="OC-Commerce-bck.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1625222947024" name="duplicate:http://www.ngi.ontochain/ontologies/oc-found.owl" uri="OC-Found-bck.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624259705515" name="http://www.dmi.unict.it/ether-oasis.owl" uri="OC-Ethereum.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624259705515" name="duplicate:http://www.ngi.ontochain/ontologies/oc-found.owl" uri="OC-Commerce.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624259705515" name="duplicate:http://www.ngi.ontochain/ontologies/oc-found.owl" uri="OC-Found.owl"/>
     </group>
 </catalog>

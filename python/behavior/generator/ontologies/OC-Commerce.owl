@@ -10,7 +10,6 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
-     xmlns:occom="http://www.ngi.ontochain/ontologies/oc-commerce.owl#"
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:ocfound="http://www.ngi.ontochain/ontologies/oc-found.owl#">
     <owl:Ontology rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl">
@@ -79,11 +78,9 @@
     <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#isBidOnOffering -->
 
     <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#isBidOnOffering">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/goodrelations/v1#addOn"/>
-        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#involves"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#offeringInvolves"/>
         <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
         <rdfs:range rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
-        <rdfs:comment xml:lang="eng">connects an Offering to another Offering. The first Offereing carries the bid to the second Offering</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -155,8 +152,17 @@
 
     <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#publishesOffering">
         <rdfs:subPropertyOf rdf:resource="http://purl.org/goodrelations/v1#offers"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#involves"/>
         <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialAgent"/>
         <rdfs:range rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#requestsOffering -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#requestsOffering">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/goodrelations/v1#seeks"/>
     </owl:ObjectProperty>
     
 
@@ -304,6 +310,14 @@
     
 
 
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#RetractedOffering -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#RetractedOffering">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#StatusChangedOffering"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#StandardOffering -->
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#StandardOffering">
@@ -329,15 +343,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#AcceptedOffering"/>
-            <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#ClosedOffering"/>
-            <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#DeclinedOffering"/>
-            <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#DeprecatedOffering"/>
-        </owl:members>
-    </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">

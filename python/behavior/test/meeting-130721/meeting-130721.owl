@@ -1,515 +1,1413 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rdf:RDF
-   xmlns:ns1="http://www.ngi.ontochain/ontologies/oc-commerce.owl#"
-   xmlns:ns2="http://www.ngi.ontochain/ontologies/oc-found.owl#"
-   xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
-   xmlns:owl="http://www.w3.org/2002/07/owl#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:v1="http://purl.org/goodrelations/v1#"
->
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTObject">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#paypalResource"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOperator">
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#produce"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchObject">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTaskObject"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskFormalOutputParameter">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#hasDigitalIdentity">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#F">
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#e"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTTask">
-    <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput3"/>
-    <oasis:hasTaskFormalOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOutput1"/>
-    <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput1"/>
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTObject"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOperator"/>
-    <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput2"/>
-    <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput4"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput1">
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput1"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOfferingMoneyTransfer"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#produce">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerBehavior">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
-    <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerGoal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducer">
-    <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBachTask"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
-    <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerBehavior"/>
-    <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationTask"/>
-    <ns2:hasDigitalIdentity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerIdentity"/>
-    <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingBehavior"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingBehavior">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
-    <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingGoal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreation">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
-    <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationGoal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerResource">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#Apple"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingObject">
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipObject"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingInput1">
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainPayment">
-    <ns2:supplyChainActivityImplementedBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTBehavior"/>
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainPaymentActivity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
-    <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingTask"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingTask">
-    <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput4"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingOperator"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
-    <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput3"/>
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingObject"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTTask"/>
-    <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput1"/>
-    <oasis:hasTaskActualOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingOutput1"/>
-    <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput2"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTask">
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingOperator"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTaskObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOutput1">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalOutputParameter"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTrackCode"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#hasCurrencyValue">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBachTask">
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchOperator"/>
-    <oasis:hasTaskActualOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchOutput1"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTask"/>
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchObject"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchCreation">
-    <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchGoal"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOperator">
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#transfer"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOfferingPriceDetActivity">
-    <ns1:hasPriceValue rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOfferingPrice"/>
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PriceDeterminationActivity"/>
-    <ns1:priceDeterminationPerformedOn rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAssetToPayFor">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Asset"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#supplyChainActivityImplementedBy">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
-    <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBachTask"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersExactlyTo">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput3">
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#producerPaypal"/>
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PaymentDestination"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput3"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingTask">
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTask"/>
-    <oasis:hasTaskActualOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingOutput"/>
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingObject"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
-    <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingInput1"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourier">
-    <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipBehavior"/>
-    <ns2:hasDigitalIdentity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierIdentity"/>
-    <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingTask"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTask">
-    <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipInput"/>
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipObject"/>
-    <oasis:hasTaskFormalOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOutput1"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOperator"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainRelease">
-    <ns2:supplyChainActivityImplementedBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerBehavior"/>
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainReleaseActivity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#Bob">
-    <ns2:hasDigitalIdentity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#BobIdentity"/>
-    <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingBehavior"/>
-    <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffTask"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTaskObject">
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingResource"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffObject">
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTaskObject"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationOperator">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#publish"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffOperator">
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#accept"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingOperator"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierResource">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PhysicalAsset"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipInput">
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierResource"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAccountDestination">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalAccount"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingOutput1">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualOutputParameter"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOutput1"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOfferingMoneyTransfer"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#transfer">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#s">
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#h"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingOperator">
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#ship"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOperator"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffAction">
-    <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffGoal"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput2">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAccountSource"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskActualInputParameter">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTask">
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTaskObject"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOperator"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
-    <oasis:hasTaskFormalOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOutput1"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainMan">
-    <ns2:hasSupplyChainActivity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainRelease"/>
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainManagement"/>
-    <ns2:hasSupplyChainActivity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainDelivery"/>
-    <ns2:hasSupplyChainActivity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainPayment"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchOperator">
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOperator"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#produce"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#accept">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#publish">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#hasSupplyChainActivity">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput2">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PaymentSource"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput2"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobPaypal"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTaskObject">
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingResource"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
-    <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationTask"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingOperator">
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#transfer"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#Apple"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput3">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAccountDestination"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTBehavior">
-    <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTGoal"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#hasCurrency">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingOperator">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#accept"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
-    <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTask"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalDescription">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMoneyTransfer">
-    <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTBehavior"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
-    <ns2:hasDigitalIdentity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMoneyTransferIdentity"/>
-    <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingTask"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#ship">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationObject">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTaskObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingAction">
-    <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingGoal"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl">
-    <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering">
-    <ns2:hasSupplyChainManagement rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainMan"/>
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
-    <ns1:isOfferingAbout rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#AcceptedOffering"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOutput1">
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalReceipt"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalOutputParameter"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
-    <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTTask"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskExecution">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingOperator">
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#publish"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationTask">
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTask"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationOperator"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipObject">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierResource"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingGoal">
-    <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTask"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
-    <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffTask"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
-    <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTask"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#hasPriceValue">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipBehavior">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
-    <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipGoal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingOutput">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualOutputParameter"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingReceipt-track"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOfferingPrice">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Price"/>
-    <v1:hasCurrencyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1000.0</v1:hasCurrencyValue>
-    <v1:hasCurrency rdf:datatype="http://www.w3.org/2001/XMLSchema#string">euro</v1:hasCurrency>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingObject">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOfferingMoneyTransfer"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffTask">
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffObject"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTask"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput4">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PayedObject"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput4"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingBehavior">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
-    <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingGoal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput4">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAssetToPayFor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#priceDeterminationPerformedOn">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#paypalResource">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#FIATCurrency"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#isOfferingAbout">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingGoal">
-    <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTask"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTask">
-    <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTaskObject"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
-    <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingOperator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainDelivery">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainDeliveryActivity"/>
-    <ns2:supplyChainActivityImplementedBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipBehavior"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#hasCurrencyValue">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchOutput1">
-    <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
-    <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOutput1"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualOutputParameter"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingGoal">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
-    <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingTask"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalExecution">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput1">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#paypalResource"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskActualOutputParameter">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#performs">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingAction">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
-    <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingGoal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTaskObject">
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerResource"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskDescription">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAccountSource">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalAccount"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingResource">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#hasSupplyChainManagement">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingResource">
-    <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskObject">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersAsNewTo">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOperator">
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
-    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#ship"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasBehavior">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskFormalInputParameter">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#goodOfferingMoneyTransfer">
-    <ns1:hasCurrencyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1000.0</ns1:hasCurrencyValue>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOutput1">
-    <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerResource"/>
-    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalOutputParameter"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#drawnBy">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ngi.ontochain/ontologies/meeting.owl#"
+     xml:base="http://www.ngi.ontochain/ontologies/meeting.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:v1="http://purl.org/goodrelations/v1#"
+     xmlns:ns1="http://www.ngi.ontochain/ontologies/oc-found.owl#"
+     xmlns:ns2="http://www.ngi.ontochain/ontologies/oc-commerce.owl#"
+     xmlns:ns3="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl">
+        <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl"/>
+        <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#consistsOfGoalDescription -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalDescription"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#consistsOfGoalExecution -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalExecution"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#consistsOfTaskDescription -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskDescription"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#consistsOfTaskExecution -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskExecution"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#drawnBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#drawnBy"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#hasBehavior -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#hasBehavior"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#hasTaskActualInputParameter -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskActualInputParameter"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#hasTaskActualOutputParameter -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskActualOutputParameter"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#hasTaskFormalInputParameter -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskFormalInputParameter"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#hasTaskFormalOutputParameter -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskFormalOutputParameter"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#hasTaskObject -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskObject"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#hasTaskOperator -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperator"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#performs -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#performs"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#refersAsNewTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#refersAsNewTo"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#refersExactlyTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#refersExactlyTo"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#hasPriceValue -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#hasPriceValue"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#isOfferingAbout -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#isOfferingAbout"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#priceDeterminationPerformedOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#priceDeterminationPerformedOn"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenEndurantFeature -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenEndurantFeature"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isDescribedByEthereumToken -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isDescribedByEthereumToken"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#hasDigitalIdentity -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#hasDigitalIdentity"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#hasSupplyChainActivity -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#hasSupplyChainActivity"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#hasSupplyChainManagement -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#hasSupplyChainManagement"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#supplyChainActivityImplementedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#supplyChainActivityImplementedBy"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#subClassOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#hasCurrency -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#hasCurrency"/>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#hasCurrencyValue -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/goodrelations/v1#hasCurrencyValue"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#hasCurrencyValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#hasCurrencyValue"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasTokenID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasTokenID"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isInTheWalletOf -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isInTheWalletOf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#FIATCurrency -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#FIATCurrency"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#PhysicalAsset -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#PhysicalAsset"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#Apple -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#Apple"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleToken -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleToken">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC721"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalAccount -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalAccount"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#PayedObject -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PayedObject"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#PaymentDestination -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PaymentDestination"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#PaymentSource -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PaymentSource"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC721 -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC721"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumWalletOwnerEndurantFeature -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumWalletOwnerEndurantFeature"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis-abox.owl#accept -->
+
+    <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#accept">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis-abox.owl#mint -->
+
+    <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#mint">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis-abox.owl#produce -->
+
+    <owl:NamedIndividual rdf:about="http://www.dmi.unict.it/oasis-abox.owl#produce">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis-abox.owl#publish -->
+
+    <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#publish">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis-abox.owl#ship -->
+
+    <owl:NamedIndividual rdf:about="http://www.dmi.unict.it/oasis-abox.owl#ship">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis-abox.owl#transfer -->
+
+    <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#transfer">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingBehavior -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingBehavior">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+        <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
+        <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#publish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTaskObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTaskObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTaskObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingResource"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducer -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducer">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent"/>
+        <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingBehavior"/>
+        <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerBehavior"/>
+        <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintBehavior"/>
+        <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBachTask"/>
+        <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationTask"/>
+        <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchTask"/>
+        <ns1:hasDigitalIdentity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerIdentity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerBehavior -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerBehavior">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+        <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
+        <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerIdentity -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerIdentity"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#produce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOutput1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOutput1">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalOutputParameter"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerResource"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerResource -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerResource">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#Apple"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
+        <oasis:hasTaskFormalOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOutput1"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTaskObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTaskObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTaskObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerResource"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#Bob -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#Bob">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
+        <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingBehavior"/>
+        <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffTask"/>
+        <ns1:hasDigitalIdentity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#BobIdentity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#BobIdentity -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#BobIdentity"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#F -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#F">
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#e"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourier -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourier">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
+        <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipBehavior"/>
+        <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingTask"/>
+        <ns1:hasDigitalIdentity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierIdentity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierIdentity -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierIdentity"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierResource -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierResource">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PhysicalAsset"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipBehavior -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipBehavior">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+        <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
+        <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipInput -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipInput">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierResource"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexCourierResource"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#ship"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOutput1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOutput1">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalOutputParameter"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTrackCode"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
+        <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipInput"/>
+        <oasis:hasTaskFormalOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOutput1"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTrackCode -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTrackCode"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAccountDestination -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAccountDestination">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalAccount"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAccountSource -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAccountSource">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalAccount"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAssetToPayFor -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAssetToPayFor">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Asset"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTBehavior -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTBehavior">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+        <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
+        <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput1">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#paypalResource"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput2">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAccountSource"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput3">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAccountDestination"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput4">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTAssetToPayFor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#paypalResource"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#transfer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOutput1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOutput1">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalOutputParameter"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalReceipt"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
+        <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput1"/>
+        <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput2"/>
+        <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput3"/>
+        <oasis:hasTaskFormalInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput4"/>
+        <oasis:hasTaskFormalOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOutput1"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMoneyTransfer -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMoneyTransfer">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
+        <oasis:hasBehavior rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTBehavior"/>
+        <oasis:performs rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingTask"/>
+        <ns1:hasDigitalIdentity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMoneyTransferIdentity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMoneyTransferIdentity -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMoneyTransferIdentity"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#PaypalReceipt -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalReceipt"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintBehavior -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintBehavior">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+        <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
+        <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#myAppleToken"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#mint"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffAction -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffAction">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+        <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
+        <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTaskObject"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#accept"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTask"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#acceptOffOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleBachTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBachTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTask"/>
+        <oasis:hasTaskActualOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchOutput1"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#Apple"/>
+        <ns3:isDescribedByEthereumToken rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchToken"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchCreation -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchCreation">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+        <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
+        <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBachTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerTaskObject"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#produce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchOutput1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchOutput1">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualOutputParameter"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerOutput1"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchToken -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchToken">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleToken"/>
+        <ns3:hasEthereumTokenEndurantFeature rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchTokenFeature"/>
+        <ns3:hasTokenID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</ns3:hasTokenID>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchTokenFeature -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchTokenFeature">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumWalletOwnerEndurantFeature"/>
+        <ns3:isInTheWalletOf rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0x52388888888888</ns3:isInTheWalletOf>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#AcceptedOffering"/>
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
+        <ns2:isOfferingAbout rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
+        <ns1:hasSupplyChainManagement rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainMan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOfferingPrice -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOfferingPrice">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Price"/>
+        <v1:hasCurrency rdf:datatype="http://www.w3.org/2001/XMLSchema#string">euro</v1:hasCurrency>
+        <v1:hasCurrencyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1000.0</v1:hasCurrencyValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOfferingPriceDetActivity -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOfferingPriceDetActivity">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PriceDeterminationActivity"/>
+        <ns2:hasPriceValue rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOfferingPrice"/>
+        <ns2:priceDeterminationPerformedOn rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreation -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreation">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+        <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
+        <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTaskObject"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#publish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleOfferingTask"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingCreationOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingResource -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#appleOfferingResource">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingBehavior -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingBehavior">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+        <oasis:consistsOfGoalDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
+        <oasis:consistsOfTaskDescription rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#accept"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingResource -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingResource">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTaskObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTaskObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingTaskObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:refersAsNewTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobOfferingResource"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#bobPaypal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#bobPaypal"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#e -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#e"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainDelivery -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainDelivery">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainDeliveryActivity"/>
+        <ns1:supplyChainActivityImplementedBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipBehavior"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainMan -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainMan">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainManagement"/>
+        <ns1:hasSupplyChainActivity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainDelivery"/>
+        <ns1:hasSupplyChainActivity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainPayment"/>
+        <ns1:hasSupplyChainActivity rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainRelease"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainPayment -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainPayment">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainPaymentActivity"/>
+        <ns1:supplyChainActivityImplementedBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTBehavior"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainRelease -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#goodOffSupplyChainRelease">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainReleaseActivity"/>
+        <ns1:supplyChainActivityImplementedBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleProducerBehavior"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#goodOfferingMoneyTransfer -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#goodOfferingMoneyTransfer">
+        <ns2:hasCurrencyValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1000.0</ns2:hasCurrencyValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#h -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#h"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchAction -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchAction">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+        <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
+        <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintObject"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatchToken"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#mint"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#SmartContractMintTask"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#mintAppleBatchOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#myAppleToken -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#myAppleToken">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#AppleToken"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingAction -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingAction">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+        <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
+        <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput1">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput1"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOfferingMoneyTransfer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput2">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PaymentSource"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput2"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#bobPaypal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput3">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PaymentDestination"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput3"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#producerPaypal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput4">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#PayedObject"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTInput4"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTObject"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOfferingMoneyTransfer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#transfer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingOutput1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingOutput1">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualOutputParameter"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTOutput1"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#goodOfferingMoneyTransfer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#PaypalMTTask"/>
+        <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput1"/>
+        <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput2"/>
+        <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput3"/>
+        <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingInput4"/>
+        <oasis:hasTaskActualOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingOutput1"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#payGoodOfferingOperator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#paypalResource -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#paypalResource">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#FIATCurrency"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#producerPaypal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#producerPaypal"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#s -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#s">
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#h"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingAction -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingAction">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+        <oasis:consistsOfGoalExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingGoal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingGoal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingGoal">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalExecution"/>
+        <oasis:consistsOfTaskExecution rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingTask"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingInput1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingInput1">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualInputParameter"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingObject -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingObject">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipObject"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#appleBatch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingOperator -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingOperator">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipOperator"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#ship"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingOutput -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingOutput">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskActualOutputParameter"/>
+        <oasis:refersExactlyTo rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingReceipt-track"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingReceipt-track -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingReceipt-track"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingTask">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskExecution"/>
+        <oasis:drawnBy rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#FedexShipTask"/>
+        <oasis:hasTaskActualInputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingInput1"/>
+        <oasis:hasTaskActualOutputParameter rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingOutput"/>
+        <oasis:hasTaskObject rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingObject"/>
+        <oasis:hasTaskOperator rdf:resource="http://www.ngi.ontochain/ontologies/meeting.owl#shipGoodOfferingOperator"/>
+    </owl:NamedIndividual>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

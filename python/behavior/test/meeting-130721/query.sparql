@@ -6,6 +6,7 @@ PREFIX oabox: <http://www.dmi.unict.it/oasis-abox.owl#>
 PREFIX oasis: <http://www.dmi.unict.it/oasis.owl#> 
 PREFIX occom: <http://www.ngi.ontochain/ontologies/oc-commerce.owl#>
 PREFIX ocfound: <http://www.ngi.ontochain/ontologies/oc-found.owl#>
+PREFIX ocether: <http://www.ngi.ontochain/ontologies/oc-ethereum.owl#>
 PREFIX gr: <http://purl.org/goodrelations/v1#>
 PREFIX : <http://www.ngi.ontochain/ontologies/meeting.owl#>
 
@@ -42,15 +43,15 @@ SELECT DISTINCT ?agent ?operation ?operationOn ?typeOf
 
 #find offerings
 SELECT DISTINCT ?offering ?type ?value ?currency
-	WHERE { 
+  WHERE { 
                     ?taskExec a oasis:TaskExecution.
                     ?taskExec oasis:hasTaskObject ?taskob.
                     ?taskob oasis:refersExactlyTo ?offering.
                     ?offering a ?offer.
-                    FILTER(?offer = occom:Offering 
-                               && ?offer != occom:DeprecatedOffering
-                               && ?offer != occom:ClosedOffering
-                               && ?offer != occom:RetractedOffering)   
+                    FILTER(?offer = occom:Offering) 
+                    FILTER NOT EXISTS { ?offering a occom:DeprecatedOffering.}
+                    FILTER NOT EXISTS { ?offering a occom:ClosedOffering.}
+                    FILTER NOT EXISTS { ?offering a occom:RetractedOffering.}  
                     ?offering occom:isOfferingAbout ?product.
                     ?product a ?type.
                      FILTER( ?type != owl:NamedIndividual)  
@@ -124,3 +125,25 @@ SELECT ?agent  ?object ?receipt
                    ?agentExe oasis:hasTaskActualOutputParameter ?pm1.
                    ?pm1 oasis:refersExactlyTo ?receipt.
            }  
+
+#show token minted and not destroyed, related asset, related minter, and the current owner
+
+
+SELECT  ?ownerFeature ?agent ?token ?tokentype ?asset ?owner
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:mint.
+                   ?taskExe oasis:refersExactlyTo ?token.
+                   ?operationOn a ?tokentype.
+                   ?typeOf rdfs:subClassOf ocether:EthereumTokenERC721.
+                   FILTER( ?tokentype != owl:NamedIndividual)
+                   FILTER NOT EXISTS { ?operationOn a ocether:DestroyedEthereumToken}       
+                   
+                   ?asset ocether:isDescribedByEthereumToken ?operationOn.          
+                   ?token ocether:hasEthereumTokenEndurantFeature ?feature.
+                   ?feature a ?ownerFeature.
+                    FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)
+                    FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.}                        
+           }

@@ -6,8 +6,6 @@ ontology = Graph()
 ontology.parse(file)
 
 namespace =  Namespace("http://www.ngi.ontochain/ontologies/meeting.owl#")
-occommerce = Namespace("http://www.ngi.ontochain/ontologies/oc-commerce.owl#")
-ocfound = Namespace("http://www.ngi.ontochain/ontologies/oc-found.owl#")
 gr = Namespace("http://purl.org/goodrelations/v1#")
 
 ontology.bind("base", namespace)
@@ -19,7 +17,7 @@ b = FacilityManager(ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COM
 #Creating an Apple Seller
 b.createAgent("AppleProducer")
 myProducerIdentity= namespace +"AppleProducerIdentity"
-b.addObjPropAssertion(ontology, namespace+"AppleProducer", ocfound+"hasDigitalIdentity", myProducerIdentity)
+b.addObjPropAssertion(ontology, namespace+"AppleProducer", b.getOCFoundEntityByName("hasDigitalIdentity"), myProducerIdentity)
 
 myProducerObject= namespace + "AppleProducerResource"
 b.addClassAssertion(ontology, myProducerObject, namespace + "Apple")
@@ -34,9 +32,26 @@ b.createAgentBehavior("AppleProducerBehavior", "AppleProducerGoal", "AppleProduc
                              ["AppleProducerOutput1", "refersAsNewTo", myProducerObject]
                          ],
                          [])
+
+#Creating Apple SmartContract Behavior
+b.addClassAssertion(ontology, namespace+"AppleProducer", b.getOCEthereumEntityByName("EthereumSmartContractAgent"))
+myTokenMint = namespace+"myAppleToken"
+b.addObjPropAssertion(ontology, namespace+"AppleToken", RDFS.subClassOf, b.getOCEthereumEntityByName("EthereumTokenERC721"))
+b.addClassAssertion(ontology, myTokenMint, namespace+"AppleToken")
+b.createAgentBehavior("SmartContractMintBehavior", "SmartContractMintGoal", "SmartContractMintTask",
+                         ["SmartContractMintOperator", "mint"],
+                         [],
+                         [
+                             ["SmartContractMintObject", "refersAsNewTo", myTokenMint]
+                         ],
+                         [],
+                         [],
+                         [])
+
+
 #offering behavior
 myOfferingObject= namespace + "appleOfferingResource"
-b.addClassAssertion(ontology, myOfferingObject, occommerce + "Offering")
+b.addClassAssertion(ontology, myOfferingObject, b.getOCCommerceEntityByName("Offering"))
 b.createAgentBehavior("AppleOfferingBehavior", "AppleOfferingGoal", "AppleOfferingTask",
                          ["AppleOfferingOperator", "publish"],
                          [],
@@ -49,6 +64,7 @@ b.createAgentBehavior("AppleOfferingBehavior", "AppleOfferingGoal", "AppleOfferi
                          [])
 
 #connect agent to agent behavior
+b.connectAgentToBehavior("AppleProducer", "SmartContractMintBehavior")
 b.connectAgentToBehavior("AppleProducer", "AppleOfferingBehavior")
 b.connectAgentToBehavior("AppleProducer", "AppleProducerBehavior")
 
@@ -56,9 +72,9 @@ b.connectAgentToBehavior("AppleProducer", "AppleProducerBehavior")
 #User Bob
 b.createAgent("Bob")
 bobIdentity= namespace +"BobIdentity"
-b.addObjPropAssertion(ontology, namespace+"Bob", ocfound+"hasDigitalIdentity", bobIdentity)
+b.addObjPropAssertion(ontology, namespace+"Bob", b.getOCFoundEntityByName("hasDigitalIdentity"), bobIdentity)
 bobObject= namespace + "bobOfferingResource"
-b.addClassAssertion(ontology, bobObject, occommerce + "Offering")
+b.addClassAssertion(ontology, bobObject, b.getOCCommerceEntityByName("Offering"))
 b.createAgentBehavior("bobOfferingBehavior", "bobOfferingGoal", "bobOfferingTask",
                          ["bobOfferingOperator", "accept"],
                          [],
@@ -74,7 +90,7 @@ b.connectAgentToBehavior("Bob", "bobOfferingBehavior")
 #Creating a shipping Agent
 b.createAgent("FedexCourier")
 fedexIdentity= namespace +"FedexCourierIdentity"
-b.addObjPropAssertion(ontology, namespace+"FedexCourier", ocfound+"hasDigitalIdentity", fedexIdentity)
+b.addObjPropAssertion(ontology, namespace+"FedexCourier", b.getOCFoundEntityByName("hasDigitalIdentity"), fedexIdentity)
 myFedexShipObject= namespace + "FedexCourierResource"
 myFedexShipOutput = namespace + "FedexShipTrackCode"
 b.addClassAssertion(ontology, myFedexShipObject, b.getOASISEntityByName("PhysicalAsset"))
@@ -97,7 +113,7 @@ b.connectAgentToBehavior("FedexCourier", "FedexShipBehavior")
 #Creating a transfer money agent
 b.createAgent("PaypalMoneyTransfer")
 paypalIdentity= namespace +"PaypalMoneyTransferIdentity"
-b.addObjPropAssertion(ontology, namespace+"PaypalMoneyTransfer", ocfound+"hasDigitalIdentity", paypalIdentity)
+b.addObjPropAssertion(ontology, namespace+"PaypalMoneyTransfer", b.getOCFoundEntityByName("hasDigitalIdentity"), paypalIdentity)
 myPaypalMTObject= namespace + "paypalResource"
 myPaypalMTOutput = namespace + "PaypalReceipt"
 myPaypalMTInput2= namespace + "PaypalMTAccountSource"
@@ -157,8 +173,8 @@ b.createAgentAction("AppleProducer", "appleBatchCreation", "appleBatchGoal", "ap
 
 # publishing a new offer
 appleOffering = namespace +"appleGoodOffering"
-b.addClassAssertion(ontology, appleOffering, occommerce+"Offering")
-b.addObjPropAssertion(ontology,appleOffering, occommerce+"isOfferingAbout", appleBatch)
+b.addClassAssertion(ontology, appleOffering, b.getOCCommerceEntityByName("Offering"))
+b.addObjPropAssertion(ontology,appleOffering, b.getOCCommerceEntityByName("isOfferingAbout"), appleBatch)
 #put quantity and quality information
 appleOfferingPriceDetActi = namespace + "appleGoodOfferingPriceDetActivity"
 appleOfferingPrice = namespace + "appleGoodOfferingPrice"
@@ -170,23 +186,23 @@ suppChainRelease = namespace +"goodOffSupplyChainRelease"
 suppChainDelivery = namespace+"goodOffSupplyChainDelivery"
 suppChainPayment = namespace+"goodOffSupplyChainPayment"
 
-b.addClassAssertion(ontology,suppChainmanagement, ocfound+"SupplyChainManagement")
-b.addObjPropAssertion(ontology,appleOffering, ocfound+"hasSupplyChainManagement", suppChainmanagement)
-b.addObjPropAssertion(ontology, suppChainmanagement, ocfound+"hasSupplyChainActivity", suppChainRelease)
-b.addObjPropAssertion(ontology, suppChainmanagement, ocfound+"hasSupplyChainActivity", suppChainDelivery)
-b.addObjPropAssertion(ontology, suppChainmanagement, ocfound+"hasSupplyChainActivity", suppChainPayment)
+b.addClassAssertion(ontology,suppChainmanagement, b.getOCFoundEntityByName("SupplyChainManagement"))
+b.addObjPropAssertion(ontology,appleOffering, b.getOCFoundEntityByName("hasSupplyChainManagement"), suppChainmanagement)
+b.addObjPropAssertion(ontology, suppChainmanagement, b.getOCFoundEntityByName("hasSupplyChainActivity"), suppChainRelease)
+b.addObjPropAssertion(ontology, suppChainmanagement, b.getOCFoundEntityByName("hasSupplyChainActivity"), suppChainDelivery)
+b.addObjPropAssertion(ontology, suppChainmanagement, b.getOCFoundEntityByName("hasSupplyChainActivity"), suppChainPayment)
 
-b.addClassAssertion(ontology, suppChainRelease, ocfound+"SupplyChainReleaseActivity")
-b.addObjPropAssertion(ontology, suppChainRelease, ocfound+"supplyChainActivityImplementedBy", namespace+"AppleProducerBehavior")
-b.addClassAssertion(ontology, suppChainDelivery, ocfound+"SupplyChainDeliveryActivity")
-b.addObjPropAssertion(ontology, suppChainDelivery, ocfound+"supplyChainActivityImplementedBy", namespace+"FedexShipBehavior")
-b.addClassAssertion(ontology, suppChainPayment, ocfound+"SupplyChainPaymentActivity")
-b.addObjPropAssertion(ontology, suppChainPayment, ocfound+"supplyChainActivityImplementedBy", namespace+"PaypalMTBehavior")
+b.addClassAssertion(ontology, suppChainRelease, b.getOCFoundEntityByName("SupplyChainReleaseActivity"))
+b.addObjPropAssertion(ontology, suppChainRelease, b.getOCFoundEntityByName("supplyChainActivityImplementedBy"), namespace+"AppleProducerBehavior")
+b.addClassAssertion(ontology, suppChainDelivery, b.getOCFoundEntityByName("SupplyChainDeliveryActivity"))
+b.addObjPropAssertion(ontology, suppChainDelivery, b.getOCFoundEntityByName("supplyChainActivityImplementedBy"), namespace+"FedexShipBehavior")
+b.addClassAssertion(ontology, suppChainPayment, b.getOCFoundEntityByName("SupplyChainPaymentActivity"))
+b.addObjPropAssertion(ontology, suppChainPayment, b.getOCFoundEntityByName("supplyChainActivityImplementedBy"), namespace+"PaypalMTBehavior")
 
-b.addClassAssertion(ontology, appleOfferingPrice, occommerce+"Price")
-b.addClassAssertion(ontology, appleOfferingPriceDetActi, occommerce+"PriceDeterminationActivity")
-b.addObjPropAssertion(ontology, appleOfferingPriceDetActi, occommerce+"priceDeterminationPerformedOn", appleOffering)
-b.addObjPropAssertion(ontology, appleOfferingPriceDetActi, occommerce+"hasPriceValue", appleOfferingPrice)
+b.addClassAssertion(ontology, appleOfferingPrice, b.getOCCommerceEntityByName("Price"))
+b.addClassAssertion(ontology, appleOfferingPriceDetActi, b.getOCCommerceEntityByName("PriceDeterminationActivity"))
+b.addObjPropAssertion(ontology, appleOfferingPriceDetActi, b.getOCCommerceEntityByName("priceDeterminationPerformedOn"), appleOffering)
+b.addObjPropAssertion(ontology, appleOfferingPriceDetActi, b.getOCCommerceEntityByName("hasPriceValue"), appleOfferingPrice)
 b.addDataPropAssertion(ontology, appleOfferingPrice, gr+"hasCurrency", "euro", XSD.string)
 b.addDataPropAssertion(ontology, appleOfferingPrice, gr+"hasCurrencyValue", "1000", XSD.float)
 
@@ -236,16 +252,16 @@ b.createAgentAction("Bob", "acceptOffAction", "acceptOffGoal", "acceptOffTask",
                           []
                     ])
 
-b.addClassAssertion(ontology, appleOffering, occommerce+"AcceptedOffering")
+b.addClassAssertion(ontology, appleOffering, b.getOCCommerceEntityByName("AcceptedOffering"))
 
 #paying for the object
 payTransferringOperation = namespace +"goodOfferingMoneyTransfer"
 bobPaypalAccount = namespace +"bobPaypal"
 producerPaypalAccount = namespace + "producerPaypal"
-b.addDataPropAssertion(ontology, payTransferringOperation, occommerce+"hasCurrencyValue", "1000", XSD.float)
-b.addClassAssertion(ontology, namespace+"payGoodOfferingInput2", occommerce+"PaymentSource")
-b.addClassAssertion(ontology, namespace+"payGoodOfferingInput3", occommerce+"PaymentDestination")
-b.addClassAssertion(ontology, namespace+"payGoodOfferingInput4", occommerce+"PayedObject")
+b.addDataPropAssertion(ontology, payTransferringOperation, b.getOCCommerceEntityByName("hasCurrencyValue"), "1000", XSD.float)
+b.addClassAssertion(ontology, namespace+"payGoodOfferingInput2", b.getOCCommerceEntityByName("PaymentSource"))
+b.addClassAssertion(ontology, namespace+"payGoodOfferingInput3", b.getOCCommerceEntityByName("PaymentDestination"))
+b.addClassAssertion(ontology, namespace+"payGoodOfferingInput4", b.getOCCommerceEntityByName("PayedObject"))
 b.createAgentAction("PaypalMoneyTransfer", "payGoodOfferingAction", "payGoodOfferingGoal", "payGoodOfferingTask",
                          ["payGoodOfferingOperator", "transfer"],
                          [],
@@ -300,6 +316,33 @@ b.createAgentAction("FedexCourier", "shipGoodOfferingAction", "shipGoodOfferingG
                           ["shipGoodOfferingOutput","FedexShipOutput1"]
                     ])
 
+appleBatchToken = namespace+"appleBatchToken"
+appleBatchTokenFeature = namespace+"appleBatchTokenFeature"
+b.addClassAssertion(ontology, appleBatchToken, namespace+"AppleToken")
+b.addClassAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("EthereumWalletOwnerEndurantFeature"))
+b.addObjPropAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("hasEthereumTokenEndurantFeature"), appleBatchTokenFeature)
+b.addDataPropAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("hasTokenID"),  "12", XSD.integer)
+b.addDataPropAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("isInTheWalletOf"),  "0x52388888888888", XSD.string)
+b.addObjPropAssertion(ontology, appleBatch, b.getOCEthereumEntityByName("isDescribedByEthereumToken"), appleBatchToken)
 
+b.createAgentAction("AppleProducer", "mintAppleBatchAction", "mintAppleBatchGoal", "mintAppleBatchTask",
+                         ["mintAppleBatchOperator", "mint"],
+                         [],
+                         [
+                             ["mintAppleBatchObject", "refersExactlyTo", appleBatchToken]
+                         ],
+                         [],
+                         [],
+                         [
+                            "SmartContractMintTask",
+                        [
+                            ["mintAppleBatchObject", "SmartContractMintObject"]
+                        ],
+                        [],
+                        []
+                    ])
+#Query testing
+#b.addClassAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("DeprecatedEthereumTokenEndurantFeature"))
+#b.addClassAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("DestroyedEthereumToken"))
 file = open("meeting-130721.owl", "w")
 file.write(ontology.serialize(format='xml').decode())
