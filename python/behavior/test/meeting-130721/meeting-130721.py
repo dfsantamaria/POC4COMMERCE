@@ -35,6 +35,8 @@ b.createAgentBehavior("AppleProducerBehavior", "AppleProducerGoal", "AppleProduc
                          [])
 
 #Creating Apple SmartContract Behavior
+b.createAgent("AppleProducerSmartContract")
+b.addObjPropAssertion(ontology, namespace+"AppleProducerSmartContract", b.getOCFoundEntityByName("hasDigitalIdentity"), myProducerIdentity)
 
 smartContractBlockNum = namespace+"smartContractBlock"
 smartContractBlockPay = namespace+"smartContractPayload"
@@ -48,10 +50,10 @@ b.addDataPropAssertion(ontology,smartContractBlockNum, blondie+"heightBlock","11
 b.addDataPropAssertion(ontology,smartContractBlockNum, blondie+"minerBlock","SPARK POOL", XSD.string)
 b.addDataPropAssertion(ontology, smartContractTransactNum, blondie+"recipientEthereumTransaction","0xb1fd76ea98869b5a014ad45e8eec0f58916e90e3d8e8f979522eebfc57928ec3", XSD.string)
 b.addObjPropAssertion(ontology, smartContractTransactNum, b.getOCEthereumEntityByName("introducesEthereumSmartContractAgent"), namespace+"AppleProducer")
+b.addDataPropAssertion(ontology, smartContractTransactNum, blondie+"to","#0x91f90D0d7490D851C89D107255408F14D947109e", XSD.string)
 
 
-
-b.addClassAssertion(ontology, namespace+"AppleProducer", b.getOCEthereumEntityByName("EthereumSmartContractAgent"))
+b.addClassAssertion(ontology, namespace+"AppleProducerSmartContract", b.getOCEthereumEntityByName("EthereumSmartContractAgent"))
 myTokenMint = namespace+"myAppleToken"
 b.addObjPropAssertion(ontology, namespace+"AppleToken", RDFS.subClassOf, b.getOCEthereumEntityByName("EthereumTokenERC721"))
 b.addClassAssertion(ontology, myTokenMint, namespace+"AppleToken")
@@ -65,6 +67,8 @@ b.createAgentBehavior("SmartContractMintBehavior", "SmartContractMintGoal", "Sma
                          [],
                          [])
 
+
+b.connectAgentToBehavior("AppleProducerSmartContract", "SmartContractMintBehavior")
 
 #offering behavior
 myOfferingObject= namespace + "appleOfferingResource"
@@ -81,7 +85,6 @@ b.createAgentBehavior("AppleOfferingBehavior", "AppleOfferingGoal", "AppleOfferi
                          [])
 
 #connect agent to agent behavior
-b.connectAgentToBehavior("AppleProducer", "SmartContractMintBehavior")
 b.connectAgentToBehavior("AppleProducer", "AppleOfferingBehavior")
 b.connectAgentToBehavior("AppleProducer", "AppleProducerBehavior")
 
@@ -102,7 +105,36 @@ b.createAgentBehavior("bobOfferingBehavior", "bobOfferingGoal", "bobOfferingTask
                          [
                          ],
                          [])
+
+
+
+valuerObject=namespace+"valuationActivityObject"
+valuerInput=namespace+"objectAsset"
+valuerOutput=namespace+"valuationResult"
+
+b.addClassAssertion(ontology, valuerObject, b.getOCFoundEntityByName("QualityValuationActivity"))
+b.addClassAssertion(ontology, valuerInput, b.getOASISEntityByName("Asset"))
+b.addClassAssertion(ontology, valuerOutput, b.getOCFoundEntityByName("QualityValuationResult"))
+b.addObjPropAssertion(ontology, valuerObject, b.getOCFoundEntityByName("hasQualityValuationResult"), valuerOutput)
+b.addObjPropAssertion(ontology, valuerObject, b.getOCFoundEntityByName("qualityValuationPerformedOn"), valuerInput)
+b.createAgentBehavior("BobValuerBehavior", "BobValuerGoal", "BobValuerTask",
+                         ["BobValuerTaskOperator", "perform"],
+                         ["BobValuerTaskOperatorArgument", "quality_evaluation"],
+                         [
+                             ["BobValuerTaskObject","refersAsNewTo", valuerObject]
+                         ],
+                         [
+                             ["BobValuerTaskInput1", "refersAsNewTo", valuerInput]
+                         ],
+                         [
+                             ["BobValuerTaskOutput1", "refersAsNewTo", valuerOutput]
+                         ],
+                           [])
+
 b.connectAgentToBehavior("Bob", "bobOfferingBehavior")
+b.connectAgentToBehavior("Bob", "BobValuerBehavior")
+
+
 
 #Creating a shipping Agent
 b.createAgent("FedexCourier")
@@ -202,12 +234,14 @@ suppChainmanagement = namespace+"goodOffSupplyChainMan"
 suppChainRelease = namespace +"goodOffSupplyChainRelease"
 suppChainDelivery = namespace+"goodOffSupplyChainDelivery"
 suppChainPayment = namespace+"goodOffSupplyChainPayment"
+suppChainEthereumToken = namespace+"goodOffSupplyChainEthereumToken"
 
 b.addClassAssertion(ontology,suppChainmanagement, b.getOCFoundEntityByName("SupplyChainManagement"))
 b.addObjPropAssertion(ontology,appleOffering, b.getOCFoundEntityByName("hasSupplyChainManagement"), suppChainmanagement)
 b.addObjPropAssertion(ontology, suppChainmanagement, b.getOCFoundEntityByName("hasSupplyChainActivity"), suppChainRelease)
 b.addObjPropAssertion(ontology, suppChainmanagement, b.getOCFoundEntityByName("hasSupplyChainActivity"), suppChainDelivery)
 b.addObjPropAssertion(ontology, suppChainmanagement, b.getOCFoundEntityByName("hasSupplyChainActivity"), suppChainPayment)
+b.addObjPropAssertion(ontology, suppChainmanagement, b.getOCFoundEntityByName("hasSupplyChainActivity"), suppChainEthereumToken)
 
 b.addClassAssertion(ontology, suppChainRelease, b.getOCFoundEntityByName("SupplyChainReleaseActivity"))
 b.addObjPropAssertion(ontology, suppChainRelease, b.getOCFoundEntityByName("supplyChainActivityImplementedBy"), namespace+"AppleProducerBehavior")
@@ -215,6 +249,10 @@ b.addClassAssertion(ontology, suppChainDelivery, b.getOCFoundEntityByName("Suppl
 b.addObjPropAssertion(ontology, suppChainDelivery, b.getOCFoundEntityByName("supplyChainActivityImplementedBy"), namespace+"FedexShipBehavior")
 b.addClassAssertion(ontology, suppChainPayment, b.getOCFoundEntityByName("SupplyChainPaymentActivity"))
 b.addObjPropAssertion(ontology, suppChainPayment, b.getOCFoundEntityByName("supplyChainActivityImplementedBy"), namespace+"PaypalMTBehavior")
+
+b.addClassAssertion(ontology, suppChainEthereumToken, b.getOCFoundEntityByName("SupplyChainProofOfWorkActivity"))
+b.addObjPropAssertion(ontology, suppChainEthereumToken, b.getOCFoundEntityByName("supplyChainActivityImplementedBy"), namespace+"SmartContractMintBehavior")
+
 
 b.addClassAssertion(ontology, appleOfferingPrice, b.getOCCommerceEntityByName("Price"))
 b.addClassAssertion(ontology, appleOfferingPriceDetActi, b.getOCCommerceEntityByName("PriceDeterminationActivity"))
@@ -354,7 +392,7 @@ b.addClassAssertion(ontology, appleBatchToken, namespace+"AppleToken")
 b.addClassAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("EthereumWalletOwnerEndurantFeature"))
 b.addObjPropAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("hasEthereumTokenEndurantFeature"), appleBatchTokenFeature)
 b.addDataPropAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("hasTokenID"),  "12", XSD.integer)
-b.addDataPropAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("isInTheWalletOf"),  "0x52388888888888", XSD.string)
+b.addDataPropAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("isInTheWalletOf"),  "0xAf90b6E2b8b02619f9c37651dD6828BbA662087E", XSD.string)
 b.addObjPropAssertion(ontology, appleBatch, b.getOCEthereumEntityByName("isDescribedByEthereumToken"), appleBatchToken)
 
 b.createAgentAction("AppleProducer", "mintAppleBatchAction", "mintAppleBatchGoal", "mintAppleBatchTask",
@@ -376,5 +414,78 @@ b.createAgentAction("AppleProducer", "mintAppleBatchAction", "mintAppleBatchGoal
 #Query testing
 #b.addClassAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("DeprecatedEthereumTokenEndurantFeature"))
 #b.addClassAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("DestroyedEthereumToken"))
+
+#valuationg the offering
+
+appleOfferingValuation = namespace+"appleValuationActivityObject"
+valuateAppleOfferingResult = namespace+"appleValuationActivityResult"
+b.addClassAssertion(ontology, appleOfferingValuation, b.getOCFoundEntityByName("QualityValuationActivity"))
+b.addClassAssertion(ontology, valuateAppleOfferingResult, b.getOCFoundEntityByName("QualityValuationResult"))
+b.addObjPropAssertion(ontology, appleOfferingValuation, b.getOCFoundEntityByName("hasQualityValuationResult"), valuateAppleOfferingResult)
+b.addObjPropAssertion(ontology, appleOfferingValuation, b.getOCFoundEntityByName("qualityValuationPerformedOn"), appleOffering)
+b.addDataPropAssertion(ontology, valuateAppleOfferingResult, b.getOCFoundEntityByName("hasValuationValue"), "5", XSD.integer)
+
+b.createAgentAction("Bob", "valuateAppleOfferingAction", "valuateAppleOfferingGoal", "valuateAppleOfferingTask",
+                         ["valuateAppleOfferingOperator", "perform"],
+                         ["valuateAppleOfferingOpArgument", "quality_valuation"],
+                         [
+                             ["valuateAppleOfferingObject", "refersExactlyTo", appleOfferingValuation]
+                         ],
+                         [
+                             ["valuateAppleOfferingInput", "refersExactlyTo", appleOffering]
+                         ],
+                         [
+                             ["valuateAppleOfferingOutput", "refersExactlyTo", valuateAppleOfferingResult]
+                         ],
+                         [
+                          "BobValuerTask",
+                          [
+                            ["valuateAppleOfferingObject", "BobValuerTaskObject"]
+                          ],
+                          [
+                              ["valuateAppleOfferingInput", "BobValuerTaskInput1"]
+                          ],
+                          [
+                              ["valuateAppleOfferingOutput","BobValuerTaskOutput1"]
+                          ]
+                    ])
+
+#double valuation of testing purpose
+appleOfferingValuation1 = namespace+"appleValuationActivityObject1"
+valuateAppleOfferingResult1 = namespace+"appleValuationActivityResult1"
+b.addClassAssertion(ontology, appleOfferingValuation1, b.getOCFoundEntityByName("QualityValuationActivity"))
+b.addClassAssertion(ontology, valuateAppleOfferingResult1, b.getOCFoundEntityByName("QualityValuationResult"))
+b.addObjPropAssertion(ontology, appleOfferingValuation1, b.getOCFoundEntityByName("hasQualityValuationResult"), valuateAppleOfferingResult1)
+b.addObjPropAssertion(ontology, appleOfferingValuation1, b.getOCFoundEntityByName("qualityValuationPerformedOn"), appleOffering)
+b.addDataPropAssertion(ontology, valuateAppleOfferingResult1, b.getOCFoundEntityByName("hasValuationValue"), "4", XSD.integer)
+
+b.createAgentAction("Bob", "valuateAppleOfferingAction", "valuateAppleOfferingGoal", "valuateAppleOfferingTask",
+                         ["valuateAppleOfferingOperator", "perform"],
+                         ["valuateAppleOfferingOpArgument", "quality_valuation"],
+                         [
+                             ["valuateAppleOfferingObject", "refersExactlyTo", appleOfferingValuation1]
+                         ],
+                         [
+                             ["valuateAppleOfferingInput", "refersExactlyTo", appleOffering]
+                         ],
+                         [
+                             ["valuateAppleOfferingOutput", "refersExactlyTo", valuateAppleOfferingResult1]
+                         ],
+                         [
+                          "BobValuerTask",
+                          [
+                            ["valuateAppleOfferingObject", "BobValuerTaskObject"]
+                          ],
+                          [
+                              ["valuateAppleOfferingInput", "BobValuerTaskInput1"]
+                          ],
+                          [
+                              ["valuateAppleOfferingOutput","BobValuerTaskOutput1"]
+                          ]
+                    ])
+####################################
+
+
+
 file = open("meeting-130721.owl", "w")
 file.write(ontology.serialize(format='xml').decode())

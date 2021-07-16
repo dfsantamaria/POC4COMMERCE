@@ -8,7 +8,7 @@ PREFIX occom: <http://www.ngi.ontochain/ontologies/oc-commerce.owl#>
 PREFIX ocfound: <http://www.ngi.ontochain/ontologies/oc-found.owl#>
 PREFIX ocether: <http://www.ngi.ontochain/ontologies/oc-ethereum.owl#>
 PREFIX gr: <http://purl.org/goodrelations/v1#>
-PREFIX blon:<PREFIX blon:<http://www.semanticblockchain.com/Blondie.owl#>
+PREFIX blon: <http://www.semanticblockchain.com/Blondie.owl#>
 PREFIX : <http://www.ngi.ontochain/ontologies/meeting.owl#>
 
 #find participants
@@ -138,7 +138,7 @@ SELECT  ?ownerFeature ?agent ?token ?tokentype ?asset ?owner
                    ?operator oasis:refersExactlyTo oabox:mint.
                    ?taskExe oasis:refersExactlyTo ?token.
                    ?operationOn a ?tokentype.
-                   ?typeOf rdfs:subClassOf ocether:EthereumTokenERC721.
+                   ?tokenType rdfs:subClassOf ocether:EthereumTokenERC721.
                    FILTER( ?tokentype != owl:NamedIndividual)
                    FILTER NOT EXISTS { ?operationOn a ocether:DestroyedEthereumToken}       
                    
@@ -168,3 +168,72 @@ SELECT  ?ownerFeature ?agent ?token ?tokentype ?asset ?owner
                    ?operator oasis:refersExactlyTo oabox:mint.
                    ?taskExe oasis:refersExactlyTo ?token.     
                }
+
+
+#name and address of the smart contract that emits token related with a specific type of asset
+SELECT DISTINCT  ?agent ?hash ?address
+  WHERE {                   
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:mint.
+                   ?taskExe oasis:refersExactlyTo ?token.                    
+                   ?asset ocether:isDescribedByEthereumToken ?token. 
+                   ?asset a <http://www.ngi.ontochain/ontologies/meeting.owl#Apple>.               
+
+                   ?block blon:heightBlock ?blockNumber.    
+                   ?block blon:hasEthereumPayloadBlock ?payload. 
+                   ?payload blon:hasEthereumTransactionPayload ?transaction.
+                   ?transaction blon:recipientEthereumTransaction ?hash.  
+                   ?transaction ocether:introducesEthereumSmartContractAgent ?agent.  
+                   ?transaction blon:to ?address.      
+               }             
+
+#number of tokens and type of the related asset owned by wallets
+
+
+SELECT   ?owner (COUNT(?operationOn) as ?tokenCounter) ?assetType 
+  WHERE {         
+                  ?asset a ?assetType.
+                  FILTER(?assetType != owl:NamedIndividual).           
+                  ?asset ocether:isDescribedByEthereumToken ?operationOn.          
+                   ?token ocether:hasEthereumTokenEndurantFeature ?feature.
+                   ?feature a ?ownerFeature.
+                   FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)
+                   FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.} 
+                   ?feature ocether:isInTheWalletOf ?owner.                                    
+           }
+         GROUP BY ?assetType ?owner
+
+
+
+#valuation, valuation author, and valuated product
+
+SELECT DISTINCT  ?agent  ?valuated ?score
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:perform.
+                   ?taskExe oasis:refersExactlyTo ?qualityValuation.
+                   ?qualityValuation a ocfound:QualityValuationActivity.   
+                   ?qualityValuation ocfound:hasQualityValuationResult ?result.
+                   ?qualityValuation ocfound:qualityValuationPerformedOn ?valuated. 
+                   ?result ocfound:hasValuationValue ?score.                  
+                        
+           }
+
+#average score of a product and number of reviews
+SELECT (AVG(?score) AS ?AverageScore) (COUNT(?agent) AS ?numberOfValuation) 
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:perform.
+                   ?taskExe oasis:refersExactlyTo ?qualityValuation.
+                   ?qualityValuation a ocfound:QualityValuationActivity.   
+                   ?qualityValuation ocfound:hasQualityValuationResult ?result.
+                   ?qualityValuation ocfound:qualityValuationPerformedOn <http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering>. 
+                   ?result ocfound:hasValuationValue ?score.                      
+           }
+  
