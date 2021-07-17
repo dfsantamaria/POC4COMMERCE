@@ -70,7 +70,7 @@ SELECT DISTINCT ?offering ?type ?value ?currency
 
 SELECT DISTINCT ?chainActivity ?type ?agent
 	WHERE { 
-                   :appleGoodOffering  ocfound:hasSupplyChainManagement ?chainManagement.
+                   :batch2563Offering  ocfound:hasSupplyChainManagement ?chainManagement.
                    ?chainManagement ocfound:hasSupplyChainActivity ?chainActivity. 
                    ?chainActivity a ?type.      
                    FILTER( ?type != owl:NamedIndividual)   
@@ -92,7 +92,7 @@ SELECT ?agent  ?offering ?accepted
            }               
 
  #checking paypal payment for object
- SELECT DISTINCT ?agent  ?value ?object ?source ?destination
+ SELECT DISTINCT ?agent  ?value ?currency ?object ?source ?destination
   WHERE { 
                    ?agent oasis:performs ?agentExe.
                    ?agentExe oasis:hasTaskObject ?taskExe.
@@ -101,6 +101,7 @@ SELECT ?agent  ?offering ?accepted
                    ?agentExe oasis:hasTaskActualInputParameter ?pm1.  
                    ?pm1 oasis:refersExactlyTo ?transfer.  
                    ?transfer occom:hasCurrencyValue ?value.  
+                   ?transfer occom:hasCurrency ?currency. 
                           
                    ?agentExe oasis:hasTaskActualInputParameter ?pm2.
                    ?pm2 a occom:PaymentSource.
@@ -121,7 +122,7 @@ SELECT ?agent  ?object ?receipt
                    ?agent oasis:performs ?agentExe.
                    ?agentExe oasis:hasTaskObject ?taskExe.
                    ?agentExe oasis:hasTaskOperator ?operator.
-                   ?operator oasis:refersExactlyTo oabox:ship.
+                   ?operator oasis:refersExactlyTo oabox:deliver.
                    ?taskExe oasis:refersExactlyTo ?object.    
                    ?agentExe oasis:hasTaskActualOutputParameter ?pm1.
                    ?pm1 oasis:refersExactlyTo ?receipt.
@@ -130,7 +131,7 @@ SELECT ?agent  ?object ?receipt
 #show token minted and not destroyed, related asset, related minter, and the current owner
 
 
-SELECT  ?ownerFeature ?agent ?token ?tokentype ?asset ?owner
+SELECT  ?agent ?token ?tokentype ?asset ?owner
   WHERE { 
                    ?agent oasis:performs ?agentExe.
                    ?agentExe oasis:hasTaskObject ?taskExe.
@@ -223,7 +224,7 @@ SELECT DISTINCT  ?agent  ?valuated ?score
                         
            }
 
-#average score of a product and number of reviews
+#average score of a product of a certain type and number of reviews
 SELECT (AVG(?score) AS ?AverageScore) (COUNT(?agent) AS ?numberOfValuation) 
   WHERE { 
                    ?agent oasis:performs ?agentExe.
@@ -233,7 +234,9 @@ SELECT (AVG(?score) AS ?AverageScore) (COUNT(?agent) AS ?numberOfValuation)
                    ?taskExe oasis:refersExactlyTo ?qualityValuation.
                    ?qualityValuation a ocfound:QualityValuationActivity.   
                    ?qualityValuation ocfound:hasQualityValuationResult ?result.
-                   ?qualityValuation ocfound:qualityValuationPerformedOn <http://www.ngi.ontochain/ontologies/meeting.owl#appleGoodOffering>. 
+                   ?qualityValuation ocfound:qualityValuationPerformedOn ?offering.
+                   ?offering occom:isOfferingAbout ?asset.
+                   ?asset a :Apple.
                    ?result ocfound:hasValuationValue ?score.                      
            }
   
