@@ -50,7 +50,7 @@ b.addDataPropAssertion(ontology,smartContractBlockNum, blondie+"heightBlock","11
 b.addDataPropAssertion(ontology,smartContractBlockNum, blondie+"minerBlock","SPARK POOL", XSD.string)
 b.addDataPropAssertion(ontology, smartContractTransactNum, blondie+"recipientEthereumTransaction","0xb1fd76ea98869b5a014ad45e8eec0f58916e90e3d8e8f979522eebfc57928ec3", XSD.string)
 b.addObjPropAssertion(ontology, smartContractTransactNum, b.getOCEthereumEntityByName("introducesEthereumSmartContractAgent"), namespace+"appleProducerAgent")
-b.addDataPropAssertion(ontology, smartContractTransactNum, blondie+"to","#0x91f90D0d7490D851C89D107255408F14D947109e", XSD.string)
+b.addDataPropAssertion(ontology, smartContractTransactNum, blondie+"to","0x91f90D0d7490D851C89D107255408F14D947109e", XSD.string)
 
 
 b.addClassAssertion(ontology, namespace+"appleProducerSmartContractAgent", b.getOCEthereumEntityByName("EthereumSmartContractAgent"))

@@ -262,6 +262,15 @@
     
 
 
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#NonUniqueOffering -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#NonUniqueOffering">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
+        <owl:disjointWith rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#UniqueOffering"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering -->
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering">
@@ -330,6 +339,14 @@
     <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#StatusChangedOffering -->
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#StatusChangedOffering">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#UniqueOffering -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#UniqueOffering">
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
     </owl:Class>
     

@@ -157,18 +157,18 @@
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature -->
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#BurnedEthereumToken -->
 
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature">
-        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureChangedStatus"/>
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#BurnedEthereumToken">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenStatusChanged"/>
     </owl:Class>
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DestroyedEthereumToken -->
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature -->
 
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DestroyedEthereumToken">
-        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenStatusChanged"/>
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureChangedStatus"/>
     </owl:Class>
     
 
