@@ -12,8 +12,6 @@
      xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
      xmlns:terms="http://purl.org/dc/terms/">
     <owl:Ontology rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl">
-        <owl:imports rdf:resource="http://www.dmi.unict.it/oasis-abox.owl"/>
-        <owl:imports rdf:resource="http://www.dmi.unict.it/oasis.owl"/>
         <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl"/>
         <owl:imports rdf:resource="http://www.semanticblockchain.com/Blondie.owl"/>
     </owl:Ontology>
@@ -157,18 +155,30 @@
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature -->
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenEndurantFeature -->
 
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature">
-        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureChangedStatus"/>
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenEndurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus"/>
+        <owl:disjointWith rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature"/>
+        <rdfs:comment xml:lang="eng">This class describes an active endurant feature of an ethereum token</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DestroyedEthereumToken -->
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#BurnedEthereumToken -->
 
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DestroyedEthereumToken">
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#BurnedEthereumToken">
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenStatusChanged"/>
+        <rdfs:comment xml:lang="en">This class describes burned ethereum tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus"/>
+        <rdfs:comment xml:lang="en">This class describes deprecated endurant features of ethereum tokens</rdfs:comment>
     </owl:Class>
     
 
@@ -176,8 +186,8 @@
     <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ERC20SmartContractAgent -->
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ERC20SmartContractAgent">
-        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#FungibleBlockchainSmartContractAgent"/>
-        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumFungibleSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts compliant with the standard ERC 20</rdfs:comment>
     </owl:Class>
     
 
@@ -186,6 +196,16 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EtherCryptocurrency">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Cryptocurrency"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  cryptocurrency</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumERC1155SmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumERC1155SmartContractAgent">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSemiFungibleSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts compliant with the standard ERC 1155</rdfs:comment>
     </owl:Class>
     
 
@@ -193,6 +213,25 @@
     <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumERC721SmartContractAgent -->
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumERC721SmartContractAgent">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumNonFungibleSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts compliant with the standard ERC 721</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumFungibleSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumFungibleSmartContractAgent">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#FungibleBlockchainSmartContractAgent"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts  for fungible tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumNonFungibleSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumNonFungibleSmartContractAgent">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#NonFungibleBlockchainSmartContractAgent"/>
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent"/>
     </owl:Class>
@@ -203,6 +242,8 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSemiFungibleSmartContractAgent">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#SemiFungibleBlockChainSmartContractAgent"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts  for semi-fungible tokens</rdfs:comment>
     </owl:Class>
     
 
@@ -211,6 +252,7 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#BlockchainSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts</rdfs:comment>
     </owl:Class>
     
 
@@ -219,6 +261,7 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractExecution">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+        <rdfs:comment xml:lang="en">This class describes actions performed by smart contract such as message call and normal smart contract transactions</rdfs:comment>
     </owl:Class>
     
 
@@ -227,6 +270,7 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#BlockchainDigitalToken"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum tokens</rdfs:comment>
     </owl:Class>
     
 
@@ -236,6 +280,7 @@
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC1155">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#SemiFungibleToken"/>
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum tokens compliant with the standard ERC1155</rdfs:comment>
     </owl:Class>
     
 
@@ -245,6 +290,7 @@
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC20">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Fungible-Token"/>
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum tokens compliant with the standard ERC 20</rdfs:comment>
     </owl:Class>
     
 
@@ -254,6 +300,7 @@
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC721">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Non-fungibleToken"/>
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum tokens compliant with the standard ERC 721</rdfs:comment>
     </owl:Class>
     
 
@@ -263,14 +310,24 @@
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeature"/>
+        <rdfs:comment xml:lang="en">This class describes endurant features of ethereum tokens</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureChangedStatus -->
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus -->
 
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureChangedStatus">
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenEndurantFeature"/>
+                    <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature"/>
+        <rdfs:comment xml:lang="eng">This class describes the status (active or deprecated) of a feature of an ethereum token</rdfs:comment>
     </owl:Class>
     
 
@@ -279,6 +336,7 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeature">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Feature"/>
+        <rdfs:comment xml:lang="en">This class describes features of ethereum tokens</rdfs:comment>
     </owl:Class>
     
 
@@ -287,6 +345,7 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeatureModificationActivity">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Activity"/>
+        <rdfs:comment xml:lang="en">This class describes activities carried on in order to modify some endurant features of tokens</rdfs:comment>
     </owl:Class>
     
 
@@ -295,6 +354,7 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenStatusChanged">
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum tokens that change their status in an perdurant way</rdfs:comment>
     </owl:Class>
     
 
@@ -303,6 +363,7 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumWalletOwnerEndurantFeature">
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature"/>
+        <rdfs:comment xml:lang="en">This class describes the ownership of tokens as endurant feature</rdfs:comment>
     </owl:Class>
     
 

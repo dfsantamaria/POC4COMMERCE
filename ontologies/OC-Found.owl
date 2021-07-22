@@ -96,7 +96,14 @@
     <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#supplyChainActivityImplementedBy">
         <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#implementedBy"/>
         <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainActivity"/>
-        <rdfs:range rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#Asset"/>
+                    <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 

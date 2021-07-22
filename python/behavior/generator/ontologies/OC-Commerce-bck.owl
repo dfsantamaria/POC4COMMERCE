@@ -187,6 +187,33 @@
     
 
 
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#ActivationStatusChangedOffering -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#ActivationStatusChangedOffering">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#ActiveOffering"/>
+                    <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#DeprecatedOffering"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#StatusChangedOffering"/>
+        <rdfs:comment xml:lang="eng">This class describes whether the offering is active or deprecated</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#ActiveOffering -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#ActiveOffering">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#ActivationStatusChangedOffering"/>
+        <owl:disjointWith rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#DeprecatedOffering"/>
+        <rdfs:comment xml:lang="eng">This class describes active offerings</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#Auction -->
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Auction">
@@ -256,7 +283,7 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#DeprecatedOffering">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DeprecatedActivity"/>
-        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#StatusChangedOffering"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#ActivationStatusChangedOffering"/>
         <rdfs:comment xml:lang="eng">This class describes offerings that are no longer active due to some modification</rdfs:comment>
     </owl:Class>
     

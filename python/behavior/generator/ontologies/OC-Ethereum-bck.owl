@@ -159,6 +159,7 @@
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenEndurantFeature">
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus"/>
+        <owl:disjointWith rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature"/>
         <rdfs:comment xml:lang="eng">This class describes an active endurant feature of an ethereum token</rdfs:comment>
     </owl:Class>
     
