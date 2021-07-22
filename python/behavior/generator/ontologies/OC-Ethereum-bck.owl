@@ -1,324 +1,389 @@
 <?xml version="1.0"?>
-<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+<rdf:RDF xmlns="http://www.ngi.ontochain/ontologies/oc-ethereum.owl"
      xml:base="http://www.ngi.ontochain/ontologies/oc-ethereum.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:v1="http://purl.org/goodrelations/v1#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     ontologyIRI="http://www.ngi.ontochain/ontologies/oc-ethereum.owl">
-    <Prefix name="" IRI="http://www.ngi.ontochain/ontologies/oc-ethereum.owl"/>
-    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
-    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
-    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
-    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
-    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
-    <Import>http://www.dmi.unict.it/oasis-abox.owl</Import>
-    <Import>http://www.dmi.unict.it/oasis.owl</Import>
-    <Import>http://www.ngi.ontochain/ontologies/oc-commerce.owl</Import>
-    <Import>http://www.semanticblockchain.com/Blondie.owl</Import>
-    <Declaration>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#RequestDescriptionObject"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#DeprecatedEthereumTokenEndurantFeature"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#DestroyedEthereumToken"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#ERC20SmartContractAgent"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EtherCryptocurrency"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumERC721SmartContractAgent"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumSemiFungibleSmartContractAgent"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumSmartContractAgent"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumSmartContractExecution"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumToken"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumTokenERC1155"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumTokenERC20"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumTokenERC721"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumTokenEndurantFeature"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumTokenEndurantFeatureChangedStatus"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumTokenFeature"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumTokenFeatureModificationActivity"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumTokenStatusChanged"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EthereumWalletOwnerEndurantFeature"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasEthereumTokenEndurantFeature"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasEthereumTokenFeatureModificationResult"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasEthereumTokenFeatureModificationSource"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#introducesEthereumSmartContractAgent"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#introducesEthereumSmartContractExecution"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#isDescribedByEthereumToken"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#isEthereumTokenFeatureModifiedIn"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasTokenID"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#isInTheWalletOf"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#ether_cryptocurrency"/>
-    </Declaration>
-    <SubClassOf>
-        <Class IRI="#DeprecatedEthereumTokenEndurantFeature"/>
-        <Class IRI="#EthereumTokenEndurantFeatureChangedStatus"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#DestroyedEthereumToken"/>
-        <Class IRI="#EthereumTokenStatusChanged"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ERC20SmartContractAgent"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#FungibleBlockchainSmartContractAgent"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ERC20SmartContractAgent"/>
-        <Class IRI="#EthereumSmartContractAgent"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EtherCryptocurrency"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#Cryptocurrency"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumERC721SmartContractAgent"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#NonFungibleBlockchainSmartContractAgent"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumERC721SmartContractAgent"/>
-        <Class IRI="#EthereumSmartContractAgent"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumSemiFungibleSmartContractAgent"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#SemiFungibleBlockChainSmartContractAgent"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumSmartContractAgent"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#BlockchainSmartContractAgent"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumSmartContractExecution"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumToken"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#BlockchainDigitalToken"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenERC1155"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#SemiFungibleToken"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenERC1155"/>
-        <Class IRI="#EthereumToken"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenERC20"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#Fungible-Token"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenERC20"/>
-        <Class IRI="#EthereumToken"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenERC721"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#Non-fungibleToken"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenERC721"/>
-        <Class IRI="#EthereumToken"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenEndurantFeature"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenEndurantFeature"/>
-        <Class IRI="#EthereumTokenFeature"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenEndurantFeatureChangedStatus"/>
-        <Class IRI="#EthereumTokenEndurantFeature"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenFeature"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#Feature"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenFeatureModificationActivity"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#Activity"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumTokenStatusChanged"/>
-        <Class IRI="#EthereumToken"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EthereumWalletOwnerEndurantFeature"/>
-        <Class IRI="#EthereumTokenEndurantFeature"/>
-    </SubClassOf>
-    <ClassAssertion>
-        <Class IRI="#EtherCryptocurrency"/>
-        <NamedIndividual IRI="#ether_cryptocurrency"/>
-    </ClassAssertion>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasEthereumTokenEndurantFeature"/>
-        <ObjectProperty IRI="http://www.dmi.unict.it/oasis.owl#isRelatedWith"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasEthereumTokenFeatureModificationResult"/>
-        <ObjectProperty IRI="http://www.dmi.unict.it/oasis.owl#involves"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasEthereumTokenFeatureModificationSource"/>
-        <ObjectProperty IRI="http://www.dmi.unict.it/oasis.owl#involves"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#introducesEthereumSmartContractAgent"/>
-        <ObjectProperty IRI="http://www.dmi.unict.it/oasis.owl#describes"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#introducesEthereumSmartContractExecution"/>
-        <ObjectProperty IRI="http://www.dmi.unict.it/oasis.owl#describes"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#isDescribedByEthereumToken"/>
-        <ObjectProperty IRI="http://www.dmi.unict.it/oasis.owl#isDescribedBy"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#isEthereumTokenFeatureModifiedIn"/>
-        <ObjectProperty IRI="http://www.dmi.unict.it/oasis.owl#involves"/>
-    </SubObjectPropertyOf>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasEthereumTokenEndurantFeature"/>
-        <Class IRI="#EthereumToken"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasEthereumTokenFeatureModificationResult"/>
-        <Class IRI="#EthereumTokenFeatureModificationActivity"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasEthereumTokenFeatureModificationSource"/>
-        <Class IRI="#EthereumTokenFeatureModificationActivity"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#introducesEthereumSmartContractAgent"/>
-        <Class IRI="http://www.semanticblockchain.com/Blondie.owl#ContractCreationEthereumTransaction"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#introducesEthereumSmartContractExecution"/>
-        <ObjectUnionOf>
-            <Class IRI="http://www.semanticblockchain.com/Blondie.owl#MessageCallEthereumTransaction"/>
-            <Class IRI="http://www.semanticblockchain.com/Blondie.owl#NormalEthereumTransaction"/>
-        </ObjectUnionOf>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#isDescribedByEthereumToken"/>
-        <Class IRI="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialAsset"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#isEthereumTokenFeatureModifiedIn"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasEthereumTokenEndurantFeature"/>
-        <Class IRI="#EthereumTokenEndurantFeature"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasEthereumTokenFeatureModificationResult"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasEthereumTokenFeatureModificationSource"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasEthereumTokenFeatureModificationSource"/>
-        <Class IRI="#DeprecatedEthereumTokenEndurantFeature"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#introducesEthereumSmartContractAgent"/>
-        <Class IRI="#EthereumSmartContractAgent"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#introducesEthereumSmartContractExecution"/>
-        <Class IRI="#EthereumSmartContractExecution"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#isDescribedByEthereumToken"/>
-        <Class IRI="#EthereumToken"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#isEthereumTokenFeatureModifiedIn"/>
-        <Class IRI="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
-    </ObjectPropertyRange>
-    <SubDataPropertyOf>
-        <DataProperty IRI="#hasTokenID"/>
-        <DataProperty IRI="http://www.dmi.unict.it/oasis.owl#hasDataValue"/>
-    </SubDataPropertyOf>
-    <SubDataPropertyOf>
-        <DataProperty IRI="#isInTheWalletOf"/>
-        <DataProperty IRI="http://www.dmi.unict.it/oasis.owl#hasDataValue"/>
-    </SubDataPropertyOf>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasTokenID"/>
-        <Class IRI="#EthereumToken"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#isInTheWalletOf"/>
-        <Class IRI="#EthereumTokenEndurantFeature"/>
-    </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasTokenID"/>
-        <Datatype abbreviatedIRI="xsd:integer"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#isInTheWalletOf"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-</Ontology>
+     xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl">
+        <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl"/>
+        <owl:imports rdf:resource="http://www.semanticblockchain.com/Blondie.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenEndurantFeature -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenEndurantFeature">
+        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#isRelatedWith"/>
+        <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:range rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenFeatureModificationResult -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenFeatureModificationResult">
+        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#involves"/>
+        <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeatureModificationActivity"/>
+        <rdfs:range rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenFeatureModificationSource -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenFeatureModificationSource">
+        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#involves"/>
+        <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeatureModificationActivity"/>
+        <rdfs:range rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+        <rdfs:range rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#introducesEthereumSmartContractAgent -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#introducesEthereumSmartContractAgent">
+        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#describes"/>
+        <rdfs:domain rdf:resource="http://www.semanticblockchain.com/Blondie.owl#ContractCreationEthereumTransaction"/>
+        <rdfs:range rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#introducesEthereumSmartContractExecution -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#introducesEthereumSmartContractExecution">
+        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#describes"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticblockchain.com/Blondie.owl#MessageCallEthereumTransaction"/>
+                    <rdf:Description rdf:about="http://www.semanticblockchain.com/Blondie.owl#NormalEthereumTransaction"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractExecution"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isDescribedByEthereumToken -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isDescribedByEthereumToken">
+        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#isDescribedBy"/>
+        <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialAsset"/>
+        <rdfs:range rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isEthereumTokenFeatureModifiedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isEthereumTokenFeatureModifiedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#involves"/>
+        <rdfs:domain rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+        <rdfs:range rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasTokenID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasTokenID">
+        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#hasDataValue"/>
+        <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isInTheWalletOf -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isInTheWalletOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#hasDataValue"/>
+        <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#RequestDescriptionObject -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#RequestDescriptionObject"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenEndurantFeature -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenEndurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus"/>
+        <rdfs:comment xml:lang="eng">This class describes an active endurant feature of an ethereum token</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#BurnedEthereumToken -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#BurnedEthereumToken">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenStatusChanged"/>
+        <rdfs:comment xml:lang="en">This class describes burned ethereum tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus"/>
+        <rdfs:comment xml:lang="en">This class describes deprecated endurant features of ethereum tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ERC20SmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ERC20SmartContractAgent">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumFungibleSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts compliant with the standard ERC 20</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EtherCryptocurrency -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EtherCryptocurrency">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Cryptocurrency"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  cryptocurrency</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumERC1155SmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumERC1155SmartContractAgent">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSemiFungibleSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts compliant with the standard ERC 1155</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumERC721SmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumERC721SmartContractAgent">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumNonFungibleSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts compliant with the standard ERC 721</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumFungibleSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumFungibleSmartContractAgent">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#FungibleBlockchainSmartContractAgent"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts  for fungible tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumNonFungibleSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumNonFungibleSmartContractAgent">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#NonFungibleBlockchainSmartContractAgent"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSemiFungibleSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSemiFungibleSmartContractAgent">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#SemiFungibleBlockChainSmartContractAgent"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts  for semi-fungible tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractAgent">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#BlockchainSmartContractAgent"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum  smart contracts</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractExecution -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumSmartContractExecution">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+        <rdfs:comment xml:lang="en">This class describes actions performed by smart contract such as message call and normal smart contract transactions</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#BlockchainDigitalToken"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC1155 -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC1155">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#SemiFungibleToken"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum tokens compliant with the standard ERC1155</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC20 -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC20">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Fungible-Token"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum tokens compliant with the standard ERC 20</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC721 -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenERC721">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Non-fungibleToken"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum tokens compliant with the standard ERC 721</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeature"/>
+        <rdfs:comment xml:lang="en">This class describes endurant features of ethereum tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenEndurantFeature"/>
+                    <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature"/>
+        <rdfs:comment xml:lang="eng">This class describes the status (active or deprecated) of a feature of an ethereum token</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeature -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeature">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Feature"/>
+        <rdfs:comment xml:lang="en">This class describes features of ethereum tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeatureModificationActivity -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeatureModificationActivity">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Activity"/>
+        <rdfs:comment xml:lang="en">This class describes activities carried on in order to modify some endurant features of tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenStatusChanged -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenStatusChanged">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:comment xml:lang="en">This class describes ethereum tokens that change their status in an perdurant way</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumWalletOwnerEndurantFeature -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumWalletOwnerEndurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature"/>
+        <rdfs:comment xml:lang="en">This class describes the ownership of tokens as endurant feature</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ether_cryptocurrency -->
+
+    <owl:NamedIndividual rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ether_cryptocurrency">
+        <rdf:type rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EtherCryptocurrency"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
 
 
 
