@@ -53,7 +53,7 @@ b.addObjPropAssertion(ontology, smartContractTransactNum, b.getOCEthereumEntityB
 b.addDataPropAssertion(ontology, smartContractTransactNum, blondie+"to","0x91f90D0d7490D851C89D107255408F14D947109e", XSD.string)
 
 
-b.addClassAssertion(ontology, namespace+"appleProducerSmartContractAgent", b.getOCEthereumEntityByName("EthereumSmartContractAgent"))
+b.addClassAssertion(ontology, namespace+"appleProducerSmartContractAgent", b.getOCEthereumEntityByName("EthereumERC721SmartContractAgent"))
 myTokenMint = namespace+"myAppleToken"
 b.addObjPropAssertion(ontology, namespace+"AppleToken", RDFS.subClassOf, b.getOCEthereumEntityByName("EthereumTokenERC721"))
 b.addClassAssertion(ontology, myTokenMint, namespace+"AppleToken")
