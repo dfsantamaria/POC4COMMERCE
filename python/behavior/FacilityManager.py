@@ -9,16 +9,16 @@ class FacilityManager(BehaviorManager):
                                  actionGraph, actionNamespace, actionURL,
                                  None, None, None)
 
-        self.startOntology("ocfound", "https://www.dmi.unict.it/santamaria/projects/oasis/sources/ontochain/OC-Found.owl", None,
-                           self.loadOntology("https://www.dmi.unict.it/santamaria/projects/oasis/sources/ontochain/OC-Found.owl"), None, None)
+        self.startOntology("ocfound", "OC-Found.owl", None,
+                           self.loadOntology("OC-Found.owl"), None, None)
 
         self.startOntology("occommerce",
-                           "https://www.dmi.unict.it/santamaria/projects/oasis/sources/ontochain/OC-Commerce.owl", None,
-                           self.loadOntology("https://www.dmi.unict.it/santamaria/projects/oasis/sources/ontochain/OC-Commerce.owl"), None, None)
+                           "OC-Commerce.owl", None,
+                           self.loadOntology("OC-Commerce.owl"), None, None)
 
         self.startOntology("ocether",
-                           "https://www.dmi.unict.it/santamaria/projects/oasis/sources/ontochain/OC-Ethereum.owl", None,
-                           self.loadOntology("https://www.dmi.unict.it/santamaria/projects/oasis/sources/ontochain/OC-Ethereum.owl"),
+                           "generator/ontologies/OC-Ethereum.owl", None,
+                           self.loadOntology("OC-Ethereum.owl"),
                            None, None)
 
 
