@@ -1,0 +1,242 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX oabox: <http://www.dmi.unict.it/oasis-abox.owl#> 
+PREFIX oasis: <http://www.dmi.unict.it/oasis.owl#> 
+PREFIX occom: <http://www.ngi.ontochain/ontologies/oc-commerce.owl#>
+PREFIX ocfound: <http://www.ngi.ontochain/ontologies/oc-found.owl#>
+PREFIX ocether: <http://www.ngi.ontochain/ontologies/oc-ethereum.owl#>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX blon: <http://www.semanticblockchain.com/Blondie.owl#>
+PREFIX : <http://www.ngi.ontochain/ontologies/meeting.owl#>
+
+#find participants
+
+SELECT DISTINCT ?agent ?identity ?operation ?operationOn
+	WHERE { 
+                   ?agent ocfound:hasDigitalIdentity ?identity.
+                   ?agent oasis:hasBehavior ?behavior.
+                   ?behavior oasis:consistsOfGoalDescription ?goal.
+                    ?goal oasis:consistsOfTaskDescription ?task.
+                    ?task oasis:hasTaskOperator ?operator.
+                    ?operator oasis:refersExactlyTo ?operation.
+                    ?task oasis:hasTaskObject ?object.
+                    ?object oasis:refersAsNewTo ?ob.
+                    ?ob a ?operationOn    
+                    FILTER( ?operationOn != owl:NamedIndividual)      
+           }
+            
+
+#find actions
+
+SELECT DISTINCT ?agent ?operation ?operationOn ?typeOf
+	WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo ?operation.
+                   ?taskExe oasis:refersExactlyTo ?operationOn.
+                   ?operationOn a ?typeOf.
+                   FILTER( ?typeOf != owl:NamedIndividual)              
+           }
+
+
+#find offerings
+SELECT DISTINCT ?offering ?type ?value ?currency
+  WHERE { 
+                    ?taskExec a oasis:TaskExecution.
+                    ?taskExec oasis:hasTaskObject ?taskob.
+                    ?taskob oasis:refersExactlyTo ?offering.
+                    ?offering a ?offer.
+                    FILTER(?offer = occom:Offering) 
+                    FILTER NOT EXISTS { ?offering a occom:DeprecatedOffering.}
+                    FILTER NOT EXISTS { ?offering a occom:ClosedOffering.}
+                    FILTER NOT EXISTS { ?offering a occom:RetractedOffering.}  
+                    ?offering occom:isOfferingAbout ?product.
+                    ?product a ?type.
+                     FILTER( ?type != owl:NamedIndividual)  
+                    
+                    ?priceDetActivity occom:priceDeterminationPerformedOn ?offering.
+                    ?priceDetActivity occom:hasPriceValue ?price.
+                    ?price gr:hasCurrencyValue ?value.
+                    ?price gr:hasCurrency ?currency.   
+                                          
+                }
+
+
+#the supply chain activity related with the selected offering
+
+
+SELECT DISTINCT ?chainActivity ?type ?agent
+	WHERE { 
+                   :batch2563Offering  ocfound:hasSupplyChainManagement ?chainManagement.
+                   ?chainManagement ocfound:hasSupplyChainActivity ?chainActivity. 
+                   ?chainActivity a ?type.      
+                   FILTER( ?type != owl:NamedIndividual)   
+                   ?chainActivity ocfound:supplyChainActivityImplementedBy ?behavior.
+                   ?agent oasis:hasBehavior ?behavior.
+                }
+
+
+ #accepted offering
+SELECT ?agent  ?offering ?accepted
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:accept.
+                   ?taskExe oasis:refersExactlyTo ?offering.
+                   ?offering a ?accepted.
+                   FILTER( ?accepted = occom:AcceptedOffering)             
+           }               
+
+ #checking paypal payment for object
+ SELECT DISTINCT ?agent  ?value ?currency ?object ?source ?destination
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:transfer.                           
+                   ?agentExe oasis:hasTaskActualInputParameter ?pm1.  
+                   ?pm1 oasis:refersExactlyTo ?transfer.  
+                   ?transfer occom:hasCurrencyValue ?value.  
+                   ?transfer occom:hasCurrency ?currency. 
+                          
+                   ?agentExe oasis:hasTaskActualInputParameter ?pm2.
+                   ?pm2 a occom:PaymentSource.
+                   ?pm2 oasis:refersExactlyTo ?source.
+
+                   ?agentExe oasis:hasTaskActualInputParameter ?pm3.
+                   ?pm3 a occom:PaymentDestination.
+                   ?pm3 oasis:refersExactlyTo ?destination.
+
+                   ?agentExe oasis:hasTaskActualInputParameter ?pm4.  
+                   ?pm4 a occom:PayedOffering.
+                   ?pm4 oasis:refersExactlyTo ?object.                    
+           }             
+
+#shipment
+SELECT ?agent  ?object ?receipt
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:deliver.
+                   ?taskExe oasis:refersExactlyTo ?object.    
+                   ?agentExe oasis:hasTaskActualOutputParameter ?pm1.
+                   ?pm1 oasis:refersExactlyTo ?receipt.
+           }  
+
+#show token minted and not destroyed, related asset, related minter, and the current owner
+
+
+SELECT  ?agent ?token ?tokentype ?asset ?owner
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:mint.
+                   ?taskExe oasis:refersExactlyTo ?token.
+                   ?operationOn a ?tokentype.
+                   ?tokenType rdfs:subClassOf ocether:EthereumTokenERC721.
+                   FILTER( ?tokentype != owl:NamedIndividual)
+                   FILTER NOT EXISTS { ?operationOn a ocether:DestroyedEthereumToken}       
+                   
+                   ?asset ocether:isDescribedByEthereumToken ?operationOn.          
+                   ?token ocether:hasEthereumTokenEndurantFeature ?feature.
+                   ?feature a ?ownerFeature.
+                   FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)
+                   FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.} 
+                   ?feature ocether:isInTheWalletOf ?owner.                        
+           }
+
+ #find block and transaction hash of the mining of a specified token "?token"
+
+ SELECT   ?blockNumber ?hash ?token
+  WHERE { 
+                   ?block blon:heightBlock ?blockNumber.    
+                   ?block blon:hasEthereumPayloadBlock ?payload. 
+                   ?payload blon:hasEthereumTransactionPayload ?transaction.
+                   ?transaction blon:recipientEthereumTransaction ?hash.  
+                   ?transaction ocether:introducesEthereumSmartContractExecution ?action.
+             
+                   ?action oasis:consistsOfGoalExecution ?goal.
+                   ?goal oasis:consistsOfTaskExecution ?agentExe.
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:mint.
+                   ?taskExe oasis:refersExactlyTo ?token.     
+               }
+
+
+#name and address of the smart contract that emits token related with a specific type of asset
+SELECT DISTINCT  ?agent ?hash ?address
+  WHERE {                   
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:mint.
+                   ?taskExe oasis:refersExactlyTo ?token.                    
+                   ?asset ocether:isDescribedByEthereumToken ?token. 
+                   ?asset a <http://www.ngi.ontochain/ontologies/meeting.owl#Apple>.               
+
+                   ?block blon:heightBlock ?blockNumber.    
+                   ?block blon:hasEthereumPayloadBlock ?payload. 
+                   ?payload blon:hasEthereumTransactionPayload ?transaction.
+                   ?transaction blon:recipientEthereumTransaction ?hash.  
+                   ?transaction ocether:introducesEthereumSmartContractAgent ?agent.  
+                   ?transaction blon:to ?address.      
+               }             
+
+#number of tokens and type of the related asset owned by wallets
+
+
+SELECT   ?owner (COUNT(?operationOn) as ?tokenCounter) ?assetType 
+  WHERE {         
+                  ?asset a ?assetType.
+                  FILTER(?assetType != owl:NamedIndividual).           
+                  ?asset ocether:isDescribedByEthereumToken ?operationOn.          
+                   ?token ocether:hasEthereumTokenEndurantFeature ?feature.
+                   ?feature a ?ownerFeature.
+                   FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)
+                   FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.} 
+                   ?feature ocether:isInTheWalletOf ?owner.                                    
+           }
+         GROUP BY ?assetType ?owner
+
+
+
+#valuation, valuation author, and valuated product
+
+SELECT DISTINCT  ?agent  ?valuated ?score
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:perform.
+                   ?taskExe oasis:refersExactlyTo ?qualityValuation.
+                   ?qualityValuation a ocfound:QualityValuationActivity.   
+                   ?qualityValuation ocfound:hasQualityValuationResult ?result.
+                   ?qualityValuation ocfound:qualityValuationPerformedOn ?valuated. 
+                   ?result ocfound:hasValuationValue ?score.                  
+                        
+           }
+
+#average score of a product of a certain type and number of reviews
+SELECT (AVG(?score) AS ?AverageScore) (COUNT(?agent) AS ?numberOfValuation) 
+  WHERE { 
+                   ?agent oasis:performs ?agentExe.
+                   ?agentExe oasis:hasTaskObject ?taskExe.
+                   ?agentExe oasis:hasTaskOperator ?operator.
+                   ?operator oasis:refersExactlyTo oabox:perform.
+                   ?taskExe oasis:refersExactlyTo ?qualityValuation.
+                   ?qualityValuation a ocfound:QualityValuationActivity.   
+                   ?qualityValuation ocfound:hasQualityValuationResult ?result.
+                   ?qualityValuation ocfound:qualityValuationPerformedOn ?offering.
+                   ?offering occom:isOfferingAbout ?asset.
+                   ?asset a :Apple.
+                   ?result ocfound:hasValuationValue ?score.                      
+           }
+  
