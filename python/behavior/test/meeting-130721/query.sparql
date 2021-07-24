@@ -112,7 +112,7 @@ SELECT ?agent  ?offering ?accepted
                    ?pm3 oasis:refersExactlyTo ?destination.
 
                    ?agentExe oasis:hasTaskActualInputParameter ?pm4.  
-                   ?pm4 a occom:PayedObject.
+                   ?pm4 a occom:PayedOffering.
                    ?pm4 oasis:refersExactlyTo ?object.                    
            }             
 

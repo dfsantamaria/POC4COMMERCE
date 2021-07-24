@@ -49,7 +49,7 @@ b.addObjPropAssertion(ontology, smartContractBlockPay, blondie+"hasEthereumTrans
 b.addDataPropAssertion(ontology,smartContractBlockNum, blondie+"heightBlock","11479012", XSD.string)
 b.addDataPropAssertion(ontology,smartContractBlockNum, blondie+"minerBlock","SPARK POOL", XSD.string)
 b.addDataPropAssertion(ontology, smartContractTransactNum, blondie+"recipientEthereumTransaction","0xb1fd76ea98869b5a014ad45e8eec0f58916e90e3d8e8f979522eebfc57928ec3", XSD.string)
-b.addObjPropAssertion(ontology, smartContractTransactNum, b.getOCEthereumEntityByName("introducesEthereumSmartContractAgent"), namespace+"appleProducerAgent")
+b.addObjPropAssertion(ontology, smartContractTransactNum, b.getOCEthereumEntityByName("introducesEthereumSmartContractAgent"), namespace+"appleProducerSmartContractAgent")
 b.addDataPropAssertion(ontology, smartContractTransactNum, blondie+"to","0x91f90D0d7490D851C89D107255408F14D947109e", XSD.string)
 
 
@@ -171,7 +171,7 @@ myPaypalMTInput4= namespace + "PaypalMTAssetToPayFor"
 b.addClassAssertion(ontology, myPaypalMTObject, b.getOASISEntityByName("FIATCurrency"))
 b.addClassAssertion(ontology, myPaypalMTInput2, namespace+"PaypalAccount")
 b.addClassAssertion(ontology, myPaypalMTInput3, namespace+"PaypalAccount")
-b.addClassAssertion(ontology, myPaypalMTInput4, b.getOASISEntityByName("Asset"))
+b.addClassAssertion(ontology, myPaypalMTInput4, b.getOCCommerceEntityByName("Offering"))
 b.createAgentBehavior("MoneyTransferBehavior", "PaypalMTGoal", "PaypalMTTask",
                          ["PaypalMTOperator", "transfer"],
                          [],
@@ -317,7 +317,7 @@ b.addDataPropAssertion(ontology, payTransferringOperation, b.getOCCommerceEntity
 b.addDataPropAssertion(ontology, payTransferringOperation, b.getOCCommerceEntityByName("hasCurrency"), "euro", XSD.string)
 b.addClassAssertion(ontology, namespace+"paybatch2563OfferingInput2", b.getOCCommerceEntityByName("PaymentSource"))
 b.addClassAssertion(ontology, namespace+"paybatch2563OfferingInput3", b.getOCCommerceEntityByName("PaymentDestination"))
-b.addClassAssertion(ontology, namespace+"paybatch2563OfferingInput4", b.getOCCommerceEntityByName("PayedObject"))
+b.addClassAssertion(ontology, namespace+"paybatch2563OfferingInput4", b.getOCCommerceEntityByName("PayedOffering"))
 b.createAgentAction("paypalPayAgent", "paypaybatch2563OfferingAction", "paybatch2563OfferingGoal", "paybatch2563OfferingTask",
                          ["paybatch2563OfferingOperator", "transfer"],
                          [],
@@ -328,7 +328,7 @@ b.createAgentAction("paypalPayAgent", "paypaybatch2563OfferingAction", "paybatch
                             ["paybatch2563OfferingInput1", "refersExactlyTo", payTransferringOperation],
                             ["paybatch2563OfferingInput2", "refersExactlyTo", bobPaypalAccount],
                             ["paybatch2563OfferingInput3", "refersExactlyTo", producerPaypalAccount],
-                            ["paybatch2563OfferingInput4", "refersExactlyTo", appleBatch]
+                            ["paybatch2563OfferingInput4", "refersExactlyTo", appleOffering]
                          ],
                          [
                              ["paybatch2563OfferingOutput1", "refersExactlyTo", payTransferringOperation]
@@ -389,7 +389,7 @@ b.addObjPropAssertion(ontology, appleTransactNum, b.getOCEthereumEntityByName("i
 
 appleBatchToken = namespace+"appleBatch2563Token"
 appleBatchTokenFeature = namespace+"appleBatch2563TokenFeature"
-b.addClassAssertion(ontology, appleBatchToken, namespace+"AppleToken")
+b.addClassAssertion(ontology, appleBatchToken, namespace+"EthereumTokenERC721")
 b.addClassAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("EthereumWalletOwnerEndurantFeature"))
 b.addObjPropAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("hasEthereumTokenEndurantFeature"), appleBatchTokenFeature)
 b.addDataPropAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("hasTokenID"),  "12", XSD.integer)
