@@ -39,7 +39,10 @@ class Query:
          self.prefix.append((_prefixMap[0],_prefixMap[1]))
 
      def build(self):
-         return self.buildPrefix() + self.query[0]
+         return self.buildPrefix() + self.buildBody()
+
+     def buildBody(self):
+         return self.query[0]
 
      def getQuery(self):
          return self.query
@@ -64,16 +67,16 @@ class QueryQF3(Query):
     def __init__(self, prefix, param):
         super().__init__(prefix, ["SELECT ?supplychain WHERE {", "ocfound:hasSupplyChainManagement ?supplychain .}"], [param])
 
-    def build(self):
-        return self.buildPrefix() + self.getQuery()[0] + self.getParameters()[0] + " " + self.getQuery()[1]
+    def buildBody(self):
+        return  self.getQuery()[0] + self.getParameters()[0] + " " + self.getQuery()[1]
 
 
 class QueryQF4(Query):
     def __init__(self, prefix, param):
         super().__init__(prefix, ["SELECT ?supplychainActivity WHERE {", "ocfound:hasSupplyChainManagement ?supplychain. ?supplychain ocfound:hasSupplyChainActivity ocfound:supplychainActivity .}"], [param])
 
-    def build(self):
-        return self.buildPrefix() + self.getQuery()[0] + self.getParameters()[0] + " " + self.getQuery()[1]
+    def buildBody(self):
+        return  self.getQuery()[0] + self.getParameters()[0] + " " + self.getQuery()[1]
 
 
 class QueryQF5(Query):
@@ -81,8 +84,8 @@ class QueryQF5(Query):
         super().__init__(prefix, ["SELECT ?agent ?supplychainActivity WHERE {", "ocfound:hasSupplyChainManagement ?supplychain. ?supplychain ocfound:hasSupplyChainActivity ocfound:supplychainActivity. ?supplychainActivity ocfound:supplyChainActivityImplementedBy ?behavior."+
                                    " ?behavior a oasis:Behavior. ?agent oasis:hasBehavior ?behavior.}"], [param])
 
-    def build(self):
-        return self.buildPrefix() + self.getQuery()[0] + self.getParameters()[0] + " " + self.getQuery()[1]
+    def buildBody(self):
+        return  self.getQuery()[0] + self.getParameters()[0] + " " + self.getQuery()[1]
 
 
 class QueryQF6(Query):
@@ -91,8 +94,8 @@ class QueryQF6(Query):
                                    " ?taskExe oasis:refersExactlyTo ?qualityValuation. ?qualityValuation a ocfound:QualityValuationActivity. ?qualityValuation ocfound:hasQualityValuationResult ?result. ?qualityValuation ocfound:qualityValuationPerformedOn",
                                    ". ?result ocfound:hasValuationValue ?score.}"], [param])
 
-    def build(self):
-        return self.buildPrefix() + self.getQuery()[0]+ " " + self.getParameters()[0] + self.getQuery()[1]
+    def buildBody(self):
+        return self.getQuery()[0]+ " " + self.getParameters()[0] + self.getQuery()[1]
 
 
 class QueryQF7(Query):
@@ -101,8 +104,8 @@ class QueryQF7(Query):
                                   " ?operator oasis:refersExactlyTo oabox:perform. ?taskExe oasis:refersExactlyTo ?qualityValuation. ?qualityValuation a ocfound:QualityValuationActivity. ?qualityValuation ocfound:hasQualityValuationResult ?result."+
                                   " ?qualityValuation ocfound:qualityValuationPerformedOn", ". ?result ocfound:hasValuationValue ?score.}"], [param])
 
-    def build(self):
-        return self.buildPrefix() + self.getQuery()[0] + " " + self.getParameters()[0] + self.getQuery()[1]
+    def buildBody(self):
+        return  self.getQuery()[0] + " " + self.getParameters()[0] + self.getQuery()[1]
 
 
 class QueryQC1(Query):
@@ -146,8 +149,8 @@ class QueryQE2(Query):
                                   " ?goal oasis:consistsOfTaskExecution ?agentExe. ?agent oasis:performs ?agentExe. ?agentExe oasis:hasTaskObject ?taskExe. ?agentExe oasis:hasTaskOperator ?operator."+
                                   " ?operator oasis:refersExactlyTo oabox:mint. ?taskExe oasis:refersExactlyTo", ".}"], [param])
 
-    def build(self):
-        return self.buildPrefix() + self.getQuery()[0] + " "+ self.getParameters()[0] +  self.getQuery()[1]
+    def buildBody(self):
+        return self.getQuery()[0] + " "+ self.getParameters()[0] +  self.getQuery()[1]
 
 
 class QueryQE3(Query):
@@ -158,8 +161,8 @@ class QueryQE3(Query):
                                   " ?payload blon:hasEthereumTransactionPayload ?transaction. ?transaction blon:recipientEthereumTransaction ?hash. ?transaction ocether:introducesEthereumSmartContractAgent ?agent."+
                                   " ?transaction blon:to ?address.}"], [param])
 
-    def build(self):
-        return self.buildPrefix() + self.getQuery()[0] + self.getParameters()[0] + self.getQuery()[1]
+    def buildBody(self):
+        return  self.getQuery()[0] + self.getParameters()[0] + self.getQuery()[1]
 
 
 class QueryQE4(Query):

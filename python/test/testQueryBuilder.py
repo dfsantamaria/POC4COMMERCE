@@ -3,6 +3,7 @@ from OCCSE.QueryBuilderModule import *
 q=Query([("Prefixnew","URL")], ["prova"], ["p1","p2"])
 print(q.build())
 
+#OC-Found default queries
 
 q=QueryQF1()
 print(q.build())
