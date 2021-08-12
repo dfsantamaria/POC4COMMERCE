@@ -258,5 +258,12 @@ To create a parametric query inherits the class Query in QueryBuilderModule.py a
 
       buildBody()
   
-  in such a way as to return the final body of the query, without the header containing the prefix definitions.
- 
+  in such a way as to return the final body of the query, without the header containing the prefix definitions. Use the method
+  
+         self.getParameters()
+         
+  that returns a list providing access to the parameters given in the constructor and
+         
+         self.getQuery()
+         
+  that returns a list providing access to the query fragments given in the constructor.
