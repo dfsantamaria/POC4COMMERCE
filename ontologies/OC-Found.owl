@@ -11,6 +11,11 @@
     <owl:Ontology rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl">
         <owl:imports rdf:resource="http://www.dmi.unict.it/oasis-abox.owl"/>
         <owl:imports rdf:resource="http://www.dmi.unict.it/oasis.owl"/>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cristiano Longo</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Daniele Francesco Santamaria</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Domenico Cantone</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Giampaolo Bella</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marianna Nicolosi Asmundo</terms:created>
     </owl:Ontology>
     
 

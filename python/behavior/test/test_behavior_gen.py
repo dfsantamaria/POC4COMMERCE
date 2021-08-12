@@ -1,4 +1,4 @@
-from FacilityManager import *
+from OCGEN.FacilityManager import *
 
 #test
 #create a fresh ontology for the agent

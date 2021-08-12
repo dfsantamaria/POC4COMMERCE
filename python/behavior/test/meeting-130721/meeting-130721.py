@@ -1,4 +1,4 @@
-from FacilityManager import *
+from OCGEN.FacilityManager import *
 
 
 file = open("meeting-130721.owl", "r")

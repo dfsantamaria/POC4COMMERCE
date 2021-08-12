@@ -16,7 +16,29 @@
     <owl:Ontology rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl">
         <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl"/>
         <owl:imports rdf:resource="http://www.semanticblockchain.com/Blondie.owl"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cristiano Longo</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Daniele Francesco Santamaria</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Domenico Cantone</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Giampaolo Bella</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marianna Nicolosi Asmundo</rdfs:comment>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
     
 
 
@@ -28,6 +50,30 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#describes -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#describes"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#involves -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#involves"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#isDescribedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#isDescribedBy"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#isRelatedWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.dmi.unict.it/oasis.owl#isRelatedWith"/>
     
 
 
@@ -120,6 +166,12 @@
     
 
 
+    <!-- http://www.dmi.unict.it/oasis.owl#hasDataValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.dmi.unict.it/oasis.owl#hasDataValue"/>
+    
+
+
     <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasTokenID -->
 
     <owl:DatatypeProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasTokenID">
@@ -151,9 +203,93 @@
     
 
 
+    <!-- http://www.dmi.unict.it/oasis.owl#Activity -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#Activity"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#BlockchainDigitalToken -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#BlockchainDigitalToken"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#BlockchainSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#BlockchainSmartContractAgent"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#Cryptocurrency -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#Cryptocurrency"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#EndurantFeature -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#Feature -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#Feature"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#FungibleBlockchainSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#FungibleBlockchainSmartContractAgent"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#FungibleToken -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#FungibleToken"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#NonFungibleBlockchainSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#NonFungibleBlockchainSmartContractAgent"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#NonFungibleToken -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#NonFungibleToken"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#PlanExecution -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#PlanExecution"/>
+    
+
+
     <!-- http://www.dmi.unict.it/oasis.owl#RequestDescriptionObject -->
 
     <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#RequestDescriptionObject"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#SemiFungibleBlockChainSmartContractAgent -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#SemiFungibleBlockChainSmartContractAgent"/>
+    
+
+
+    <!-- http://www.dmi.unict.it/oasis.owl#SemiFungibleToken -->
+
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#SemiFungibleToken"/>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialAsset -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-commerce.owl#CommercialAsset"/>
     
 
 
@@ -199,6 +335,15 @@
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EtherCryptocurrency">
         <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#Cryptocurrency"/>
         <rdfs:comment xml:lang="en">This class describes ethereum  cryptocurrency</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumCustomToken -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumCustomToken">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
+        <rdfs:comment xml:lang="eng">This class describes custom user-defined tokens not compliant with the ERC standard protocols</rdfs:comment>
     </owl:Class>
     
 

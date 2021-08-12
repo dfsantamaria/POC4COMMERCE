@@ -1,4 +1,4 @@
-from OASIS_behavior_generator import *
+from OCGEN.OASIS_behavior_generator import *
 
 class FacilityManager(BehaviorManager):
       def __init__(self, ontologyGraph, ontologyNamespace, ontologyURL,
