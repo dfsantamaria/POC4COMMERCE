@@ -241,20 +241,20 @@ To use the OCCSE engine you need at least a query. You can either
 You can create two types of queries, namely <b> standard queries </b> and <b> parametric queries </b>.
 To create a standard query, instantiate the class Query in QueryBuilderModule.py by typing
                      
-    Query([(prefix,prefixIRI),...], [query])
+    Query([(prefix, prefixIRI),...], [query])
 
 where: </br>
 - [(prefix,prefixIRI)] is a list of tuple of type (prefix, prefiIRI), with "prefix" the prefix name and "prefixIRI" the IRI to be prefixed, that must be added to the list of         prefix in the query header.
-- [query] is list containing the string "query" representing the query to be performed.
+- [query] is list containing a string representing the query to be performed.
   
 To create a parametric query inherits the class Query in QueryBuilderModule.py and overrides
 - the constructor
     
-       Query([(prefix,prefixIRI),...], [queryPart1,queryPart2,...], [parameter1, parameter2,...])
+       Query([(prefix, prefixIRI),...], [queryPart1,queryPart2,...], [parameter1, parameter2,...])
   
   where:</br>
-  - [querypart1,querypart2,..] is a list of string "queryPart1", "queryPart2",... representing fragments of the query truncated exactly where a "parameter1,"parameter2",... should     be inserted, respectively.
-- the method 
+  - [querypart1, querypart2,..] is a list of string "queryPart1", "queryPart2",... representing fragments of the query truncated exactly where a "parameter1,"parameter2",... should be inserted, respectively.
+  - the method 
 
       buildBody()
   
