@@ -41,13 +41,15 @@ b.addObjPropAssertion(ontology, namespace+"appleProducerSmartContractAgent", b.g
 smartContractBlockNum = namespace+"smartContractBlock"
 smartContractBlockPay = namespace+"smartContractPayload"
 smartContractTransactNum = namespace+"smartContractTransaction"
-b.addClassAssertion(ontology, smartContractTransactNum, blondie+"EthereumBlock")
+b.addClassAssertion(ontology, smartContractBlockNum, blondie+"EthereumBlock")
 b.addClassAssertion(ontology, smartContractBlockPay, blondie+"EthereumPayload")
-b.addClassAssertion(ontology, smartContractBlockNum, blondie+"ContractCreationEthereumTransaction")
+b.addClassAssertion(ontology, smartContractTransactNum, blondie+"ContractCreationEthereumTransaction")
+
 b.addObjPropAssertion(ontology, smartContractBlockNum, blondie+"hasEthereumPayloadBlock", smartContractBlockPay)
 b.addObjPropAssertion(ontology, smartContractBlockPay, blondie+"hasEthereumTransactionPayload", smartContractTransactNum)
-b.addDataPropAssertion(ontology,smartContractBlockNum, blondie+"heightBlock","11479012", XSD.string)
+b.addDataPropAssertion(ontology,smartContractBlockNum, blondie+"heightBlock","11479012", XSD.decimal)
 b.addDataPropAssertion(ontology,smartContractBlockNum, blondie+"minerBlock","SPARK POOL", XSD.string)
+
 b.addDataPropAssertion(ontology, smartContractTransactNum, blondie+"recipientEthereumTransaction","0xb1fd76ea98869b5a014ad45e8eec0f58916e90e3d8e8f979522eebfc57928ec3", XSD.string)
 b.addObjPropAssertion(ontology, smartContractTransactNum, b.getOCEthereumEntityByName("introducesEthereumSmartContractAgent"), namespace+"appleProducerSmartContractAgent")
 b.addDataPropAssertion(ontology, smartContractTransactNum, blondie+"to","0x91f90D0d7490D851C89D107255408F14D947109e", XSD.string)
@@ -378,11 +380,14 @@ appleBlockPay = namespace+"appleTokenPayload"
 appleTransactNum = namespace+"appleTokenTransaction"
 b.addClassAssertion(ontology, appleBlockNum, blondie+"EthereumBlock")
 b.addClassAssertion(ontology, appleBlockPay, blondie+"EthereumPayload")
-b.addClassAssertion(ontology, appleBlockNum, blondie+"MessageCallEthereumTransaction")
+b.addClassAssertion(ontology, appleTransactNum, blondie+"MessageCallEthereumTransaction")
+
+
+b.addDataPropAssertion(ontology,appleBlockNum, blondie+"heightBlock","12833283", XSD.decimal)
+b.addDataPropAssertion(ontology,appleBlockNum, blondie+"minerBlock","SPARK POOL", XSD.string)
 b.addObjPropAssertion(ontology, appleBlockNum, blondie+"hasEthereumPayloadBlock", appleBlockPay)
 b.addObjPropAssertion(ontology, appleBlockPay, blondie+"hasEthereumTransactionPayload", appleTransactNum)
-b.addDataPropAssertion(ontology,appleBlockNum, blondie+"heightBlock","12833283", XSD.string)
-b.addDataPropAssertion(ontology,appleBlockNum, blondie+"minerBlock","SPARK POOL", XSD.string)
+
 b.addDataPropAssertion(ontology,appleTransactNum, blondie+"recipientEthereumTransaction","0x48bb39274511b113b14a9417bdd75ddbcbfc0a70e063be9899d9c5852cba4c56", XSD.string)
 b.addObjPropAssertion(ontology, appleTransactNum, b.getOCEthereumEntityByName("introducesEthereumSmartContractExecution"), namespace+"mintAppleBatchAction")
 

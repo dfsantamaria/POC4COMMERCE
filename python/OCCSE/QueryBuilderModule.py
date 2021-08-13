@@ -2,18 +2,7 @@ import os
 
 class Query:
      def __init__(self, *args):
-         self.prefix=[  ("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#"),
-                        ("owl", "http://www.w3.org/2002/07/owl#"),
-                        ("rdfs", "http://www.w3.org/2000/01/rdf-schema#"),
-                        ("xsd", "http://www.w3.org/2001/XMLSchema#"),
-                        ("oabox", "http://www.dmi.unict.it/oasis-abox.owl#"),
-                        ("oasis", "http://www.dmi.unict.it/oasis.owl#"),
-                        ("occom", "http://www.ngi.ontochain/ontologies/oc-commerce.owl#"),
-                        ("ocfound", "http://www.ngi.ontochain/ontologies/oc-found.owl#"),
-                        ("ocether", "http://www.ngi.ontochain/ontologies/oc-ethereum.owl#"),
-                        ("gr", "http://purl.org/goodrelations/v1#"),
-                        ("blon", "http://www.semanticblockchain.com/Blondie.owl#")]
-
+         self.prefix=[]
          self.query=None
          self.param=None
          if len(args) > 0:
@@ -52,15 +41,15 @@ class Query:
 
 
 class QueryQF1(Query):
-    def __init__(self):
-        super().__init__(None, ["SELECT DISTINCT ?agent ?identity ?operation ?operationOn WHERE { ?agent ocfound:hasDigitalIdentity ?identity. ?agent oasis:hasBehavior ?behavior."+
+    def __init__(self, prefix):
+        super().__init__(prefix, ["SELECT DISTINCT ?agent ?identity ?operation ?operationOn WHERE { ?agent ocfound:hasDigitalIdentity ?identity. ?agent oasis:hasBehavior ?behavior."+
                                     " ?behavior oasis:consistsOfGoalDescription ?goal. ?goal oasis:consistsOfTaskDescription ?task. ?task oasis:hasTaskOperator ?operator. ?operator oasis:refersExactlyTo ?operation."+
                                     " ?task oasis:hasTaskObject ?object. ?object oasis:refersAsNewTo ?ob. ?ob a ?operationOn  FILTER( ?operationOn != owl:NamedIndividual) }"])
 
 
 class QueryQF2(Query):
-    def __init__(self):
-        super().__init__(None, ["SELECT DISTINCT ?agent ?operation ?operationOn ?typeOf	WHERE { ?agent oasis:performs ?agentExe.  ?agentExe oasis:hasTaskObject ?taskExe.  ?agentExe oasis:hasTaskOperator ?operator."+
+    def __init__(self,prefix):
+        super().__init__(prefix, ["SELECT DISTINCT ?agent ?operation ?operationOn ?typeOf	WHERE { ?agent oasis:performs ?agentExe.  ?agentExe oasis:hasTaskObject ?taskExe.  ?agentExe oasis:hasTaskOperator ?operator."+
                    " ?operator oasis:refersExactlyTo ?operation. ?taskExe oasis:refersExactlyTo ?operationOn. ?operationOn a ?typeOf.  FILTER( ?typeOf != owl:NamedIndividual) }"])
 
 class QueryQF3(Query):
@@ -109,8 +98,8 @@ class QueryQF7(Query):
 
 
 class QueryQC1(Query):
-    def __init__(self):
-        super().__init__(None, ["SELECT DISTINCT ?offering ?type ?value ?currency  WHERE { ?taskExec a oasis:TaskExecution. ?taskExec oasis:hasTaskObject ?taskob.  ?taskob oasis:refersExactlyTo ?offering."+
+    def __init__(self, prefix):
+        super().__init__(prefix, ["SELECT DISTINCT ?offering ?type ?value ?currency  WHERE { ?taskExec a oasis:TaskExecution. ?taskExec oasis:hasTaskObject ?taskob.  ?taskob oasis:refersExactlyTo ?offering."+
                                 " ?offering a ?offer.  FILTER(?offer = occom:Offering)   FILTER NOT EXISTS { ?offering a occom:DeprecatedOffering.}   FILTER NOT EXISTS { ?offering a occom:ClosedOffering.}"+
                                 " FILTER NOT EXISTS { ?offering a occom:RetractedOffering.} ?offering occom:isOfferingAbout ?product.  ?product a ?type.   FILTER( ?type != owl:NamedIndividual)"+
                                 " ?priceDetActivity occom:priceDeterminationPerformedOn ?offering.  ?priceDetActivity occom:hasPriceValue ?price.   ?price gr:hasCurrencyValue ?value. ?price gr:hasCurrency ?currency.  }"])
@@ -128,14 +117,14 @@ class QueryQC2(Query):
 
 
 class QueryQC3(Query):
-    def __init__(self):
-        super().__init__(None, ["SELECT ?agent ?offering ?accepted WHERE { ?agent oasis:performs ?agentExe. ?agentExe oasis:hasTaskObject ?taskExe. ?agentExe oasis:hasTaskOperator ?operator."+
+    def __init__(self,prefix):
+        super().__init__(prefix, ["SELECT ?agent ?offering ?accepted WHERE { ?agent oasis:performs ?agentExe. ?agentExe oasis:hasTaskObject ?taskExe. ?agentExe oasis:hasTaskOperator ?operator."+
                                 " ?operator oasis:refersExactlyTo oabox:accept. ?taskExe oasis:refersExactlyTo ?offering. ?offering a ?accepted. FILTER( ?accepted = occom:AcceptedOffering)}"])
 
 
 class QueryQE1(Query):
-    def __init__(self):
-        super().__init__(None, ["SELECT  ?agent ?token ?tokentype ?asset ?owner WHERE { ?agent oasis:performs ?agentExe. ?agentExe oasis:hasTaskObject ?taskExe. ?agentExe oasis:hasTaskOperator ?operator."+
+    def __init__(self,prefix):
+        super().__init__(prefix, ["SELECT  ?agent ?token ?tokentype ?asset ?owner WHERE { ?agent oasis:performs ?agentExe. ?agentExe oasis:hasTaskObject ?taskExe. ?agentExe oasis:hasTaskOperator ?operator."+
                                 " ?operator oasis:refersExactlyTo oabox:mint. ?taskExe oasis:refersExactlyTo ?token.  ?operationOn a ?tokentype.  ?tokenType rdfs:subClassOf ocether:EthereumTokenERC721."+
                                 " FILTER( ?tokentype != owl:NamedIndividual)  FILTER NOT EXISTS { ?operationOn a ocether:BurnedEthereumToken}  ?asset ocether:isDescribedByEthereumToken ?operationOn."+
                                 " ?token ocether:hasEthereumTokenEndurantFeature ?feature.  ?feature a ?ownerFeature.  FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)"+
@@ -166,8 +155,8 @@ class QueryQE3(Query):
 
 
 class QueryQE4(Query):
-    def __init__(self):
-        super().__init__(None, ["SELECT   ?owner (COUNT(?operationOn) as ?tokenCounter) ?assetType   WHERE { ?asset a ?assetType. FILTER(?assetType != owl:NamedIndividual)."+
+    def __init__(self,prefix):
+        super().__init__(prefix, ["SELECT   ?owner (COUNT(?operationOn) as ?tokenCounter) ?assetType   WHERE { ?asset a ?assetType. FILTER(?assetType != owl:NamedIndividual)."+
                                 "?asset ocether:isDescribedByEthereumToken ?operationOn. ?token ocether:hasEthereumTokenEndurantFeature ?feature. ?feature a ?ownerFeature."+
                                 "FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)  FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.}"+
                                 "?feature ocether:isInTheWalletOf ?owner.   }  GROUP BY ?assetType ?owner"])
