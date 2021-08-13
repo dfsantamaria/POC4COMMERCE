@@ -2,17 +2,17 @@ import os
 
 class Query:
      def __init__(self, *args):
-         self.prefix=[  ("rdf", "<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"),
-                        ("owl", "<http://www.w3.org/2002/07/owl#>"),
-                        ("rdfs", "<http://www.w3.org/2000/01/rdf-schema#>"),
-                        ("xsd", "<http://www.w3.org/2001/XMLSchema#>"),
-                        ("oabox", "<http://www.dmi.unict.it/oasis-abox.owl#>"),
-                        ("oasis", "<http://www.dmi.unict.it/oasis.owl#>"),
-                        ("occom", "<http://www.ngi.ontochain/ontologies/oc-commerce.owl#>"),
-                        ("ocfound", "<http://www.ngi.ontochain/ontologies/oc-found.owl#>"),
-                        ("ocether", "<http://www.ngi.ontochain/ontologies/oc-ethereum.owl#>"),
-                        ("gr", "<http://purl.org/goodrelations/v1#>"),
-                        ("blon", "<http://www.semanticblockchain.com/Blondie.owl#>")]
+         self.prefix=[  ("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#"),
+                        ("owl", "http://www.w3.org/2002/07/owl#"),
+                        ("rdfs", "http://www.w3.org/2000/01/rdf-schema#"),
+                        ("xsd", "http://www.w3.org/2001/XMLSchema#"),
+                        ("oabox", "http://www.dmi.unict.it/oasis-abox.owl#"),
+                        ("oasis", "http://www.dmi.unict.it/oasis.owl#"),
+                        ("occom", "http://www.ngi.ontochain/ontologies/oc-commerce.owl#"),
+                        ("ocfound", "http://www.ngi.ontochain/ontologies/oc-found.owl#"),
+                        ("ocether", "http://www.ngi.ontochain/ontologies/oc-ethereum.owl#"),
+                        ("gr", "http://purl.org/goodrelations/v1#"),
+                        ("blon", "http://www.semanticblockchain.com/Blondie.owl#")]
 
          self.query=None
          self.param=None
@@ -29,7 +29,7 @@ class Query:
      def buildPrefix(self):
          head=""
          for p in self.prefix:
-             head=head + "PREFIX "+ p[0] +":"+p[1] + os.linesep
+             head=head + "PREFIX "+ p[0] +": <"+p[1]+">" + os.linesep
          return head
 
      def addPrefix(self, _prefixMap):
@@ -73,7 +73,7 @@ class QueryQF3(Query):
 
 class QueryQF4(Query):
     def __init__(self, prefix, param):
-        super().__init__(prefix, ["SELECT ?supplychainActivity WHERE {", "ocfound:hasSupplyChainManagement ?supplychain. ?supplychain ocfound:hasSupplyChainActivity ocfound:supplychainActivity .}"], [param])
+        super().__init__(prefix, ["SELECT ?supplychainActivity WHERE {", "ocfound:hasSupplyChainManagement ?supplychain. ?supplychain ocfound:hasSupplyChainActivity ?supplychainActivity. }"], [param])
 
     def buildBody(self):
         return  self.getQuery()[0] + self.getParameters()[0] + " " + self.getQuery()[1]
@@ -81,7 +81,7 @@ class QueryQF4(Query):
 
 class QueryQF5(Query):
     def __init__(self, prefix, param):
-        super().__init__(prefix, ["SELECT ?agent ?supplychainActivity WHERE {", "ocfound:hasSupplyChainManagement ?supplychain. ?supplychain ocfound:hasSupplyChainActivity ocfound:supplychainActivity. ?supplychainActivity ocfound:supplyChainActivityImplementedBy ?behavior."+
+        super().__init__(prefix, ["SELECT ?agent ?supplychainActivity WHERE {", "ocfound:hasSupplyChainManagement ?supplychain. ?supplychain ocfound:hasSupplyChainActivity ?supplychainActivity. ?supplychainActivity ocfound:supplyChainActivityImplementedBy ?behavior."+
                                    " ?behavior a oasis:Behavior. ?agent oasis:hasBehavior ?behavior.}"], [param])
 
     def buildBody(self):
@@ -118,9 +118,9 @@ class QueryQC1(Query):
 
 class QueryQC2(Query):
     def __init__(self, prefix, param):
-        super().__init__(prefix, ["SELECT DISTINCT ?chainActivity ?type ?agent3 WHERE {",
+        super().__init__(prefix, ["SELECT DISTINCT ?chainActivity ?type ?agent WHERE {",
                                   " ocfound:hasSupplyChainManagement ?chainManagement. ?chainManagement ocfound:hasSupplyChainActivity ?chainActivity. ?chainActivity a ?type."+
-                                  " FILTER( ?type != owl:NamedIndividual) ?chainActivity ocfound:supplyChainActivityImplementedBy ?behavior. ?agent oasis:hasBehavior ?behavior."], [param])
+                                  " FILTER( ?type != owl:NamedIndividual) ?chainActivity ocfound:supplyChainActivityImplementedBy ?behavior. ?agent oasis:hasBehavior ?behavior.}"], [param])
 
     def build(self):
         return self.buildPrefix() + self.getQuery()[0] + " " + self.getParameters()[0] + self.getQuery()[1]
@@ -129,7 +129,7 @@ class QueryQC2(Query):
 
 class QueryQC3(Query):
     def __init__(self):
-        super().__init__(None, ["SELECT ?agent ?offering ?accepted2 WHERE { ?agent oasis:performs ?agentExe. ?agentExe oasis:hasTaskObject ?taskExe. ?agentExe oasis:hasTaskOperator ?operator."+
+        super().__init__(None, ["SELECT ?agent ?offering ?accepted WHERE { ?agent oasis:performs ?agentExe. ?agentExe oasis:hasTaskObject ?taskExe. ?agentExe oasis:hasTaskOperator ?operator."+
                                 " ?operator oasis:refersExactlyTo oabox:accept. ?taskExe oasis:refersExactlyTo ?offering. ?offering a ?accepted. FILTER( ?accepted = occom:AcceptedOffering)}"])
 
 
@@ -137,7 +137,7 @@ class QueryQE1(Query):
     def __init__(self):
         super().__init__(None, ["SELECT  ?agent ?token ?tokentype ?asset ?owner WHERE { ?agent oasis:performs ?agentExe. ?agentExe oasis:hasTaskObject ?taskExe. ?agentExe oasis:hasTaskOperator ?operator."+
                                 " ?operator oasis:refersExactlyTo oabox:mint. ?taskExe oasis:refersExactlyTo ?token.  ?operationOn a ?tokentype.  ?tokenType rdfs:subClassOf ocether:EthereumTokenERC721."+
-                                " FILTER( ?tokentype != owl:NamedIndividual)  FILTER NOT EXISTS { ?operationOn a ocether:DestroyedEthereumToken}  ?asset ocether:isDescribedByEthereumToken ?operationOn."+
+                                " FILTER( ?tokentype != owl:NamedIndividual)  FILTER NOT EXISTS { ?operationOn a ocether:BurnedEthereumToken}  ?asset ocether:isDescribedByEthereumToken ?operationOn."+
                                 " ?token ocether:hasEthereumTokenEndurantFeature ?feature.  ?feature a ?ownerFeature.  FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)"+
                                 " FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.}  ?feature ocether:isInTheWalletOf ?owner.  }"])
 
@@ -157,7 +157,7 @@ class QueryQE3(Query):
     def __init__(self, prefix, param):
         super().__init__(prefix, ["SELECT DISTINCT ?agent ?hash ?address WHERE { ?agent oasis:performs ?agentExe. ?agentExe oasis:hasTaskObject ?taskExe."+
                                   " ?agentExe oasis:hasTaskOperator ?operator. ?operator oasis:refersExactlyTo oabox:mint. ?taskExe oasis:refersExactlyTo ?token."+
-                                  " ?asset ocether:isDescribedByEthereumToken ?token. ?asset a", ". ?block blon:heightBlock ?blockNumber. ?block blon:hasEthereumPayloadBlock ?payload."+
+                                  " ?asset ocether:isDescribedByEthereumToken ?token. ?asset a ", ". ?block blon:heightBlock ?blockNumber. ?block blon:hasEthereumPayloadBlock ?payload."+
                                   " ?payload blon:hasEthereumTransactionPayload ?transaction. ?transaction blon:recipientEthereumTransaction ?hash. ?transaction ocether:introducesEthereumSmartContractAgent ?agent."+
                                   " ?transaction blon:to ?address.}"], [param])
 
@@ -167,5 +167,8 @@ class QueryQE3(Query):
 
 class QueryQE4(Query):
     def __init__(self):
-        super().__init__(None, ["SELECT ?owner (COUNT(?operationOn) as ?tokenCounter) ?assetType WHERE{ ?asset a ?assetType. FILTER(?assetType != owl:NamedIndividual)"])
+        super().__init__(None, ["SELECT   ?owner (COUNT(?operationOn) as ?tokenCounter) ?assetType   WHERE { ?asset a ?assetType. FILTER(?assetType != owl:NamedIndividual)."+
+                                "?asset ocether:isDescribedByEthereumToken ?operationOn. ?token ocether:hasEthereumTokenEndurantFeature ?feature. ?feature a ?ownerFeature."+
+                                "FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)  FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.}"+
+                                "?feature ocether:isInTheWalletOf ?owner.   }  GROUP BY ?assetType ?owner"])
 
