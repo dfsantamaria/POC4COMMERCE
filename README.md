@@ -4,8 +4,10 @@ This Python API library provides basic mechanisms for interacting with OASIS beh
 
 ## Requirements </br>
    - Python interpreter version 3.7 or greater.
-   - RDFLib version 5.0.0.
+   - RDFLib version 5.0.0. for OCGEN module
+   - OWLReady 2 for OCCSE module
 
+# OCGEN Module
 ## Generating new agents and agent behaviors </br>
 In order to generate new OASIS behaviors you should
 
@@ -233,7 +235,8 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
             where:</br>
               -  "executionOutput1", "MyAgentOutput1" represent the entity name of the action output and the agent behavior output, respectively.
 
-## Using the OCCSE Search Engine </br>
+# OCGEN Module
+## Create a Query
 To use the OCCSE engine you need at least a query. You can either 
    - use one of the default queries contained in the file QueryBuilderModule.py or
    - create a new one.
@@ -241,20 +244,20 @@ To use the OCCSE engine you need at least a query. You can either
 You can create two types of queries, namely <b> standard queries </b> and <b> parametric queries </b>.
 To create a standard query, instantiate the class Query in QueryBuilderModule.py by typing
                      
-    Query([(prefix,prefixIRI),...], [query])
+    Query([(prefix, prefixIRI),...], [query])
 
 where: </br>
 - [(prefix,prefixIRI)] is a list of tuple of type (prefix, prefiIRI), with "prefix" the prefix name and "prefixIRI" the IRI to be prefixed, that must be added to the list of         prefix in the query header.
-- [query] is list containing the string "query" representing the query to be performed.
+- [query] is list containing a string representing the query to be performed.
   
 To create a parametric query inherits the class Query in QueryBuilderModule.py and overrides
 - the constructor
     
-       Query([(prefix,prefixIRI),...], [queryPart1,queryPart2,...], [parameter1, parameter2,...])
+       Query([(prefix, prefixIRI),...], [queryPart1,queryPart2,...], [parameter1, parameter2,...])
   
   where:</br>
-  - [querypart1,querypart2,..] is a list of string "queryPart1", "queryPart2",... representing fragments of the query truncated exactly where a "parameter1,"parameter2",... should     be inserted, respectively.
-- the method 
+  - [querypart1, querypart2,..] is a list of string "queryPart1", "queryPart2",... representing fragments of the query truncated exactly where a "parameter1,"parameter2",... should be inserted, respectively.
+  - the method 
 
       buildBody()
   
@@ -267,3 +270,28 @@ To create a parametric query inherits the class Query in QueryBuilderModule.py a
          self.getQuery()
          
   that returns a list providing access to the query fragments given in the constructor.
+
+## Create a RepositoryManager
+
+To create a repository manager type:
+
+        repositoryMan=RepositoryManager([repository1, repository2, ...])
+where:
+
+- [repository1, repository2, ...] is a list of IRIs representing the repository to load.
+
+You can add  repositories to an existing repository manager by typing:
+     
+        repositoryMan.addRepositories([repository1, repository2, ...])
+
+You can remove repositories from an existing repository manager by typing:
+
+         repositoryMan.addRepositories([repository1, repository2, ...]) 
+
+## Create a ReasonerInterface
+
+A reasoner interface can be created by typing
+
+        reasonerInterface=ReasonerInterface("reasoner_name")
+
+where "reasoner_name" is one of "HermiT" or "Pellet", the two currently supported reasoners.
