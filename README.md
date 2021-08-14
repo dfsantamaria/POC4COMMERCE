@@ -235,7 +235,7 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
             where:</br>
               -  "executionOutput1", "MyAgentOutput1" represent the entity name of the action output and the agent behavior output, respectively.
 
-# OCGEN Module
+# OCCSE Module
 ## Create a Query
 To use the OCCSE engine you need at least a query. You can either 
    - use one of the default queries contained in the file QueryBuilderModule.py or
@@ -295,3 +295,25 @@ A reasoner interface can be created by typing
         reasonerInterface=ReasonerInterface("reasoner_name")
 
 where "reasoner_name" is one of "HermiT" or "Pellet", the two currently supported reasoners.
+
+## Perform queries
+
+To perform a query, create an object of type CSE by typing:
+       
+         occse = OCCSE(repositoryManager, reasonerInterface)
+         
+where "repositoryManager" and "reasonerInterface" are the repository manager and the reasoner interface, respectively, as created before.
+
+Then, load the repository by typing:
+
+         occse.loadRepository()
+
+Syncronized the reasoner by typing:
+
+         occse.syncReasoner()
+        
+Finally, perform a query by typing:
+
+         occse.performQuery(query)
+
+where "query" is an object of type "Query" as created before. The output of "performQuery" can be formatted as desired.
