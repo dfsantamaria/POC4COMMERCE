@@ -8,19 +8,20 @@ from owlready2 import *
 #print(q.build())
 
 #OC-Found default queries
-blondie = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/Blondie 1.0.owl").load(only_local=True)
+blondie = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/Blondie 1.0.owl").load()
 ocfound = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/oc-found.owl").load()
 occommerce = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/oc-commerce.owl").load()
 ocethereum = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/oc-ethereum.owl").load()
 onto = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/meeting-130721.owl").load()
 
 
-
 repositoryManager = RepositoryManager(None)
+print(repositoryManager.getRepository(), repositoryManager.getChanged())
 repositoryManager.addRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/Blondie 1.0.owl"])
-print(repositoryManager.getRepository())
+print(repositoryManager.getRepository(), repositoryManager.getChanged())
 repositoryManager.removeRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/Blondie 1.0.owl"])
 print(repositoryManager.getRepository())
+
 
 #sync_reasoner_hermit(default_world, debug = 9)
 reasonerInterface=ReasonerInterface("hermit")
