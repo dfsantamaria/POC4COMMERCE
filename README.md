@@ -315,6 +315,7 @@ Syncronized the reasoner by typing:
 Add all the required prefixes in addition to the standard ones defined by POC4COMMERCE by typing
 
          occse.addPrefixes([(prefix, IRI), ...])
+         
 where:<\br>
 - [(prefix, IRI), ...] is a list of tuple of constituted by the prefix and the prefixed IRI.
         
