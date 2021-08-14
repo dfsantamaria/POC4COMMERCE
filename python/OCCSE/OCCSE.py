@@ -1,7 +1,21 @@
 from owlready2 import *
+from OCCSE.QueryBuilderModule import *
+
 
 class OCCSE:
     def __init__(self, *args):
+        self.prefix = [
+                  ("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#"),
+                  ("owl", "http://www.w3.org/2002/07/owl#"),
+                  ("rdfs", "http://www.w3.org/2000/01/rdf-schema#"),
+                  ("xsd", "http://www.w3.org/2001/XMLSchema#"),
+                  ("oabox", "http://www.dmi.unict.it/oasis-abox.owl#"),
+                  ("oasis", "http://www.dmi.unict.it/oasis.owl#"),
+                  ("occom", "http://www.ngi.ontochain/ontologies/oc-commerce.owl#"),
+                  ("ocfound", "http://www.ngi.ontochain/ontologies/oc-found.owl#"),
+                  ("ocether", "http://www.ngi.ontochain/ontologies/oc-ethereum.owl#"),
+                  ("gr", "http://purl.org/goodrelations/v1#"),
+                  ("blon", "http://www.semanticblockchain.com/Blondie.owl#")]
         self.repositoryManager = None
         self.reasonerInterface = None
         self.world = World()
@@ -26,11 +40,6 @@ class OCCSE:
            self.reasonerInterface.runReasoner(self.world)
            self.__resetIsSyncReasoner__(True)
 
-    def performQuery(self, query):
-        self.__checkRepository__()
-        self.__checkReasoner__()
-        return self.world.sparql(query.build())
-
     def __checkRepository__(self):
         if self.repositoryManager.isRepositoryChanged():
             self.loadRepository()
@@ -51,3 +60,67 @@ class OCCSE:
         if self.isReasonerSyncronized() == False:
            self.syncReasoner()
            self.__resetIsSyncReasoner__(True)
+
+    def addPrefixes(self, prefixes):
+        for p in prefixes:
+           self.prefix.append(p)
+
+    def removePrefixes(self, prefixes):
+        for p in prefixes:
+            if p in self.prefix:
+               self.prefix.remove(p)
+
+    def getPrefixes(self):
+        return self.prefix
+
+    def performQuery(self, query):
+        query.addPrefix(self.getPrefixes())
+        return self.__performQuery__(query)
+
+    def __performQuery__(self, query):
+        self.__checkRepository__()
+        self.__checkReasoner__()
+        return self.world.sparql(query.build())
+
+
+    def performQueryQF1(self, prefixes):
+        return self.__performQuery__(QueryQF1(self.getPrefixes()+prefixes))
+
+    def performQueryQF2(self, prefixes):
+        return self.__performQuery__(QueryQF2(self.getPrefixes()+ prefixes))
+
+    def performQueryQF3(self, prefixes, param):
+        return self.__performQuery__(QueryQF3(self.getPrefixes() + prefixes, param))
+
+    def performQueryQF4(self, prefixes, param):
+        return self.__performQuery__(QueryQF4(self.getPrefixes() + prefixes, param))
+
+    def performQueryQF5(self, prefixes, param):
+        return self.__performQuery__(QueryQF5(self.getPrefixes() + prefixes, param))
+
+    def performQueryQF6(self, prefixes,  param):
+        return self.__performQuery__(QueryQF6(self.getPrefixes() + prefixes, param))
+
+    def performQueryQF7(self, prefixes ,param):
+        return self.__performQuery__(QueryQF7(self.getPrefixes()+ prefixes, param))
+
+    def performQueryQC1(self, prefixes):
+        return self.__performQuery__(QueryQC1(self.getPrefixes() + prefixes))
+
+    def performQueryQC2(self, prefixes, param):
+        return self.__performQuery__(QueryQC2(self.getPrefixes() + prefixes, param))
+
+    def performQueryQC3(self, prefixes):
+        return self.__performQuery__(QueryQC3(self.getPrefixes()+ prefixes))
+
+    def performQueryQE1(self, prefixes):
+        return self.__performQuery__(QueryQE1(self.getPrefixes() + prefixes))
+
+    def performQueryQE2(self, prefixes, param):
+        return self.__performQuery__(QueryQE2(self.getPrefixes() + prefixes, param))
+
+    def performQueryQE3(self, prefixes, param):
+        return self.__performQuery__(QueryQE3(self.getPrefixes() + prefixes, param))
+
+    def performQueryQE4(self, prefixes):
+        return self.__performQuery__(QueryQE4(self.getPrefixes() + prefixes))

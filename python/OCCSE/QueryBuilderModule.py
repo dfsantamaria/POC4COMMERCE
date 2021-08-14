@@ -8,7 +8,7 @@ class Query:
          if len(args) > 0:
              if args[0] is not None:
                 for p in args[0]:
-                    self.addPrefix(p)
+                    self.__addPrefix__(p)
              if len(args) > 1:
                self.query=args[1]
                if len(args) > 2:
@@ -21,11 +21,15 @@ class Query:
              head=head + "PREFIX "+ p[0] +": <"+p[1]+">" + os.linesep
          return head
 
-     def addPrefix(self, _prefixMap):
+     def __addPrefix__(self, _prefixMap):
          for p in self.prefix:
              if p[0] is _prefixMap[0] or p[1] is _prefixMap[1]:
                 return
          self.prefix.append((_prefixMap[0],_prefixMap[1]))
+
+     def addPrefix(self, _prefixMap):
+         for p in _prefixMap:
+             self.__addPrefix__(p)
 
      def build(self):
          return self.buildPrefix() + self.buildBody()
