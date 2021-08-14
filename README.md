@@ -324,4 +324,4 @@ Finally, you can perform
 
          occse.performQuery(query)
 
-where "query" is an object of type "Query" as created before whose prefixes are neither one of the standard prefixes nor of of the prefixes added with the method "occse.addPrefixes". The output of "performQuery" can be formatted as desired.
+where "query" is an object of type "Query" as created before whose prefixes are neither one of the standard prefixes nor one of the prefixes added with the method "occse.addPrefixes". The output of "performQuery" can be formatted as desired.
