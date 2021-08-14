@@ -311,9 +311,18 @@ Then, load the repository by typing:
 Syncronized the reasoner by typing:
 
          occse.syncReasoner()
+
+Add all the required prefixes in addition to the standard ones defined by POC4COMMERCE by typing
+
+         occse.addPrefixes([(prefix, IRI), ...])
+         
+where:<\br>
+- [(prefix, IRI), ...] is a list of tuple of constituted by the prefix and the prefixed IRI.
         
-Finally, perform a query by typing:
+Finally, you can perform 
+- either one of the standard queries by calling one of the methods "performQuery-CodeQuery-", where "-CodeQuery-" is the code of the standard query or
+- a custom query by typing 
 
          occse.performQuery(query)
 
-where "query" is an object of type "Query" as created before. The output of "performQuery" can be formatted as desired.
+where "query" is an object of type "Query" as created before whose prefixes are neither one of the standard prefixes nor one of the prefixes added with the method "occse.addPrefixes". The output of "performQuery" can be formatted as desired.
