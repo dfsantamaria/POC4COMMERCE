@@ -296,7 +296,7 @@ A reasoner interface can be created by typing
 
 where "reasoner_name" is one of "HermiT" or "Pellet", the two currently supported reasoners.
 
-### Perform queries
+## Perform queries
 
 To perform a query, create an object of type CSE by typing:
        
