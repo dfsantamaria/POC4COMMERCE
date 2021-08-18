@@ -53,24 +53,25 @@ print(qf2.build())
 print(list(default_world.sparql(qf2.build())))
 
 
-qf3=QueryQF3(prefix, "meeting130721:batch2563Offering")
+qf3=QueryQF3(prefix, [("?x", "meeting130721:batch2563Offering")])
 print(qf3.build())
 print(list(default_world.sparql(qf3.build())))
 
 
-qf4=QueryQF4(prefix, "meeting130721:batch2563Offering")
+qf4=QueryQF4(prefix, [("?x", "meeting130721:batch2563Offering")])
 print(qf4.build())
 print(list(default_world.sparql(qf4.build())))
 
-qf5=QueryQF5(prefix, "meeting130721:batch2563Offering")
+qf5=QueryQF5(prefix, [("?x","meeting130721:batch2563Offering")])
 print(qf5.build())
 print(list(default_world.sparql(qf5.build())))
 
-qf6=QueryQF6(prefix, "meeting130721:batch2563Offering")
+qf6=QueryQF6(prefix, [("?x", "meeting130721:batch2563Offering")])
 print(qf6.build())
 print(list(default_world.sparql(qf6.build())))
 
-qf7=QueryQF7(prefix, "meeting130721:batch2563Offering")
+
+qf7=QueryQF7(prefix, [("?x", "meeting130721:batch2563Offering")])
 print(qf7.build())
 print(list(default_world.sparql(qf7.build())))
 
@@ -79,7 +80,7 @@ qc1=QueryQC1(prefix)
 print(qc1.build())
 print(list(default_world.sparql(qc1.build())))
 
-qc2=QueryQC2(prefix, "meeting130721:batch2563Offering")
+qc2=QueryQC2(prefix, [("?x", "meeting130721:batch2563Offering")])
 print(qc2.build())
 print(list(default_world.sparql(qc2.build())))
 
@@ -92,14 +93,15 @@ qe1=QueryQE1(prefix)
 print(qe1.build())
 print(list(default_world.sparql(qe1.build())))
 
-qe2=QueryQE2(prefix, "meeting130721:appleBatch2563Token")
+qe2=QueryQE2(prefix, [("?x", "meeting130721:appleBatch2563Token")])
 print(qe2.build())
 print(list(default_world.sparql(qe2.build())))
 
-qe3=QueryQE3(prefix, "meeting130721:Apple")
+qe3=QueryQE3(prefix, [("?x", "meeting130721:Apple")])
 print(qe3.build())
 print(list(default_world.sparql(qe3.build())))
 
 qe4=QueryQE4(prefix)
 print(qe4.build())
 print(list(default_world.sparql(qe4.build())))
+
