@@ -1,6 +1,9 @@
 # POC4COMMERCE
 
-This Python API library provides basic mechanisms for interacting with OASIS behavior ontologies adopted by the POC4COMMERCE project in the ONTOCHAIN ecosystem.
+This Python API library is constituted by two modules. 
+
+-  The first module <b>OCGEN</b> provides basic mechanisms for interacting with OASIS behavior ontologies adopted by the POC4COMMERCE project in the ONTOCHAIN ecosystem.
+-  The second module <b>OCCSE</b> provides a search engine and a reasoning system for querying POC4COMMERCE knowledge bases.
 
 ## Requirements </br>
    - Python interpreter version 3.7 or greater.
