@@ -244,32 +244,38 @@ To use the OCCSE engine you need at least a query. You can either
 You can create two types of queries, namely <b> standard queries </b> and <b> parametric queries </b>.
 To create a standard query, instantiate the class Query in QueryBuilderModule.py by typing
                      
-    Query([(prefix, prefixIRI),...], [query])
+    Query([(prefix, prefixIRI),...], query)
 
 where: </br>
 - [(prefix,prefixIRI)] is a list of tuple of type (prefix, prefiIRI), with "prefix" the prefix name and "prefixIRI" the IRI to be prefixed, that must be added to the list of         prefix in the query header.
-- [query] is list containing a string representing the query to be performed.
+- query is a string representing the query to be performed.
   
-To create a parametric query inherits the class Query in QueryBuilderModule.py and overrides
-- the constructor
+   
+  
+To create a parametric query instantiate the class Query in QueryBuilderModule.py by typing
     
-       Query([(prefix, prefixIRI),...], [queryPart1,queryPart2,...], [parameter1, parameter2,...])
-  
-  where:</br>
-  - [querypart1, querypart2,..] is a list of string "queryPart1", "queryPart2",... representing fragments of the query truncated exactly where a "parameter1,"parameter2",... should be inserted, respectively.
-  - the method 
+       Query([(prefix, prefixIRI),...], query, [(var1, parameter1), (var2, parameter2), ...])
+
+where: </br>
+- [(prefix,prefixIRI)] is a list of tuple of type (prefix, prefiIRI), with "prefix" the prefix name and "prefixIRI" the IRI to be prefixed, that must be added to the list of         prefix in the query header.
+- query is a string representing the query to be performed.
+- [(var1, parameter1), (var2, parameter2), ...] is list of tuple of type "var1", "parameter1", where "var1" is the string  that must be replaced with "parameter1" in the query. 
+
+
+You can also inherit the class QueryBuilderModule.py to create simplified queries.
+The method 
 
       buildBody()
   
-  in such a way as to return the final body of the query, without the header containing the prefix definitions. Use the method
+ return the final body of the query applying possibly the defined substitutions, without the header containing the prefix definitions. Use the method
   
          self.getParameters()
          
-  that returns a list providing access to the parameters given in the constructor and
+  to return a list containing the parameters given in the constructor, and
          
          self.getQuery()
          
-  that returns a list providing access to the query fragments given in the constructor.
+  that returns the query, possibly without applying the given substitutions.
 
 ## Create a RepositoryManager
 
@@ -300,29 +306,29 @@ where "reasoner_name" is one of "HermiT" or "Pellet", the two currently supporte
 
 To perform a query, create an object of type CSE by typing:
        
-         occse = OCCSE(repositoryManager, reasonerInterface)
+          occse = OCCSE(repositoryManager, reasonerInterface)
          
 where "repositoryManager" and "reasonerInterface" are the repository manager and the reasoner interface, respectively, as created before.
 
 Then, load the repository by typing:
 
-         occse.loadRepository()
+          occse.loadRepository()
 
 Syncronized the reasoner by typing:
 
-         occse.syncReasoner()
+          occse.syncReasoner()
 
 Add all the required prefixes in addition to the standard ones defined by POC4COMMERCE by typing
 
-         occse.addPrefixes([(prefix, IRI), ...])
+          occse.addPrefixes([(prefix, IRI), ...])
          
 where:<\br>
 - [(prefix, IRI), ...] is a list of tuple of constituted by the prefix and the prefixed IRI.
         
 Finally, you can perform 
-- either one of the standard queries by calling one of the methods "performQuery-CodeQuery-", where "-CodeQuery-" is the code of the standard query or
+- either one of the standard queries by calling one of the methods "performQuery-CodeQuery-", where "-CodeQuery-" is the code of the standard query, or
 - a custom query by typing 
 
-         occse.performQuery(query)
+      occse.performQuery(query)
 
 where "query" is an object of type "Query" as created before whose prefixes are neither one of the standard prefixes nor one of the prefixes added with the method "occse.addPrefixes". The output of "performQuery" can be formatted as desired.
