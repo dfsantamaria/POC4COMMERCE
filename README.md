@@ -238,6 +238,14 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
             where:</br>
               -  "executionOutput1", "MyAgentOutput1" represent the entity name of the action output and the agent behavior output, respectively.
 
+
+
+Check the files
+- test/test_behavior_gen.py;
+- test/meeting-130721/meeting-130721.py
+
+for some examples of using the OCGEN module.
+
 # OCCSE Module
 ## Create a Query
 To use the OCCSE engine you need at least a query. You can either 
@@ -335,3 +343,10 @@ Finally, you can perform
       occse.performQuery(query)
 
 where "query" is an object of type "Query" as created before whose prefixes are neither one of the standard prefixes nor one of the prefixes added with the method "occse.addPrefixes". The output of "performQuery" can be formatted as desired.
+
+Check the file
+- test/testQueryBuilder.py 
+for some example of using the QueryBuilder and
+
+-test/test_occse.py
+for some example of using the OCCSE module.
