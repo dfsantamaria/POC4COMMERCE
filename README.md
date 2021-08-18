@@ -241,7 +241,7 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
 
 
 Check the files
-- test/test_behavior_gen.py;
+- test/test_behavior_gen.py
 - test/meeting-130721/meeting-130721.py
 
 for some examples of using the OCGEN module.
@@ -346,7 +346,9 @@ where "query" is an object of type "Query" as created before whose prefixes are 
 
 Check the file
 - test/testQueryBuilder.py 
+
 for some example of using the QueryBuilder and
 
--test/test_occse.py
+- test/test_occse.py
+
 for some example of using the OCCSE module.
