@@ -1,6 +1,6 @@
 # POC4COMMERCE
 
-This Python API library is constituted by two modules. 
+This Python API library consists of two modules. 
 
 -  The first module <b>OCGEN</b> provides basic mechanisms for interacting with OASIS behavior ontologies adopted by the POC4COMMERCE project in the ONTOCHAIN ecosystem.
 -  The second module <b>OCCSE</b> provides a search engine and a reasoning system for querying POC4COMMERCE knowledge bases.
@@ -54,26 +54,26 @@ B) (Optional) Create a new behavior template by typing </br>
    - "MyTemplateBehavior" is the entity name of the behavior template. 
    - "MyTemplateGoal" is the entity name of the goal template.
    - "MyTemplateTask" is the entity name of the task template.
-   - "MyTemplateTaskOperator" and "action" are the entity name of the task operator  and the operator action as defined in OASIS-ABox.
-   - "MyTemplateOperatorArgument" and "actionArgument" are the entity name of the operator argument and the operator argument as defined in OASIS-ABox.
-   - A list of elements of type:
+   - "MyTemplateTaskOperator" and "action" are, respectively, the entity name of the task operator  and the operator action as defined in OASIS-ABox.
+   - "MyTemplateOperatorArgument" and "actionArgument" are, respectively, the entity name of the operator argument and the operator argument as defined in OASIS-ABox.
+   - A list of elements of the form:
      - [MyTemplateTaskObject, taskObjectProperty, objectTemplate] </br>
        where: </br>
          - "MyTemplateTaskObject" is the entity name of the task object.
          - "taskObjectProperty" is the either "refersAsNewTo" or "refersExactlyTo".
          - "objectTemplate" is the element associated to the task object.
-   - A list of elements of type:
+   - A list of elements of the form:
      - [MyTemplateInput1, taskInputProperty, input1] </br>
        where: </br> 
         - "MyTemplateInput1" is the entity name of the input.
         - "taskInputProperty" is the either "refersAsNewTo" or "refersExactlyTo".
         - "input" is the element associated to the input element.   
-   - A list of elements of type:
+   - A list of elements of the form:
      - [MyTemplateOutput1, taskOutputProperty, output1] </br>
        where: </br> 
        - "MyTemplateOutput1" is the entity name of the output.
-       - "taskOutputProperty" is the either "refersAsNewTo" or "refersExactlyTo".
-       - "output" is the element associated to the output element.  
+       - "taskOutputProperty" is either "refersAsNewTo" or "refersExactlyTo".
+       - "output" is the element associated with the output element.  
      
  - Connect the behavior with the related template
  
@@ -88,6 +88,7 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
    Create a new agent by typing:
               
       b.createAgent("MyAgent")
+  
    where:
    - "MyAgent" is the entity name of the agent.
    
@@ -122,21 +123,21 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
    - "MyAgentBehavior" is the entity name of the behavior. 
    - "MyAgentGoal" is the entity name of the goal.
    - "MyAgentTask" is the entity name of the task.
-   - "MyAgentTaskOperator" and "action" are the entity name of the task operator  and the operator action as defined in OASIS-ABox.
-   - "MyAgentOperatorArgument" and "actionArgument" are the entity name of the operator argument and the operator argument as defined in OASIS-ABox.
-   - A list of elements of type:
+   - "MyAgentTaskOperator" and "action" are, respectively, the entity name of the task operator  and the operator action as defined in OASIS-ABox.
+   - "MyAgentOperatorArgument" and "actionArgument" are, respectively, the entity name of the operator argument and the operator argument as defined in OASIS-ABox.
+   - A list of elements of the form:
         - [MyAgentTaskObject, taskObjectProperty, agentobject1] </br>
            where: </br>
            - "MyAgentTaskObject" is the entity name of the task object.
            - "taskObjectProperty" is the either "refersAsNewTo" or "refersExactlyTo".
            - "agentobject1" is the element associated to the task object.
-   - A list of elements of type:
+   - A list of elements of the form:
         - [MyAgentInput1, taskInputProperty, agentinput1] </br>
           where: </br> 
           - "MyAgentInput1" is the entity name of the input.
           - "taskInputProperty" is the either "refersAsNewTo" or "refersExactlyTo".
           - "agentinput1" is the element associated to the input element.   
-   - A list of elements of type:
+   - A list of elements of the form:
         - [MyAgentOutput1, taskOutputProperty, agentoutput1]</br>
           where: </br> 
           - "MyAgentOutput1" is the entity name of the output.
@@ -144,15 +145,15 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
           - "agentoutput1" is the element associated to the output element. 
    - Eventually a list of elements mapping from the agent to the template:
        - "MyTemplateTask" is the task object of the behavior template.
-       - A list of elements of type:
+       - A list of elements of the form:
             - ["MyAgentTaskObject", "MyTemplateTaskObject"] </br>
               where:</br>
                  -  "MyAgentTaskObject", "MyTemplateTaskObject" represent the entity name of the agent task object  and the entity of the task object template, respectively.
-       - A list of elements of type:  
+       - A list of elements of the form:  
             - ["MyAgentInput1", "MyTemplateInput1"] </br>
               where:</br>
                 -  "MyAgentInput1", "MyTemplateInput1" represent the entity name of the agent input and the agent input template, respectively.
-       - A list of elements of type:  
+       - A list of elements of the form:  
            - ["MyAgentOutput1", "MyTemplateOutput1"] </br>
            where:</br>
                -  "MyAgentOutput1", "MyTemplateOutput1" represent the entity name of the agent output and the agent output template, respectively.
@@ -161,7 +162,7 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
         b.connectAgentToBehavior("MyAgent", "MyAgentBehavior")
     
     where: </br>
-    - "MyAgent" and "MyAgentBehavior" are the agent and the agent behavior respectively.
+    - "MyAgent" and "MyAgentBehavior" are, respectively, the agent and the agent behavior.
     
        
  D) Generate a new action and connect it to the related behavior by typing
@@ -196,7 +197,7 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
   - "planExecution" is the entity name of the plan execution.
   - "executionGoal" is the entity name of the goal execution.
   - "executionTask" is the entity name of the task execution.
-  - A list of element of type:
+  - A list of element of the form:
       - [executionOperator, action] </br>
         where:</br>
          - "executionOperator" is the name of the task operator.
@@ -205,19 +206,19 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
         where:</br>
         - "executionArgument" is the name of the task argument.
         - "argument" is the name of the argument as defined in OASIS-ABox.
-      - A list of element of type:  
+      - A list of element of the form:  
         - [executionObject, taskObjectProperty, executionobject1] </br>
           where: </br>
           - "executionObject" is the entity name of the task execution object.
           - "taskObjectProperty" is  either "refersAsNewTo" or "refersExactlyTo".
           - "executionobject1" is the element associated with the task execution object.     
-      - A list of elements of type:
+      - A list of elements of the form:
         - [executionInput1, inputProp, executioninput1] </br>
           where: </br>
              - "executionInput1" is the entity name of task input.
              - "inputProp" is either "refersAsNewTo" or "refersExactlyTo".
              - "executioninput1" is the element associated with the task input.
-       - A list of elements of type:
+       - A list of elements of the form:
          - [executionOutput1, outputProp, executionOutput1] </br>
            where: </br>
              - "executionOutput1" is the entity name of task output.
@@ -225,15 +226,15 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
              - "executionOutput1" is the element associated with the task output.
        - A list of elements mapping from the agent action to the agent behavior:
           - "MyAgentTask" is the task  of the agent behavior.
-       - A list of elements of type:
+       - A list of elements of the form:
           - [executionObject, MyAgentTaskObject] </br>
             where: </br>
               - "executionObject", "MyAgentTaskObject" represent the entity name of the  task execution  and the entity name of the task object of the agent behavior, respectively.
-       - A list of elements of type:  
+       - A list of elements of the form:  
          - [executionInput1, MyAgentInput1] </br>
            where:</br>
               - "executionInput1", "MyAgentInput1" represent the entity name of the action input and the agent behavior input , respectively.
-        - A list of elements of type:  
+        - A list of elements of the form:  
           - [executionOutput1, MyAgentOutput1] </br>
             where:</br>
               -  "executionOutput1", "MyAgentOutput1" represent the entity name of the action output and the agent behavior output, respectively.
@@ -258,19 +259,19 @@ To create a standard query, instantiate the class Query in QueryBuilderModule.py
     Query([(prefix, prefixIRI),...], query)
 
 where: </br>
-- [(prefix,prefixIRI)] is a list of tuple of type (prefix, prefiIRI), with "prefix" the prefix name and "prefixIRI" the IRI to be prefixed, that must be added to the list of         prefix in the query header.
+- [(prefix,prefixIRI)] is a list of tuples of strings formed by (prefix, prefiIRI), with "prefix" the prefix name and "prefixIRI" the IRI to be prefixed, which must be added to the list of         prefix in the query header.
 - query is a string representing the query to be performed.
   
    
   
-To create a parametric query instantiate the class Query in QueryBuilderModule.py by typing
+To create a parametric query, instantiate the class Query in QueryBuilderModule.py by typing
     
        Query([(prefix, prefixIRI),...], query, [(var1, parameter1), (var2, parameter2), ...])
 
 where: </br>
-- [(prefix,prefixIRI)] is a list of tuple of type (prefix, prefiIRI), with "prefix" the prefix name and "prefixIRI" the IRI to be prefixed, that must be added to the list of         prefix in the query header.
+- [(prefix,prefixIRI)] is a list of tuples of  strings of the form (prefix, prefiIRI), with "prefix" the prefix name and "prefixIRI" the IRI to be prefixed, which must be added to the list of         prefix in the query header.
 - query is a string representing the query to be performed.
-- [(var1, parameter1), (var2, parameter2), ...] is list of tuple of type "var1", "parameter1", where "var1" is the string  that must be replaced with "parameter1" in the query. 
+- [(var1, parameter1), (var2, parameter2), ...] is list of tuples of strings of the form "var1", "parameter1", where "var1" is the string  that must be replaced with "parameter1" in the query. 
 
 
 You can also inherit the class QueryBuilderModule.py to create simplified queries.
@@ -278,7 +279,7 @@ The method
 
       buildBody()
   
- return the final body of the query applying possibly the defined substitutions, without the header containing the prefix definitions. Use the method
+ returns the final body of the query possibly applying the defined substitutions, without the header containing the prefix definitions. Use the method
   
          self.getParameters()
          
@@ -286,7 +287,7 @@ The method
          
          self.getQuery()
          
-  that returns the query, possibly without applying the given substitutions.
+  to return the query, possibly without applying the given substitutions.
 
 ## Create a RepositoryManager
 
@@ -334,7 +335,7 @@ Add all the required prefixes in addition to the standard ones defined by POC4CO
           occse.addPrefixes([(prefix, IRI), ...])
          
 where:<\br>
-- [(prefix, IRI), ...] is a list of tuple of constituted by the prefix and the prefixed IRI.
+- [(prefix, IRI), ...] is a list of tuples of strings representing the prefix and the prefixed IRI.
         
 Finally, you can perform 
 - either one of the standard queries by calling one of the methods "performQuery-CodeQuery-", where "-CodeQuery-" is the code of the standard query, or
@@ -342,13 +343,13 @@ Finally, you can perform
 
       occse.performQuery(query)
 
-where "query" is an object of type "Query" as created before whose prefixes are neither one of the standard prefixes nor one of the prefixes added with the method "occse.addPrefixes". The output of "performQuery" can be formatted as desired.
+where "query" is an object of type "Query" as created before, whose prefixes are neither one of the standard prefixes nor one of the prefixes added with the method "occse.addPrefixes". The output of "performQuery" can be formatted as desired.
 
 Check the file
 - test/testQueryBuilder.py 
 
-for some example of using the QueryBuilder and
+for some examples of using the QueryBuilder and
 
 - test/test_occse.py
 
-for some example of using the OCCSE module.
+for some examples of using the OCCSE module.
