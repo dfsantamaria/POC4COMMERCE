@@ -1,6 +1,6 @@
 from owlready2 import *
 from OCCSE.QueryBuilderModule import *
-
+import json
 
 class OCCSE:
     def __init__(self, *args):
@@ -74,6 +74,12 @@ class OCCSE:
     def getPrefixes(self):
         return self.prefix
 
+    def buildPrefix(self):
+        head = ""
+        for p in self.prefix:
+            head = head + "PREFIX " + p[0] + ": <" + p[1] + ">" + os.linesep
+        return head
+
     def performQuery(self, query):
         query.addPrefix(self.getPrefixes())
         return self.__performQuery__(query)
@@ -82,6 +88,22 @@ class OCCSE:
         self.__checkRepository__()
         self.__checkReasoner__()
         return self.world.sparql(query.build())
+
+    def getQuery(self, query):
+        return self.buildPrefix()+ query.build()
+
+    def toJson(self, result):
+        result=list(result)
+        jsonlist= []
+        for i, val in enumerate(result):
+            jsonlist.append(["r"+str(i)+":",  str(self.__toJsonResult__(result[i]))])
+        return json.dumps(jsonlist)
+
+    def __toJsonResult__(self, result):
+        toreturn =[]
+        for r in result:
+            toreturn.append(str(r))
+        return toreturn
 
 
     def performQueryQF1(self, prefixes):

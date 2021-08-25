@@ -5,6 +5,7 @@ class Query:
          self.prefix=[]
          self.query=None
          self.param=None
+         self.columns=None
          if len(args) > 0:
              if args[0] is not None:
                 for p in args[0]:
@@ -48,6 +49,11 @@ class Query:
      def getParameters(self):
          return self.param
 
+     def setColumns(self, cols):
+         self.colums=cols
+
+     def getColumns(self):
+         return self.colums
 
 class QueryQF1(Query):
     def __init__(self, prefix):

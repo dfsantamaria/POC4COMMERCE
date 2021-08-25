@@ -47,7 +47,10 @@ print("QE4: ",list(occse.performQueryQE4([("meeting130721","http://www.ngi.ontoc
 query=Query([("meeting130721","http://www.ngi.ontochain/ontologies/meeting.owl#")], "Select DISTINCT ?x WHERE { ?x a occom:Offering.} LIMIT 10")
 print("Custom Query 1: ", list(occse.performQuery(query)))
 
-query=Query([("meeting130721","http://www.ngi.ontochain/ontologies/meeting.owl#")], "Select DISTINCT ?x WHERE { ?x a ?param1 .} LIMIT 10", ["?param1", "occom:Offering"])
+query=Query([("meeting130721","http://www.ngi.ontochain/ontologies/meeting.owl#")], "Select DISTINCT ?x WHERE { ?x a ?param1 .} LIMIT 10", [("?param1", "occom:Offering")])
+print("The query is: ", query.build())
+print("The query before execution is ", occse.getQuery(query))
 print("Custom Query 2: ", list(occse.performQuery(query)))
 
 
+print("JSON: ", occse.toJson(occse.performQuery(query)))
