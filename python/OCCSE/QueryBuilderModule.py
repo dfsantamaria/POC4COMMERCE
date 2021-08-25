@@ -1,4 +1,5 @@
 import os
+from owlready2 import *
 
 class Query:
      def __init__(self, *args):
@@ -14,7 +15,6 @@ class Query:
                self.query=args[1]
                if len(args) > 2:
                   self.param=args[2]
-
 
      def buildPrefix(self):
          head=""
@@ -36,12 +36,12 @@ class Query:
          return self.buildPrefix() + self.buildBody()
 
      def buildBody(self):
+         toreturn = self.query
          if self.param is not None:
-            toreturn=self.query
             for p in self.param:
                toreturn=toreturn.replace(p[0],p[1])
-            return toreturn
-         return self.query
+         return toreturn
+
 
      def getQuery(self):
          return self.query

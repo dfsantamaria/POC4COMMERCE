@@ -87,63 +87,94 @@ class OCCSE:
     def __performQuery__(self, query):
         self.__checkRepository__()
         self.__checkReasoner__()
-        return self.world.sparql(query.build())
+        thequery= query.build()
+        preparedquery = self.world.prepare_sparql(thequery)
+        query.setColumns(preparedquery.column_names)
+        return self.__toJson__(query, self.world.sparql(thequery))
 
     def getQuery(self, query):
         return self.buildPrefix()+ query.build()
 
-    def toJson(self, result):
+    def __toJson__(self, query, result):
         result=list(result)
         jsonlist= []
         for i, val in enumerate(result):
-            jsonlist.append(["r"+str(i)+":",  str(self.__toJsonResult__(result[i]))])
+            jsonlist.append(["r"+str(i)+":",  str(self.__toJsonResult__(query, result[i]))])
         return json.dumps(jsonlist)
 
-    def __toJsonResult__(self, result):
+    def __toJsonResult__(self, query, result):
         toreturn =[]
-        for r in result:
-            toreturn.append(str(r))
+        for i, val in enumerate(result):
+            toreturn.append([query.getColumns()[i], val])
         return toreturn
 
 
     def performQueryQF1(self, prefixes):
-        return self.__performQuery__(QueryQF1(self.getPrefixes()+prefixes))
+        q = QueryQF1(self.getPrefixes() + prefixes)
+        res = self.__performQuery__(q)
+        return self.__toJson__(q,res)
 
     def performQueryQF2(self, prefixes):
-        return self.__performQuery__(QueryQF2(self.getPrefixes()+ prefixes))
+        q= QueryQF2(self.getPrefixes()+ prefixes)
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQF3(self, prefixes, param):
-        return self.__performQuery__(QueryQF3(self.getPrefixes() + prefixes, [("?x",param)]))
+        q = QueryQF3(self.getPrefixes() + prefixes, [("?x",param)])
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQF4(self, prefixes, param):
-        return self.__performQuery__(QueryQF4(self.getPrefixes() + prefixes, [("?x",param)]))
+        q = QueryQF4(self.getPrefixes() + prefixes, [("?x",param)])
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQF5(self, prefixes, param):
-        return self.__performQuery__(QueryQF5(self.getPrefixes() + prefixes, [("?x",param)]))
+        q = QueryQF5(self.getPrefixes() + prefixes, [("?x",param)])
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQF6(self, prefixes,  param):
-        return self.__performQuery__(QueryQF6(self.getPrefixes() + prefixes, [("?x",param)]))
+        q = QueryQF6(self.getPrefixes() + prefixes, [("?x",param)])
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQF7(self, prefixes ,param):
-        return self.__performQuery__(QueryQF7(self.getPrefixes()+ prefixes, [("?x",param)]))
+        q = QueryQF7(self.getPrefixes()+ prefixes, [("?x",param)])
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQC1(self, prefixes):
-        return self.__performQuery__(QueryQC1(self.getPrefixes() + prefixes))
+        q = QueryQC1(self.getPrefixes() + prefixes)
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQC2(self, prefixes, param):
-        return self.__performQuery__(QueryQC2(self.getPrefixes() + prefixes, [("?x",param)]))
+        q = QueryQC2(self.getPrefixes() + prefixes, [("?x",param)])
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQC3(self, prefixes):
-        return self.__performQuery__(QueryQC3(self.getPrefixes()+ prefixes))
+        q = QueryQC3(self.getPrefixes()+ prefixes)
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQE1(self, prefixes):
-        return self.__performQuery__(QueryQE1(self.getPrefixes() + prefixes))
+        q = QueryQE1(self.getPrefixes() + prefixes)
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQE2(self, prefixes, param):
-        return self.__performQuery__(QueryQE2(self.getPrefixes() + prefixes, [("?x",param)]))
+        q = QueryQE2(self.getPrefixes() + prefixes, [("?x",param)])
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQE3(self, prefixes, param):
-        return self.__performQuery__(QueryQE3(self.getPrefixes() + prefixes, [("?x",param)]))
+        q= QueryQE3(self.getPrefixes() + prefixes, [("?x",param)])
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
 
     def performQueryQE4(self, prefixes):
-        return self.__performQuery__(QueryQE4(self.getPrefixes() + prefixes))
+        q = QueryQE4(self.getPrefixes() + prefixes)
+        res = self.__performQuery__(q)
+        return self.__toJson__(q, res)
