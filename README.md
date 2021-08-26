@@ -1,6 +1,6 @@
 # POC4COMMERCE
 
-This Python API library consists of two modules. 
+This Python API library consists of a stack of three ontologies and two modules. 
 
 -  The first module <b>OCGEN</b> provides basic mechanisms for interacting with OASIS behavior ontologies adopted by the POC4COMMERCE project in the ONTOCHAIN ecosystem.
 -  The second module <b>OCCSE</b> provides a search engine and a reasoning system for querying POC4COMMERCE knowledge bases.
@@ -9,6 +9,12 @@ This Python API library consists of two modules.
    - Python interpreter version 3.7 or greater.
    - RDFLib version 5.0.0. for OCGEN module
    - OWLReady 2 for OCCSE module
+
+## Licensing information
+
+POC4COMMERCE Python API and Ontologies
+Copyright (C) 2021.  Giampaolo Bella, Domenico Cantone, Cristiano Longo, Marianna Nicolosi Asmundo, Daniele Francesco Santamaria. This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version. This program is distributed in the hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 
 # OCGEN Module
 ## Generating new agents and agent behaviors </br>
