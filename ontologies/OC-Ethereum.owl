@@ -16,11 +16,12 @@
     <owl:Ontology rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl">
         <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl"/>
         <owl:imports rdf:resource="http://www.semanticblockchain.com/Blondie.owl"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cristiano Longo</rdfs:comment>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Daniele Francesco Santamaria</rdfs:comment>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Domenico Cantone</rdfs:comment>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Giampaolo Bella</rdfs:comment>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marianna Nicolosi Asmundo</rdfs:comment>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cristiano Longo</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Daniele Francesco Santamaria</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Domenico Cantone</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Giampaolo Bella</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marianna Nicolosi Asmundo</terms:created>
+        <terms:license>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.</terms:license>
     </owl:Ontology>
     
 
@@ -39,6 +40,12 @@
     <!-- http://purl.org/dc/terms/created -->
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
     
 
 
