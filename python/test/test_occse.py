@@ -23,7 +23,7 @@ occse.syncReasoner()
 
 #occse.addPrefixes([("meeting130721","http://www.ngi.ontochain/ontologies/meeting.owl#")])
 
-print("QF1: ",  occse.performQueryQF1([("meeting130721","http://www.ngi.ontochain/ontologies/meeting.owl#")]))
+print("QF1: ", occse.performQueryQF1([("meeting130721","http://www.ngi.ontochain/ontologies/meeting.owl#")]))
 print("QF2: ", occse.performQueryQF2([("meeting130721", "http://www.ngi.ontochain/ontologies/meeting.owl#")]))
 print("QF3: ", occse.performQueryQF3([("meeting130721","http://www.ngi.ontochain/ontologies/meeting.owl#")], "meeting130721:batch2563Offering"))
 print("QF4: ", occse.performQueryQF4([("meeting130721","http://www.ngi.ontochain/ontologies/meeting.owl#")], "meeting130721:batch2563Offering"))
