@@ -8,7 +8,7 @@ This Python API library consists of a stack of three ontologies and two modules.
 ## Requirements </br>
    - Python interpreter version 3.7 or greater.
    - RDFLib version 5.0.0. for OCGEN module
-   - OWLReady 2 for OCCSE module
+   - OWLReady 2 for OCCSE module. It is strongly suggested to also install the Cython parser module for better performances.
 
 ## Licensing information
 
