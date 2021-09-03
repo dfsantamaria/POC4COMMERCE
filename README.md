@@ -8,7 +8,7 @@ This Python API library consists of a stack of three ontologies and two modules.
 ## Requirements </br>
    - Python interpreter version 3.7 or greater.
    - RDFLib version 5.0.0. for OCGEN module
-   - OWLReady 2 for OCCSE module
+   - OWLReady 2 version 0.33 for OCCSE module. It is strongly suggested to also install the Cython parser module for better performances.
 
 ## Licensing information
 
@@ -20,9 +20,9 @@ Copyright (C) 2021.  Giampaolo Bella, Domenico Cantone, Cristiano Longo, Mariann
 ## Generating new agents and agent behaviors </br>
 In order to generate new OASIS behaviors you should
 
-A) Create a FacilityManager object by typing: </br>
+A) Create a OCGEN object by typing: </br>
       
-      b = FacilityManager(ontology, namespace, ontologyURL, ontologyTemplate, namespaceTemplate, templateURL)
+      b = OCGEN(ontology, namespace, ontologyURL, ontologyTemplate, namespaceTemplate, templateURL)
       
    where:  </br>
    - "ontology" is the ontology containing the agent behavior.
@@ -248,8 +248,8 @@ C) Create a new agent and a new behavior eventually related with a behavior temp
 
 
 Check the files
-- test/test_behavior_gen.py
-- test/meeting-130721/meeting-130721.py
+- test/behaviorGenTest/test_behavior_gen.py
+- test/ocgen-test/ocgen-test.py
 
 for some examples of using the OCGEN module.
 
@@ -352,10 +352,10 @@ Finally, you can perform
 where "query" is an object of type "Query" as created before, whose prefixes are neither one of the standard prefixes nor one of the prefixes added with the method "occse.addPrefixes". The output of "performQuery" can be formatted as desired.
 
 Check the file
-- test/testQueryBuilder.py 
+- test/occse-test/testQueryBuilder.py 
 
-for some examples of using the QueryBuilder and
+for some examples of using the QueryBuilder (change local path of ontologies) and
 
-- test/test_occse.py
+- test/occse-test/test_occse.py
 
 for some examples of using the OCCSE module.
