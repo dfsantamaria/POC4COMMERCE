@@ -8,18 +8,18 @@ from owlready2 import *
 #print(q.build())
 
 #OC-Found default queries
-blondie = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/Blondie 1.0.owl").load()
-ocfound = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/oc-found.owl").load()
-occommerce = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/oc-commerce.owl").load()
-ocethereum = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/oc-ethereum.owl").load()
-onto = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/meeting-130721.owl").load()
+blondie = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/Blondie 1.0.owl").load()
+ocfound = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/oc-found.owl").load()
+occommerce = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/oc-commerce.owl").load()
+ocethereum = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/oc-ethereum.owl").load()
+onto = get_ontology("file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/ocgen-test.owl").load()
 
 
 repositoryManager = RepositoryManager(None)
 print(repositoryManager.getRepository(), repositoryManager.getChanged())
-repositoryManager.addRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/Blondie 1.0.owl"])
+repositoryManager.addRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/Blondie 1.0.owl"])
 print(repositoryManager.getRepository(), repositoryManager.getChanged())
-repositoryManager.removeRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/meeting-130721/Blondie 1.0.owl"])
+repositoryManager.removeRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/Blondie 1.0.owl"])
 print(repositoryManager.getRepository())
 
 
@@ -39,7 +39,7 @@ prefix = [("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#"),
                         ("ocether", "http://www.ngi.ontochain/ontologies/oc-ethereum.owl#"),
                         ("gr", "http://purl.org/goodrelations/v1#"),
                         ("blon", "http://www.semanticblockchain.com/Blondie.owl#"),
-                        ("meeting130721","http://www.ngi.ontochain/ontologies/meeting.owl#")]
+                        ("ocgen-test","http://www.ngi.ontochain/ontologies/ocgen-test.owl#")]
 
 
 
@@ -53,25 +53,25 @@ print(qf2.build())
 print(list(default_world.sparql(qf2.build())))
 
 
-qf3=QueryQF3(prefix, [("?x", "meeting130721:batch2563Offering")])
+qf3=QueryQF3(prefix, [("?x", "ocgen-test:batch2563Offering")])
 print(qf3.build())
 print(list(default_world.sparql(qf3.build())))
 
 
-qf4=QueryQF4(prefix, [("?x", "meeting130721:batch2563Offering")])
+qf4=QueryQF4(prefix, [("?x", "ocgen-test:batch2563Offering")])
 print(qf4.build())
 print(list(default_world.sparql(qf4.build())))
 
-qf5=QueryQF5(prefix, [("?x","meeting130721:batch2563Offering")])
+qf5=QueryQF5(prefix, [("?x","ocgen-test:batch2563Offering")])
 print(qf5.build())
 print(list(default_world.sparql(qf5.build())))
 
-qf6=QueryQF6(prefix, [("?x", "meeting130721:batch2563Offering")])
+qf6=QueryQF6(prefix, [("?x", "ocgen-test:batch2563Offering")])
 print(qf6.build())
 print(list(default_world.sparql(qf6.build())))
 
 
-qf7=QueryQF7(prefix, [("?x", "meeting130721:batch2563Offering")])
+qf7=QueryQF7(prefix, [("?x", "ocgen-test:batch2563Offering")])
 print(qf7.build())
 print(list(default_world.sparql(qf7.build())))
 
@@ -80,7 +80,7 @@ qc1=QueryQC1(prefix)
 print(qc1.build())
 print(list(default_world.sparql(qc1.build())))
 
-qc2=QueryQC2(prefix, [("?x", "meeting130721:batch2563Offering")])
+qc2=QueryQC2(prefix, [("?x", "ocgen-test:batch2563Offering")])
 print(qc2.build())
 print(list(default_world.sparql(qc2.build())))
 
@@ -93,11 +93,11 @@ qe1=QueryQE1(prefix)
 print(qe1.build())
 print(list(default_world.sparql(qe1.build())))
 
-qe2=QueryQE2(prefix, [("?x", "meeting130721:appleBatch2563Token")])
+qe2=QueryQE2(prefix, [("?x", "ocgen-test:appleBatch2563Token")])
 print(qe2.build())
 print(list(default_world.sparql(qe2.build())))
 
-qe3=QueryQE3(prefix, [("?x", "meeting130721:Apple")])
+qe3=QueryQE3(prefix, [("?x", "ocgen-test:Apple")])
 print(qe3.build())
 print(list(default_world.sparql(qe3.build())))
 

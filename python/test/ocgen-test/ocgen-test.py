@@ -1,19 +1,19 @@
-from OCGEN.FacilityManager import *
+from OCGEN.OCGEN import *
 
 
-file = open("meeting-130721.owl", "r")
+file = open("ocgen-test-bck.owl", "r")
 ontology = Graph()
 ontology.parse(file)
 
-namespace =  Namespace("http://www.ngi.ontochain/ontologies/meeting.owl#")
+namespace =  Namespace("http://www.ngi.ontochain/ontologies/ocgen-test.owl#")
 gr = Namespace("http://purl.org/goodrelations/v1#")
 blondie = Namespace("http://www.semanticblockchain.com/Blondie.owl#")
 
 ontology.bind("base", namespace)
 
-b = FacilityManager(ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/meeting-210629/meeting-130721.owl",
-                    ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/meeting-210629/meeting-130721.owl",
-                    ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/meeting-210629/meeting-130721.owl")
+b = OCGEN(ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/ocgen-test/ocgen-test.owl",
+          ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/ocgen-test/ocgen-test.owl",
+          ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/ocgen-test/ocgen-test.owl")
 
 #Creating an Apple Seller
 b.createAgent("appleProducerAgent")
@@ -284,7 +284,7 @@ b.createAgentAction("appleProducerAgent", "appleOfferingCreation", "appleOfferin
                           ]
                          ])
 
-file = open("meeting-130721.owl", "w")
+file = open("ocgen-test.owl", "w")
 file.write(ontology.serialize(format='xml').decode())
 
 input("Press a key for the second phase")
@@ -493,5 +493,5 @@ b.createAgentAction("Bob", "valuateAppleOfferingAction", "valuateAppleOfferingGo
 
 
 
-file = open("meeting-130721.owl", "w")
+file = open("ocgen-test.owl", "w")
 file.write(ontology.serialize(format='xml').decode())

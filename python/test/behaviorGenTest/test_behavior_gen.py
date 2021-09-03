@@ -1,4 +1,4 @@
-from OCGEN.FacilityManager import *
+from OCGEN.OCGEN import *
 
 #test
 #create a fresh ontology for the agent
@@ -146,14 +146,14 @@ print(ontologyAct.serialize(format="turtle").decode("utf-8"))
 print("#####################Plan#################################")
 print(ontologyPlan.serialize(format="turtle").decode("utf-8"))
 #saving
-file = open("ontologies/agent.owl", "w")
+file = open("../ontologies/agent.owl", "w")
 file.write(ontology.serialize(format='xml').decode())
 
-file = open("ontologies/agentTemplate.owl", "w")
+file = open("../ontologies/agentTemplate.owl", "w")
 file.write(ontologyTemp.serialize(format='xml').decode())
 
-file = open("ontologies/agentAction.owl", "w")
+file = open("../ontologies/agentAction.owl", "w")
 file.write(ontologyAct.serialize(format='xml').decode())
 
-file = open("ontologies/agentPlan.owl", "w")
+file = open("../ontologies/agentPlan.owl", "w")
 file.write(ontologyPlan.serialize(format='xml').decode())
