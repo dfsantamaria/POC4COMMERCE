@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1628844499871" name="http://purl.org/goodrelations/v1" uri="GoodRelations.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1628844499871" name="http://www.ngi.ontochain/ontologies/meeting.owl" uri="meeting-130721%20-%20bck.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1628844499871" name="http://www.ngi.ontochain/ontologies/oc-commerce.owl" uri="OC-Commerce.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1628844499871" name="http://www.ngi.ontochain/ontologies/oc-ethereum.owl" uri="OC-Ethereum.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1628844499871" name="http://www.ngi.ontochain/ontologies/oc-found.owl" uri="OC-Found.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1628844499871" name="http://www.semanticblockchain.com/Blondie.owl" uri="Blondie%201.0.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1631175741901" name="http://purl.org/goodrelations/v1" uri="GoodRelations.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1631175741901" name="http://www.ngi.ontochain/ontologies/oc-commerce.owl" uri="OC-Commerce.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1631175741901" name="http://www.ngi.ontochain/ontologies/oc-ethereum.owl" uri="OC-Ethereum.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1631175741901" name="http://www.ngi.ontochain/ontologies/oc-found.owl" uri="OC-Found.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1631175741901" name="http://www.ngi.ontochain/ontologies/ocgen-test.owl" uri="ocgen-test-bck.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1631175741901" name="http://www.semanticblockchain.com/Blondie.owl" uri="Blondie%201.0.owl"/>
     </group>
 </catalog>

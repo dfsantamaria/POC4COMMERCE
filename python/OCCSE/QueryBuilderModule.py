@@ -49,6 +49,9 @@ class Query:
      def getParameters(self):
          return self.param
 
+     def setParameters(self, params):
+         self.param=params
+
      def setColumns(self, cols):
          self.colums=cols
 

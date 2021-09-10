@@ -13,8 +13,8 @@
      xmlns:terms="http://purl.org/dc/terms/">
     <owl:Ontology rdf:about="http://www.ngi.ontochain/ontologies/ocgen-test.owl">
         <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl"/>
-        <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl"/>
         <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl"/>
+        <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl"/>
     </owl:Ontology>
 </rdf:RDF>
 

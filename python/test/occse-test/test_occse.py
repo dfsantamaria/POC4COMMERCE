@@ -54,4 +54,8 @@ print("The query before execution is \n", occse.getQuery(query))
 
 print("Custom Query 2: ", occse.performQuery(query))
 
-
+print("Editing the query 2. Empty result is expected")
+query.setParameters([("?param1", "occom:StandardOffering")])
+print("The query is: \n ", query.build())
+print("The query before execution is \n", occse.getQuery(query))
+print("Custom Query 2: ", occse.performQuery(query))
