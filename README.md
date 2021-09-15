@@ -20,7 +20,9 @@ Copyright (C) 2021.  Giampaolo Bella, Domenico Cantone, Cristiano Longo, Mariann
 ## Generating new agents and agent behaviors </br>
 In order to generate new OASIS behaviors you should
 
-A) Create a OCGEN object by typing: </br>
+A)  Create three RDFLib ontology objects, one for the ontology hosting the agent behaviors, one for the ontology hosting the agent templates, one for the ontology hosting data.
+
+Create a OCGEN object by typing: </br>
       
       b = OCGEN(ontology, namespace, ontologyURL, ontologyTemplate, namespaceTemplate, templateURL)
       
