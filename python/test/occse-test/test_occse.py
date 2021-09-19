@@ -6,11 +6,11 @@ from OCCSE.QueryBuilderModule import *
 
 
 repositoryManager = RepositoryManager(None)
-repositoryManager.addRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/Blondie 1.0.owl"])
-repositoryManager.addRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/oc-found.owl"])
-repositoryManager.addRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/oc-commerce.owl"])
-repositoryManager.addRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/oc-ethereum.owl"])
-repositoryManager.addRepositories(["file://C:/Users/danie/PycharmProjects/Ontochain/test/ocgen-test/ocgen-test.owl"])
+repositoryManager.addRepositories(["file://../ocgen-test/Blondie 1.0.owl"])
+repositoryManager.addRepositories(["file://../ocgen-test/oc-found.owl"])
+repositoryManager.addRepositories(["file://../ocgen-test/oc-commerce.owl"])
+repositoryManager.addRepositories(["file://../ocgen-test/oc-ethereum.owl"])
+repositoryManager.addRepositories(["file://../ocgen-test/ocgen-test.owl"])
 
 reasonerInterface=ReasonerInterface("pellet")
 

@@ -11,9 +11,9 @@ blondie = Namespace("http://www.semanticblockchain.com/Blondie.owl#")
 
 ontology.bind("base", namespace)
 
-b = OCGEN(ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/ocgen-test/ocgen-test.owl",
-          ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/ocgen-test/ocgen-test.owl",
-          ontology, namespace, "C:/Users/danie/PycharmProjects/POC4COMMERCE/test/ocgen-test/ocgen-test.owl")
+b = OCGEN(ontology, namespace, "ocgen-test.owl",
+          ontology, namespace, "ocgen-test.owl",
+          ontology, namespace, "ocgen-test.owl")
 
 #Creating an Apple Seller
 b.createAgent("appleProducerAgent")
