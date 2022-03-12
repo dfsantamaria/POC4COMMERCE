@@ -395,8 +395,8 @@ b.addObjPropAssertion(ontology, appleTransactNum, b.getOCEthereumEntityByName("i
 appleBatchToken = namespace+"appleBatch2563Token"
 appleBatchTokenFeature = namespace+"appleBatch2563TokenFeature"
 b.addClassAssertion(ontology, appleBatchToken, namespace+"EthereumTokenERC721")
-b.addClassAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("EthereumWalletOwnerEndurantFeature"))
-b.addObjPropAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("hasEthereumTokenEndurantFeature"), appleBatchTokenFeature)
+b.addClassAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("EthereumWalletOwnerPerdurantFeature"))
+b.addObjPropAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("hasEthereumTokenPerdurantFeature"), appleBatchTokenFeature)
 b.addDataPropAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("hasTokenID"),  "12", XSD.integer)
 b.addDataPropAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("isInTheWalletOf"),  "0xAf90b6E2b8b02619f9c37651dD6828BbA662087E", XSD.string)
 b.addObjPropAssertion(ontology, appleBatch, b.getOCEthereumEntityByName("isDescribedByEthereumToken"), appleBatchToken)
@@ -418,7 +418,7 @@ b.createAgentAction("appleProducerSmartContractAgent", "mintAppleBatchAction", "
                         []
                     ])
 #Query testing
-#b.addClassAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("DeprecatedEthereumTokenEndurantFeature"))
+#b.addClassAssertion(ontology, appleBatchTokenFeature, b.getOCEthereumEntityByName("DeprecatedEthereumTokenPerdurantFeature"))
 #b.addClassAssertion(ontology, appleBatchToken, b.getOCEthereumEntityByName("DestroyedEthereumToken"))
 
 #valuationg the offering
