@@ -84,12 +84,12 @@
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenEndurantFeature -->
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenPerdurantFeature -->
 
-    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenEndurantFeature">
+    <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenPerdurantFeature">
         <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#isRelatedWith"/>
         <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumToken"/>
-        <rdfs:range rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature"/>
+        <rdfs:range rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenPerdurantFeature"/>
     </owl:ObjectProperty>
     
 
@@ -99,7 +99,7 @@
     <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenFeatureModificationResult">
         <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#involves"/>
         <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeatureModificationActivity"/>
-        <rdfs:range rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+        <rdfs:range rdf:resource="http://www.dmi.unict.it/oasis.owl#PerdurantFeature"/>
     </owl:ObjectProperty>
     
 
@@ -109,8 +109,8 @@
     <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#hasEthereumTokenFeatureModificationSource">
         <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#involves"/>
         <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeatureModificationActivity"/>
-        <rdfs:range rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
-        <rdfs:range rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature"/>
+        <rdfs:range rdf:resource="http://www.dmi.unict.it/oasis.owl#PerdurantFeature"/>
+        <rdfs:range rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenPerdurantFeature"/>
     </owl:ObjectProperty>
     
 
@@ -156,8 +156,8 @@
 
     <owl:ObjectProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isEthereumTokenFeatureModifiedIn">
         <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#involves"/>
-        <rdfs:domain rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
-        <rdfs:range rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+        <rdfs:domain rdf:resource="http://www.dmi.unict.it/oasis.owl#PerdurantFeature"/>
+        <rdfs:range rdf:resource="http://www.dmi.unict.it/oasis.owl#PerdurantFeature"/>
     </owl:ObjectProperty>
     
 
@@ -193,7 +193,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#isInTheWalletOf">
         <rdfs:subPropertyOf rdf:resource="http://www.dmi.unict.it/oasis.owl#hasDataValue"/>
-        <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature"/>
+        <rdfs:domain rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenPerdurantFeature"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -234,9 +234,9 @@
     
 
 
-    <!-- http://www.dmi.unict.it/oasis.owl#EndurantFeature -->
+    <!-- http://www.dmi.unict.it/oasis.owl#PerdurantFeature -->
 
-    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
+    <owl:Class rdf:about="http://www.dmi.unict.it/oasis.owl#PerdurantFeature"/>
     
 
 
@@ -300,11 +300,11 @@
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenEndurantFeature -->
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenPerdurantFeature -->
 
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenEndurantFeature">
-        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus"/>
-        <owl:disjointWith rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature"/>
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenPerdurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenPerdurantFeatureStatus"/>
+        <owl:disjointWith rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenPerdurantFeature"/>
         <rdfs:comment xml:lang="eng">This class describes an active endurant feature of an ethereum token</rdfs:comment>
     </owl:Class>
     
@@ -328,10 +328,10 @@
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature -->
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenPerdurantFeature -->
 
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature">
-        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus"/>
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenPerdurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenPerdurantFeatureStatus"/>
         <rdfs:comment xml:lang="en">This class describes deprecated endurant features of ethereum tokens</rdfs:comment>
     </owl:Class>
     
@@ -495,33 +495,6 @@
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature -->
-
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature">
-        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#EndurantFeature"/>
-        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeature"/>
-        <rdfs:comment xml:lang="en">This class describes endurant features of ethereum tokens</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus -->
-
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeatureStatus">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenEndurantFeature"/>
-                    <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenEndurantFeature"/>
-                </owl:unionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature"/>
-        <rdfs:comment xml:lang="eng">This class describes the status (active or deprecated) of a feature of an ethereum token</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeature -->
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeature">
@@ -540,6 +513,33 @@
     
 
 
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenPerdurantFeature -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenPerdurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#PerdurantFeature"/>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenFeature"/>
+        <rdfs:comment xml:lang="en">This class describes endurant features of ethereum tokens</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenPerdurantFeatureStatus -->
+
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenPerdurantFeatureStatus">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#ActiveEthereumTokenPerdurantFeature"/>
+                    <rdf:Description rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#DeprecatedEthereumTokenPerdurantFeature"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenPerdurantFeature"/>
+        <rdfs:comment xml:lang="eng">This class describes the status (active or deprecated) of a feature of an ethereum token</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenStatusChanged -->
 
     <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenStatusChanged">
@@ -549,10 +549,10 @@
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumWalletOwnerEndurantFeature -->
+    <!-- http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumWalletOwnerPerdurantFeature -->
 
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumWalletOwnerEndurantFeature">
-        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenEndurantFeature"/>
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumWalletOwnerPerdurantFeature">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-ethereum.owl#EthereumTokenPerdurantFeature"/>
         <rdfs:comment xml:lang="en">This class describes the ownership of tokens as endurant feature</rdfs:comment>
     </owl:Class>
     
