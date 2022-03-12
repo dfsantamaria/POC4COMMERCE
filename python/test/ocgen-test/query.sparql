@@ -144,10 +144,10 @@ SELECT  ?agent ?token ?tokentype ?asset ?owner
                    FILTER NOT EXISTS { ?operationOn a ocether:DestroyedEthereumToken}       
                    
                    ?asset ocether:isDescribedByEthereumToken ?operationOn.          
-                   ?token ocether:hasEthereumTokenEndurantFeature ?feature.
+                   ?token ocether:hasEthereumTokenPerdurantFeature ?feature.
                    ?feature a ?ownerFeature.
-                   FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)
-                   FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.} 
+                   FILTER(?ownerFeature = ocether:EthereumWalletOwnerPerdurantFeature)
+                   FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenPerdurantFeature.} 
                    ?feature ocether:isInTheWalletOf ?owner.                        
            }
 
@@ -198,10 +198,10 @@ SELECT   ?owner (COUNT(?operationOn) as ?tokenCounter) ?assetType
                   ?asset a ?assetType.
                   FILTER(?assetType != owl:NamedIndividual).           
                   ?asset ocether:isDescribedByEthereumToken ?operationOn.          
-                   ?token ocether:hasEthereumTokenEndurantFeature ?feature.
+                   ?token ocether:hasEthereumTokenPerdurantFeature ?feature.
                    ?feature a ?ownerFeature.
-                   FILTER(?ownerFeature = ocether:EthereumWalletOwnerEndurantFeature)
-                   FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenEndurantFeature.} 
+                   FILTER(?ownerFeature = ocether:EthereumWalletOwnerPerdurantFeature)
+                   FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenPerdurantFeature.} 
                    ?feature ocether:isInTheWalletOf ?owner.                                    
            }
          GROUP BY ?assetType ?owner
