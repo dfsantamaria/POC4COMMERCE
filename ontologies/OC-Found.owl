@@ -223,9 +223,9 @@
     
 
 
-    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainProofWorkActivity -->
+    <!-- http://www.ngi.ontochain/ontologies/oc-found.owl#SSupplyChainOfferingProofActivity -->
 
-    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainProofWorkActivity">
+    <owl:Class rdf:about="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainOfferingProofActivity">
         <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainActivity"/>
     </owl:Class>
     
