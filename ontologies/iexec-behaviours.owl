@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasOptionalExecutionProperty"/>
+    <rdfs:range rdf:resource="http://ontology.iex.ec#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#iExecOffering">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
+    <rdfs:subClassOf rdf:nodeID="Ndeedc43cd0d0465bb6af2189190c7a22"/>
+    <rdfs:subClassOf rdf:nodeID="N61658b1a2e8944a89ad7c760e96b1d46"/>
+    <rdfs:subClassOf rdf:nodeID="Nf9af5f67ed454556b2d7743fd83b4e47"/>
+    <rdfs:subClassOf rdf:nodeID="Nc0eb5dc69f77460fabb5c4b02d240d95"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf9af5f67ed454556b2d7743fd83b4e47">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://ontology.iex.ec#hasDatasetRestrict"/>
+    <owl:allValuesFrom rdf:resource="http://ontology.iex.ec#DatasetRestrict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#imports">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#iExecOptionalProperty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasRequestRestrict">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasMandatoryProperty"/>
+    <rdfs:range rdf:resource="http://ontology.iex.ec#DatasetRestrict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#compute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#WorkerPoolManager">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#SoftwareAgent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskOperator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#Tag">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOptionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#workerpoolExecTaskObject">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskObject"/>
+    <oasis:refersAsNewTo rdf:resource="http://ontology.iex.ec#workerpoolExeciExecTask"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N61658b1a2e8944a89ad7c760e96b1d46">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://ontology.iex.ec#hasAppRestrict"/>
+    <owl:allValuesFrom rdf:resource="http://ontology.iex.ec#AppRestrict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasiExecProperty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersAsNewTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasOptionalExecutionProperty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasiExecProperty"/>
+    <rdfs:domain rdf:resource="http://ontology.iex.ec#iExecOffering"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasDatasetOffering">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://ontology.iex.ec#WorkerPoolOffering"/>
+    <rdfs:range rdf:resource="http://ontology.iex.ec#DatasetOffering"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#Trust">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOptionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#Dataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DigitalAsset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:imports rdf:resource="http://www.dmi.unict.it/oasis.owl"/>
+    <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl"/>
+    <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#workerpoolExecBehavior">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Behavior"/>
+    <oasis:consistsOfGoalDescription rdf:resource="http://ontology.iex.ec#workerpoolExecGoal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasTrust">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasOptionalExecutionProperty"/>
+    <rdfs:range rdf:resource="http://ontology.iex.ec#Trust"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#Application">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DigitalAsset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasTag">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasOptionalExecutionProperty"/>
+    <rdfs:range rdf:resource="http://ontology.iex.ec#Tag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#workerpoolExecParameter">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalInputParameter"/>
+    <oasis:refersAsNewTo rdf:resource="http://ontology.iex.ec#workerpoolExecDeal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ndeedc43cd0d0465bb6af2189190c7a22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://ontology.iex.ec#hasOptionalExecutionProperty"/>
+    <owl:someValuesFrom rdf:resource="http://ontology.iex.ec#iExecProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#workerpoolagent">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Agent"/>
+    <oasis:hasBehavior rdf:resource="http://ontology.iex.ec#workerpoolExecBehavior"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasParam">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasOptionalExecutionProperty"/>
+    <rdfs:range rdf:resource="http://ontology.iex.ec#Tag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#WorkerPoolOffering">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOffering"/>
+    <rdfs:subClassOf rdf:nodeID="N7de52b2dab6f4a018709648aaa6db209"/>
+    <rdfs:subClassOf rdf:nodeID="N3eaa0354b24c41b1bc58b7535e4d977b"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasMandatoryProperty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasiExecProperty"/>
+    <rdfs:domain rdf:resource="http://ontology.iex.ec#iExecOffering"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#AppRestrict">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecMandatoryProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#WorkerPool">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#SoftwareAgent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#Category">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOptionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#refersExactlyTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#Param">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOptionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc0eb5dc69f77460fabb5c4b02d240d95">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://ontology.iex.ec#hasRequestRestrict"/>
+    <owl:allValuesFrom rdf:resource="http://ontology.iex.ec#RequestRestrict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#AppOffering">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOffering"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#iExecDeal">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecDescriptionObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasBehavior">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#workerpoolExecTask">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskDescription"/>
+    <oasis:hasTaskOperator rdf:resource="http://ontology.iex.ec#workerpoolExecTaskOperator"/>
+    <oasis:hasTaskObject rdf:resource="http://ontology.iex.ec#workerpoolExecTaskObject"/>
+    <oasis:hasTaskFormalInputParameter rdf:resource="http://ontology.iex.ec#workerpoolExecParameter"/>
+    <oasis:hasTaskFormalOutputParameter rdf:resource="http://ontology.iex.ec#workerpoolExecOutputParameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#DatasetRestrict">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecMandatoryProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7de52b2dab6f4a018709648aaa6db209">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#hasSupplyChainManagement"/>
+    <owl:someValuesFrom rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainManagement"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3eaa0354b24c41b1bc58b7535e4d977b">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://ontology.iex.ec#hasDatasetOffering"/>
+    <owl:allValuesFrom rdf:resource="http://ontology.iex.ec#DatasetOffering"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#iExecDescriptionObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskFormalOutputParameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasWorkerPoolManager">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://ontology.iex.ec#WorkerPool"/>
+    <rdfs:range rdf:resource="http://ontology.iex.ec#WorkerPoolManager"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#iExecMandatoryProperty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#">
+    <owl:imports rdf:resource="http://www.dmi.unict.it/ether-oasis.owl#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#RequestRestrict">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecMandatoryProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#validate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#workerpoolExecGoal">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#GoalDescription"/>
+    <oasis:consistsOfTaskDescription rdf:resource="http://ontology.iex.ec#workerpoolExecTask"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#iExecProperty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecDescriptionObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskFormalInputParameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasAppRestrict">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasMandatoryProperty"/>
+    <rdfs:range rdf:resource="http://ontology.iex.ec#AppRestrict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#hasTaskObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfTaskDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis.owl#consistsOfGoalDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#workerpoolExecTaskOperator">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskOperator"/>
+    <oasis:refersExactlyTo rdf:resource="http://www.dmi.unict.it/oasis-abox.owl#compute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#DatasetOffering">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOffering"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#hasDatasetRestrict">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasMandatoryProperty"/>
+    <rdfs:range rdf:resource="http://ontology.iex.ec#DatasetRestrict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#workerpoolExecOutputParameter">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#TaskFormalOutputParameter"/>
+    <oasis:refersAsNewTo rdf:resource="http://ontology.iex.ec#workerpoolExeciExecTask"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.dmi.unict.it/oasis-abox.owl#compute">
+    <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#workerpoolExecDeal">
+    <rdf:type rdf:resource="iExecDeal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology.iex.ec#workerpoolExeciExecTask">
+    <rdf:type rdf:resource="iExecTask"/>
+  </rdf:Description>
+</rdf:RDF>

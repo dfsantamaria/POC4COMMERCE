@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://ontology.iex.ec#"
+     xml:base="http://ontology.iex.ec"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:oasis="http://www.dmi.unict.it/oasis.owl#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://ontology.iex.ec">
+        <owl:imports rdf:resource="http://www.dmi.unict.it/oasis.owl"/>
+        <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl"/>
+        <owl:imports rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.iex.ec#hasAppRestrict -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasAppRestrict">
+        <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasMandatoryProperty"/>
+        <rdfs:range rdf:resource="http://ontology.iex.ec#AppRestrict"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasCategory -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasCategory">
+        <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasOptionalExecutionProperty"/>
+        <rdfs:range rdf:resource="http://ontology.iex.ec#Category"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasDatasetOffering -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasDatasetOffering">
+        <rdfs:domain rdf:resource="http://ontology.iex.ec#WorkerPoolOffering"/>
+        <rdfs:range rdf:resource="http://ontology.iex.ec#DatasetOffering"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasDatasetRestrict -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasDatasetRestrict">
+        <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasMandatoryProperty"/>
+        <rdfs:range rdf:resource="http://ontology.iex.ec#DatasetRestrict"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasMandatoryProperty -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasMandatoryProperty">
+        <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasiExecProperty"/>
+        <rdfs:domain rdf:resource="http://ontology.iex.ec#iExecOffering"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasOptionalExecutionProperty -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasOptionalExecutionProperty">
+        <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasiExecProperty"/>
+        <rdfs:domain rdf:resource="http://ontology.iex.ec#iExecOffering"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasParam -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasParam">
+        <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasOptionalExecutionProperty"/>
+        <rdfs:range rdf:resource="http://ontology.iex.ec#Tag"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasRequestRestrict -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasRequestRestrict">
+        <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasMandatoryProperty"/>
+        <rdfs:range rdf:resource="http://ontology.iex.ec#DatasetRestrict"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasTag -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasTag">
+        <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasOptionalExecutionProperty"/>
+        <rdfs:range rdf:resource="http://ontology.iex.ec#Tag"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasTrust -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasTrust">
+        <rdfs:subPropertyOf rdf:resource="http://ontology.iex.ec#hasOptionalExecutionProperty"/>
+        <rdfs:range rdf:resource="http://ontology.iex.ec#Trust"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasWorkerPoolManager -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasWorkerPoolManager">
+        <rdfs:domain rdf:resource="http://ontology.iex.ec#WorkerPool"/>
+        <rdfs:range rdf:resource="http://ontology.iex.ec#WorkerPoolManager"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.iex.ec#hasiExecProperty -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.iex.ec#hasiExecProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.iex.ec#AppOffering -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#AppOffering">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOffering"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#AppRestrict -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#AppRestrict">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecMandatoryProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#Application -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#Application">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DigitalAsset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#Category -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#Category">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOptionalProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#Dataset -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#Dataset">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DigitalAsset"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#DatasetOffering -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#DatasetOffering">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOffering"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#DatasetRestrict -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#DatasetRestrict">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecMandatoryProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#Param -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#Param">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOptionalProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#RequestRestrict -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#RequestRestrict">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecMandatoryProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#Tag -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#Tag">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOptionalProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#Trust -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#Trust">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOptionalProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#WorkerPool -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#WorkerPool">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#SoftwareAgent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#WorkerPoolManager -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#WorkerPoolManager">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#SoftwareAgent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#WorkerPoolOffering -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#WorkerPoolOffering">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecOffering"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#hasSupplyChainManagement"/>
+                <owl:someValuesFrom rdf:resource="http://www.ngi.ontochain/ontologies/oc-found.owl#SupplyChainManagement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.iex.ec#hasDatasetOffering"/>
+                <owl:allValuesFrom rdf:resource="http://ontology.iex.ec#DatasetOffering"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#iExecDeal -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#iExecDeal">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecDescriptionObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#iExecDescriptionObject -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#iExecDescriptionObject">
+        <rdfs:subClassOf rdf:resource="http://www.dmi.unict.it/oasis.owl#DescriptionObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#iExecMandatoryProperty -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#iExecMandatoryProperty">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#iExecOffering -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#iExecOffering">
+        <rdfs:subClassOf rdf:resource="http://www.ngi.ontochain/ontologies/oc-commerce.owl#Offering"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.iex.ec#hasOptionalExecutionProperty"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.iex.ec#iExecProperty"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.iex.ec#hasAppRestrict"/>
+                <owl:allValuesFrom rdf:resource="http://ontology.iex.ec#AppRestrict"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.iex.ec#hasDatasetRestrict"/>
+                <owl:allValuesFrom rdf:resource="http://ontology.iex.ec#DatasetRestrict"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.iex.ec#hasRequestRestrict"/>
+                <owl:allValuesFrom rdf:resource="http://ontology.iex.ec#RequestRestrict"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#iExecOptionalProperty -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#iExecOptionalProperty">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#iExecProperty -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#iExecProperty">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecDescriptionObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.iex.ec#iExecTask -->
+
+    <owl:Class rdf:about="http://ontology.iex.ec#iExecTask">
+        <rdfs:subClassOf rdf:resource="http://ontology.iex.ec#iExecDescriptionObject"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.iex.ec#compute -->
+
+    <owl:NamedIndividual rdf:about="http://ontology.iex.ec#compute">
+        <rdf:type rdf:resource="http://www.dmi.unict.it/oasis.owl#Action"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontology.iex.ec#validate -->
+
+    <owl:NamedIndividual rdf:about="http://ontology.iex.ec#validate"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
