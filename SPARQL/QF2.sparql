@@ -1,0 +1,10 @@
+SELECT DISTINCT ?agent ?operation ?operationOn ?typeOf
+WHERE { 
+        ?agent oasis:performs ?agentExe.
+        ?agentExe oasis:hasTaskObject ?taskExe.
+        ?agentExe oasis:hasTaskOperator ?operator.
+        ?operator oasis:refersExactlyTo ?operation.
+        ?taskExe oasis:refersExactlyTo ?operationOn.
+        ?operationOn a ?typeOf.
+        FILTER( ?typeOf != owl:NamedIndividual)
+  }
