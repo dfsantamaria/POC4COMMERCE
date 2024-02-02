@@ -1,0 +1,4 @@
+SELECT ?supplychain
+WHERE { 
+      resource ocfound:hasSupplyChainManagement ?supplychain .
+}
