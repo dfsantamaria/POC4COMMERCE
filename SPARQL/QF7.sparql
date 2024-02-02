@@ -1,0 +1,12 @@
+SELECT (AVG(?score) AS ?AverageScore) (COUNT(?agent) AS ?numberOfValuation) 
+WHERE { 
+      ?agent oasis:performs ?agentExe.
+      ?agentExe oasis:hasTaskObject ?taskExe.
+      ?agentExe oasis:hasTaskOperator ?operator.
+      ?operator oasis:refersExactlyTo oabox:perform.
+      ?taskExe oasis:refersExactlyTo ?qualityValuation.
+      ?qualityValuation a ocfound:QualityValuationActivity.   
+      ?qualityValuation ocfound:hasQualityValuationResult ?result.
+      ?qualityValuation ocfound:qualityValuationPerformedOn {resource.
+      ?result ocfound:hasValuationValue ?score. 
+ }   
