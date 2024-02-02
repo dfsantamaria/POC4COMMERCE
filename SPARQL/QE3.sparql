@@ -1,0 +1,16 @@
+SELECT DISTINCT  ?agent ?hash ?address
+WHERE {                   
+      ?agent oasis:performs ?agentExe.
+      ?agentExe oasis:hasTaskObject ?taskExe.
+      ?agentExe oasis:hasTaskOperator ?operator.
+      ?operator oasis:refersExactlyTo oabox:mint.
+      ?taskExe oasis:refersExactlyTo ?token.                    
+      ?asset ocether:isDescribedByEthereumToken ?token. 
+      ?asset a assetType.             
+      ?block blon:heightBlock ?blockNumber.    
+      ?block blon:hasEthereumPayloadBlock ?payload. 
+      ?payload blon:hasEthereumTransactionPayload ?transaction.
+      ?transaction blon:recipientEthereumTransaction ?hash.  
+      ?transaction ocether:introducesEthereumSmartContractAgent ?agent.  
+      ?transaction blon:to ?address. 
+}
