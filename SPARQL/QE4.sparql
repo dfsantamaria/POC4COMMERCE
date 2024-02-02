@@ -1,0 +1,12 @@
+SELECT ?owner (COUNT(?operationOn) as ?tokenCounter) ?assetType   
+WHERE {         
+      ?asset a ?assetType.
+      FILTER(?assetType != owl:NamedIndividual).     
+      ?asset ocether:isDescribedByEthereumToken ?operationOn.          
+      ?token ocether:hasEthereumTokenPerdurantFeature ?feature.
+      ?feature a ?ownerFeature.
+      FILTER(?ownerFeature = ocether:EthereumWalletOwnerPerdurantFeature)
+      FILTER NOT EXISTS {?feature a ocether:DeprecatedEthereumTokenPerdurantFeature.} 
+      ?feature ocether:isInTheWalletOf ?owner.    
+  }                               
+GROUP BY ?assetType ?owner
