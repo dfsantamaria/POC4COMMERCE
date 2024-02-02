@@ -1,0 +1,14 @@
+SELECT DISTINCT ?agent ?identity ?operation ?operationOn
+WHERE { 
+      ?agent ocfound:hasDigitalIdentity ?identity.
+      ?agent ocfound:hasDigitalIdentity ?identity.
+      ?agent oasis:hasBehavior ?behaviour
+      ?behaviour oasis:consistsOfGoalDescription ?goal.
+      ?goal oasis:consistsOfTaskDescription ?task.
+      ?task oasis:hasTaskOperator ?operator.
+      ?operator oasis:refersExactlyTo ?operation.
+      ?task oasis:hasTaskObject ?object.
+      ?object oasis:refersAsNewTo ?ob.
+      ?ob a ?operationOn    
+      FILTER( ?operationOn != owl:NamedIndividual)      
+}
