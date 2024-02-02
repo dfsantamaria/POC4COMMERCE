@@ -1,0 +1,17 @@
+SELECT DISTINCT ?offering ?type ?value ?currency
+WHERE { 
+      ?taskExec a oasis:TaskExecution.
+      ?taskExec oasis:hasTaskObject ?taskob.
+      ?taskob oasis:refersExactlyTo ?offering.
+      ?offering a ?offer.
+      FILTER(?offer = occom:Offering) 
+      FILTER NOT EXISTS { ?offering a occom:DeprecatedOffering.}
+      FILTER NOT EXISTS { ?offering a occom:ClosedOffering.}
+      FILTER NOT EXISTS { ?offering a occom:RetractedOffering.}  
+      ?product a ?type.
+      FILTER( ?type != owl:NamedIndividual)  
+      ?priceDetActivity occom:priceDeterminationPerformedOn ?offering.
+      ?priceDetActivity occom:hasPriceValue ?price.
+      ?price gr:hasCurrencyValue ?value.
+      ?price gr:hasCurrency ?currency. 
+} 
