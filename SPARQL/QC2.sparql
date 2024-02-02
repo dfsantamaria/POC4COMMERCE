@@ -1,0 +1,9 @@
+SELECT DISTINCT ?chainActivity ?type ?agent
+WHERE { 
+      offering  ocfound:hasSupplyChainManagement ?chainManagement.
+      ?chainManagement ocfound:hasSupplyChainActivity ?chainActivity. 
+      ?chainActivity a ?type.      
+      FILTER( ?type != owl:NamedIndividual)   
+      ?chainActivity ocfound:supplyChainActivityImplementedBy ?behaviour.
+      ?agent oasis:hasBehavior ?behaviour.
+}
