@@ -1,0 +1,8 @@
+SELECT ?agent ?supplychainActivity
+WHERE {
+      resource ocfound:hasSupplyChainManagement ?supplychain.
+      ?supplychain ocfound:hasSupplyChainActivity ?supplychainActivity.
+      ?supplychainActivity ocfound:supplyChainActivityImplementedBy ?behaviour.
+      ?behaviour a oasis:Behavior.
+      ?agent oasis:hasBehavior ?behaviour.
+}
