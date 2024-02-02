@@ -1,0 +1,15 @@
+SELECT ?blockNumber ?hash 
+WHERE { 
+      ?block blon:heightBlock ?blockNumber.    
+      ?block blon:hasEthereumPayloadBlock ?payload. 
+      ?payload blon:hasEthereumTransactionPayload ?transaction.
+      ?transaction blon:recipientEthereumTransaction ?hash.  
+      ?transaction ocether:introducesEthereumSmartContractExecution ?action.
+      ?action oasis:consistsOfGoalExecution ?goal.
+      ?goal oasis:consistsOfTaskExecution ?agentExe.
+      ?agent oasis:performs ?agentExe.
+      ?agentExe oasis:hasTaskObject ?taskExe.
+      ?agentExe oasis:hasTaskOperator ?operator.
+      ?operator oasis:refersExactlyTo oabox:mint.
+      ?taskExe oasis:refersExactlyTo token.  
+}   
