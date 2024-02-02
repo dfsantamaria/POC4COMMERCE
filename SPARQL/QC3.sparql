@@ -1,0 +1,10 @@
+SELECT ?agent  ?offering ?accepted
+WHERE { 
+      ?agent oasis:performs ?agentExe.
+      ?agentExe oasis:hasTaskObject ?taskExe.
+      ?agentExe oasis:hasTaskOperator ?operator.
+      ?operator oasis:refersExactlyTo oabox:accept.
+      ?taskExe oasis:refersExactlyTo ?offering.
+      ?offering a ?accepted.  
+      FILTER( ?accepted = occom:AcceptedOffering)     
+}  
